@@ -210,9 +210,9 @@
                         </svg>
                     </button>
                     <div id="lang-dropdown" class="hidden absolute right-0 mt-2 w-32 bg-white/95 backdrop-blur-lg rounded-xl shadow-lg overflow-hidden">
-                        <a href="https://espoo.aurinkolab.fi/eng" class="block px-4 py-2 text-gray-800 hover:bg-blue-500 hover:text-white transition-colors">🇬🇧 English</a>
-                        <a href="https://espoo.aurinkolab.fi/fin" class="block px-4 py-2 text-gray-800 hover:bg-blue-500 hover:text-white transition-colors">🇫🇮 Suomi</a>
-                        <a href="https://espoo.aurinkolab.fi" class="block px-4 py-2 text-gray-800 hover:bg-blue-500 hover:text-white transition-colors">🇷🇺 Русский</a>
+                        <a href="https://espoo.aurinkolab.fi" class="block px-4 py-2 text-gray-800 hover:bg-blue-500 hover:text-white transition-colors">🇬🇧 English</a>
+                        <a href="https://espoo.aurinkolab.fi/su" class="block px-4 py-2 text-gray-800 hover:bg-blue-500 hover:text-white transition-colors">🇫🇮 Suomi</a>
+                        <a href="https://espoo.aurinkolab.fi/ru" class="block px-4 py-2 text-gray-800 hover:bg-blue-500 hover:text-white transition-colors">🇷🇺 Русский</a>
                     </div>
                 </div>
             </div>
@@ -240,9 +240,9 @@
                 <div class="border-t border-white/20 pt-4 mt-4">
                     <p class="text-white/60 text-sm mb-2">Language / Kieli / Язык</p>
                     <div class="flex flex-col space-y-2">
-                        <a href="https://espoo.aurinkolab.fi/eng" class="text-white hover:text-violet-400">🇬🇧 English</a>
-                        <a href="https://espoo.aurinkolab.fi/fin" class="text-white hover:text-violet-400">🇫🇮 Suomi</a>
-                        <a href="https://espoo.aurinkolab.fi" class="text-white hover:text-violet-400">🇷🇺 Русский</a>
+                        <a href="https://espoo.aurinkolab.fi" class="text-white hover:text-violet-400">🇬🇧 English</a>
+                        <a href="https://espoo.aurinkolab.fi/su" class="text-white hover:text-violet-400">🇫🇮 Suomi</a>
+                        <a href="https://espoo.aurinkolab.fi/ru" class="text-white hover:text-violet-400">🇷🇺 Русский</a>
                     </div>
                 </div>
             </div>
@@ -308,7 +308,7 @@
 
         <div class="relative z-10 flex flex-col items-center justify-center h-full gap-4">
             <h1 class="text-3xl font-semibold tracking-wide text-white" style="text-shadow: 2px 2px 8px rgba(0,0,0,0.5);">
-                Инженерное и творческое обучение для детей в Эспоо
+                Создаем инноваторов завтрашнего дня сегодня
             </h1>
 
             <div class="flex gap-4 mt-4">
@@ -905,6 +905,14 @@
         </div>
     </section>
 
+    <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1984.2211079005495!2d24.70231551601079!3d60.17520318197086!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46920763d4a0bc81%3A0x73a2bc9e4f3521db!2sVanhan-Mankkaan%20kuja%202%2C%2002180%20Espoo%2C%20Finland!5e0!3m2!1sen!2sus!4v1691748564246!5m2!1sen!2sus"
+                width="100%" height="450" style="border:0; border-radius:1rem;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer class="py-16 px-6" style="background: linear-gradient(135deg, #66b0db, #0d5394);">
         <div class="max-w-7xl mx-auto grid md:grid-cols-4 gap-12 text-white/70">
@@ -957,6 +965,71 @@
             <p class="text-white/50 text-sm">&copy; 2025 AurinkoLab Espoo. Все права защищены.</p>
         </div>
     </footer>
+
+    <script>
+        function openTermsModal() {
+            const modal = document.getElementById('termsModal');
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeTermsModal() {
+            const modal = document.getElementById('termsModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+        
+        function closeTermsModalOnOutside(event) {
+            if (event.target.id === 'termsModal') {
+                closeTermsModal();
+            }
+        }
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Navigation scroll effect
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.classList.add('bg-white/10');
+            } else {
+                nav.classList.remove('bg-white/10');
+            }
+        });
+    </script>
+
+    <!-- Terms Modal -->
+        <script>
+        function openTermsModal() {
+            const modal = document.getElementById('termsModal');
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeTermsModal() {
+            const modal = document.getElementById('termsModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+        
+        function closeTermsModalOnOutside(event) {
+            if (event.target.id === 'termsModal') {
+                closeTermsModal();
+            }
+        }
+    </script>
 
 
     <script>
