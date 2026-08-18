@@ -1,262 +1,914 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AurinkoLab Espoo</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
     <style>
+        * { box-sizing: border-box; scroll-behavior: smooth; }
+
         body {
-            font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-        }
-        .mono-font {
-            font-family: 'JetBrains Mono', monospace;
-        }
-        .glass-card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-        }
-        .neon-glow {
-            box-shadow: 0 0 20px rgba(102, 126, 234, 0.6);
-        }
-        .floating {
-            animation: float 6s ease-in-out infinite;
-        }
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-        }
-        .gradient-text {
-            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4);
-            background-size: 300% 300%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: gradient-shift 3s ease infinite;
-        }
-        @keyframes gradient-shift {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-        }
-        .hover-lift {
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .hover-lift:hover {
-            transform: translateY(-8px) scale(1.02);
-        }
-        .blob {
-            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
-            animation: blob-morph 8s ease-in-out infinite;
-        }
-        @keyframes blob-morph {
-            0%, 100% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
-            25% { border-radius: 58% 42% 75% 25% / 76% 46% 54% 24%; }
-            50% { border-radius: 50% 50% 33% 67% / 55% 27% 73% 45%; }
-            75% { border-radius: 33% 67% 58% 42% / 63% 68% 32% 37%; }
-        }
-        .nav-blur {
-            backdrop-filter: blur(20px);
-            background: rgba(255, 255, 255, 0.1);
-        }
-        .course-hover {
-            transition: all 0.4s ease;
-        }
-        .course-hover:hover {
-            transform: rotateY(5deg) rotateX(5deg);
+            margin: 0;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #F4F2EA;
+            color: #3A3831;
+            overflow-x: hidden;
         }
 
-            /* Button Style */
-        .terms-button {
-            background: linear-gradient(135deg, #66b0db, #0d5394);
-            color: white;
-            border: none;
-            padding: 12px 24px;
-            border-radius: 10px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: opacity 0.3s ease;
+        .heading-font { font-family: 'Space Grotesk', sans-serif; }
+
+        /* Custom scroll reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
         }
-        .terms-button:hover {
-            opacity: 0.9;
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+
+        /* Form Inputs */
+        input, select, textarea {
+            background-color: transparent !important;
+            border: 1px solid #D8D3C4 !important;
+            color: #3A3831 !important;
+        }
+        input::placeholder, textarea::placeholder { color: #A39E8F !important; }
+        input:focus, select:focus, textarea:focus {
+            border-color: #3A3831 !important;
+            outline: none;
+            box-shadow: none !important;
         }
         
-        /* Modal Styles */
-        .terms-modal {
-            display: none;
-            position: fixed;
-            z-index: 1000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0, 0, 0, 0.7);
-            animation: fadeIn 0.3s ease;
-        }
-        .terms-modal.active {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .terms-modal-content {
-            background: white;
-            margin: 2rem;
-            padding: 2rem;
-            border-radius: 20px;
-            max-width: 900px;
-            max-height: 85vh;
-            overflow-y: auto;
-            position: relative;
-            animation: slideIn 0.3s ease;
-        }
-        .terms-close-btn {
-            position: sticky;
-            top: 0;
-            right: 0;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-            color: #666;
-            cursor: pointer;
-            background: white;
-            padding: 0 10px;
-            z-index: 10;
-            border: none;
-        }
-        .terms-close-btn:hover {
-            color: #000;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        @keyframes slideIn {
-            from { transform: translateY(-50px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-        
-        /* Content Styles */
-        .terms-modal-content h1 {
-            color: #0d5394;
-            font-size: 2rem;
-            font-weight: bold;
-            text-align: center;
-            margin-bottom: 1rem;
-        }
-        .terms-modal-content h2 {
-            color: #0d5394;
-            margin-top: 1.5rem;
-            margin-bottom: 0.75rem;
-            font-size: 1.5rem;
-            font-weight: bold;
-        }
-        .terms-modal-content h3 {
-            color: #66b0db;
-            margin-top: 1rem;
-            margin-bottom: 0.5rem;
-            font-size: 1.25rem;
-            font-weight: 600;
-        }
-        .terms-modal-content p {
-            margin-bottom: 0.75rem;
-            line-height: 1.6;
-        }
-        .terms-modal-content ul {
-            margin-left: 1.5rem;
-            margin-bottom: 0.75rem;
-        }
-        .terms-modal-content li {
-            margin-bottom: 0.5rem;
-        }
-        </style>
-    </head>
-<body>
+        /* Modal Scrollbar */
+        .modal-scroll::-webkit-scrollbar { width: 6px; }
+        .modal-scroll::-webkit-scrollbar-track { background: transparent; }
+        .modal-scroll::-webkit-scrollbar-thumb { background: #D8D3C4; border-radius: 10px; }
+    </style>
+</head>
+<body class="antialiased selection:bg-[#EBE7D9] selection:text-[#3A3831]">
 
-
-    <nav class="fixed top-0 w-full z-50 nav-blur border-b border-white/20">
-    <div class="max-w-7xl mx-auto px-6 lg:px-8">
-        <!-- Основной flex-контейнер -->
-        <div class="flex justify-between items-center h-16">
-        <!-- Логотип -->
-        <a href="#hero" class="flex items-center space-x-3">
-            <div class="w-10 h-10 bg-gradient-to-r from-blue-500 to-violet-500 rounded-xl flex items-center justify-center">
-            <span class="text-white font-bold text-lg">A</span>
-            </div>
-            <span class="text-white font-bold text-xl mono-font">AurinkoLab</span>
-        </a>
-
-        <!-- Основное меню (desktop only) -->
-        <div class="hidden md:flex space-x-8">
-            <a href="#courses" class="text-white hover:text-white transition-colors">Курсы</a>
-            <a href="#schedule" class="text-white hover:text-white transition-colors">Расписание</a>
-            <a href="#location" class="text-white hover:text-white trкansition-colors">Местоположение</a>
-            <a href="https://aurinkolab.fi" target="_blank" class="text-white/80 hover:text-white transition-colors">О нас</a>
-            <a href="#courses" class="bg-white/20 text-white px-4 py-2 rounded-full hover:bg-white/30 transition-colors">Записаться</a>
-        </div>
-
-        <!-- Языки (только desktop) -->
-        <div class="relative hidden md:block">
-            <button id="lang-btn" class="flex items-center space-x-2 text-white hover:text-white/80 transition-colors">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
-            </svg>
-            <span id="current-lang">RU</span>
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-            </svg>
-            </button>
-            <div id="lang-dropdown"
-            class="hidden absolute right-0 mt-2 w-32 bg-white/95 backdrop-blur-lg rounded-xl shadow-lg overflow-hidden">
-            <a href="https://espoo.aurinkolab.fi"
-                class="block px-4 py-2 text-gray-800 hover:bg-blue-500 hover:text-white transition-colors">English</a>
-            <a href="https://espoo.aurinkolab.fi/su"
-                class="block px-4 py-2 text-gray-800 hover:bg-blue-500 hover:text-white transition-colors">Suomi</a>
-            <a href="https://espoo.aurinkolab.fi/ru"
-                class="block px-4 py-2 text-gray-800 hover:bg-blue-500 hover:text-white transition-colors">Русский</a>
-            </div>
-        </div>
-
-        <!-- Гамбургер (mobile only, теперь справа) -->
-        <button id="menu-btn" class="md:hidden flex flex-col justify-between w-8 h-6 focus:outline-none ml-auto">
-            <span class="block w-8 h-0.5 bg-white transition-all duration-300"></span>
-            <span class="block w-8 h-0.5 bg-white transition-all duration-300"></span>
-            <span class="block w-8 h-0.5 bg-white transition-all duration-300"></span>
-        </button>
+    <!-- Top Banner -->
+    <div class="bg-[#EBE7D9] text-xs md:text-sm py-2.5 px-4 text-center border-b border-[#D8D3C4]">
+        <div class="max-w-7xl mx-auto flex flex-wrap justify-center items-center gap-2.5 md:gap-4 font-medium text-[#5C594E] tracking-wide">
+            <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#F4F2EA] border border-[#D8D3C4] font-semibold tracking-wider uppercase text-[10px]">
+                Кампус в Эспоо
+            </span>
+            <span class="hidden sm:inline text-[#D8D3C4]">•</span>
+            <span class="text-[#5C594E]">Создаем инноваторов будущего <strong class="text-[#3A3831]">уже сегодня</strong></span>
         </div>
     </div>
 
-    <!-- Мобильное меню -->
-    <div id="mobile-menu" class="hidden md:hidden bg-black/90 backdrop-blur-lg">
-        <div class="flex flex-col space-y-4 p-6">
-        <a href="#courses" class="text-white hover:text-violet-400">Курсы</a>
-        <a href="#schedule" class="text-white hover:text-violet-400">Расписание</a>
-        <a href="https://espoo.aurinkolab.fi/robohacks" class="text-white hover:text-violet-400">RoboHacks</a>
-        <a href="#team" class="text-white hover:text-violet-400">Команда</a>
-        <a href="#location" class="text-white hover:text-violet-400">Местоположение</a>
-        <a href="https://aurinkolab.fi" target="_blank" class="text-white/80 hover:text-white">О нас</a>
-        <a href="#courses" class="bg-white/20 text-white px-4 py-2 rounded-full hover:bg-white/30 transition-colors text-center">Записаться</a>
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-50 bg-[#F4F2EA]/90 backdrop-blur-md border-b border-[#D8D3C4]">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <a href="#hero" class="flex items-center space-x-3">
+                    <div class="w-11 h-11 bg-[#EBE7D9] rounded-xl border border-[#D8D3C4] flex items-center justify-center font-bold text-[#3A3831] text-2xl">
+                        A
+                    </div>
+                    <span class="heading-font font-bold text-2xl tracking-tight text-[#3A3831]">Aurinko<span class="font-normal">Lab</span>
+                    <span class="block text-[8px] tracking-[.3em] text-[#5C594E] uppercase -mt-1">Эспоо • Курсы</span></span>
+                </a>
 
-        <!-- Mobile Language Selector -->
-        <div class="border-t border-white/20 pt-4 mt-4">
-            <p class="text-white/60 text-sm mb-2">Language / Kieli / Язык</p>
-            <div class="flex flex-col space-y-2">
-            <a href="https://espoo.aurinkolab.fi" class="text-white hover:text-violet-400">English</a>
-            <a href="https://espoo.aurinkolab.fi/su" class="text-white hover:text-violet-400">Suomi</a>
-            <a href="https://espoo.aurinkolab.fi/ru" class="text-white hover:text-violet-400">Русский</a>
+                <!-- Desktop Nav -->
+                <div class="hidden md:flex items-center space-x-6 lg:space-x-8 font-semibold text-[#5C594E] text-sm">
+                    <a href="#courses" class="hover:text-[#3A3831] transition-colors">Курсы</a>
+                    <a href="#schedule" class="hover:text-[#3A3831] transition-colors">Расписание</a>
+                    <a href="#upcoming-events" class="hover:text-[#3A3831] transition-colors">События</a>
+                    <a href="https://aurinkolab.fi" class="hover:text-[#3A3831] transition-colors">Команда</a>
+                    <a href="#location" class="hover:text-[#3A3831] transition-colors">Контакты</a>
+                    <a href="https://project.aurinkolab.fi" class="hover:text-[#3A3831] transition-colors">Проекты</a>
+                    <a href="https://camps.aurinkolab.fi" class="hover:text-[#3A3831] transition-colors">Лагеря</a>
+                    
+                    <a href="#" onclick="openRegistrationModal(event, 'Общая регистрация')" class="bg-[#EBE7D9] hover:bg-[#D8D3C4] border border-[#D8D3C4] text-[#3A3831] px-5 py-2.5 rounded-xl font-bold transition-all">
+                        Записаться
+                    </a>
+                    
+                    <!-- Language Selector -->
+                    <div class=".relative">
+                        <button id="lang-btn" class="flex items-center space-x-1.5 text-[#3A3831] hover:text-[#827D70] transition-colors font-bold bg-[#F4F2EA] border border-[#D8D3C4] px-3 py-1.5 rounded-lg">
+                            <span id="current-lang" class="text-xs">RU</span>
+                            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                        </button>
+                        <div id="lang-dropdown" class="hidden absolute right-0 mt-2 w-32 bg-[#F4F2EA] border border-[#D8D3C4] rounded-xl shadow-xl overflow-hidden">
+                            <a href="https://espoo.aurinkolab.fi" class="block px-4 py-2 text-sm text-[#3A3831] hover:bg-[#EBE7D9] transition-colors">English</a>
+                            <a href="https://espoo.aurinkolab.fi/su" class="block px-4 py-2 text-sm text-[#3A3831] hover:bg-[#EBE7D9] transition-colors">Suomi</a>
+                            <a href="https://espoo.aurinkolab.fi/ru" class="block px-4 py-2 text-sm text-[#3A3831] hover:bg-[#EBE7D9] transition-colors">Русский</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mobile Hamburger -->
+                <button id="menu-btn" class="md:hidden flex flex-col justify-between w-8 h-6 focus:outline-none">
+                    <span class="block w-8 h-0.5 bg-[#3A3831] transition-all duration-300"></span>
+                    <span class="block w-8 h-0.5 bg-[#3A3831] transition-all duration-300"></span>
+                    <span class="block w-8 h-0.5 bg-[#3A3831] transition-all duration-300"></span>
+                </button>
             </div>
         </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-[#F4F2EA] border-b border-[#D8D3C4] absolute w-full">
+            <div class="flex flex-col space-y-4 p-6 font-semibold text-[#5C594E]">
+                <a href="#courses" class="hover:text-[#3A3831]">Курсы</a>
+                <a href="#schedule" class="hover:text-[#3A3831]">Расписание</a>
+                <a href="#upcoming-events" class="hover:text-[#3A3831]">События</a>
+                <a href="https://project.aurinkolab.fi" class="hover:text-[#3A3831]">Проекты</a>
+                <a href="https://camps.aurinkolab.fi" class="hover:text-[#3A3831]">Лагеря</a>
+                <a href="https://aurinkolab.fi" class="hover:text-[#3A3831]">Команда</a>
+                <a href="#location" class="hover:text-[#3A3831]">Контакты</a>
+                <a href="#" onclick="openRegistrationModal(event, 'Общая регистрация')" class="bg-[#EBE7D9] text-[#3A3831] border border-[#D8D3C4] px-4 py-3 rounded-xl text-center">Записаться</a>
+                
+                <div class="border-t border-[#D8D3C4] pt-4 mt-4">
+                    <p class="text-[#827D70] text-xs uppercase tracking-wider mb-3">Language / Kieli / Язык</p>
+                    <div class="flex flex-col space-y-3">
+                        <a href="https://espoo.aurinkolab.fi" class="hover:text-[#3A3831]">English</a>
+                        <a href="https://espoo.aurinkolab.fi/su" class="hover:text-[#3A3831]">Suomi</a>
+                        <a href="https://espoo.aurinkolab.fi/ru" class="hover:text-[#3A3831]">Русский</a>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
     </nav>
 
+    <!-- Hero Section -->
+    <section id="hero" class="pt-20 pb-20 px-6 max-w-7xl mx-auto text-center reveal">
+        <h1 class="heading-font text-5xl sm:text-6xl md:text-7xl font-extrabold text-[#3A3831] tracking-tight leading-[1.02] mb-6">
+            Создаем инноваторов <br> будущего уже сегодня
+        </h1>
+        
+        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mt-8">
+            <a href="#upcoming-events" class="w-full sm:w-auto bg-[#EBE7D9] border border-[#D8D3C4] hover:bg-[#D8D3C4] text-[#3A3831] font-bold px-8 py-4 rounded-xl transition-all">
+                Ближайшие события
+            </a>
+            <a href="#courses" class="w-full sm:w-auto bg-transparent border border-[#3A3831] text-[#3A3831] hover:bg-[#3A3831] hover:text-[#F4F2EA] font-bold px-8 py-4 rounded-xl transition-all">
+                Записаться на занятия
+            </a>
+        </div>
 
+        <!-- Video Container -->
+        <div class="mt-16 max-w-5xl mx-auto rounded-[2.5rem] overflow-hidden border border-[#D8D3C4] bg-[#EBE7D9] p-2">
+            <video autoplay muted loop playsinline class="w-full h-auto max-h-[500px] object-cover rounded-[2rem] grayscale-[15%] mix-blend-multiply opacity-90">
+                <source src="src/robohack2508.mp4" type="video/mp4">
+                Ваш браузер не поддерживает видео.
+            </video>
+        </div>
+    </section>
 
+    <!-- Upcoming Events -->
+    <section id="upcoming-events" class="py-16 px-6 max-w-5xl mx-auto reveal border-t border-[#D8D3C4]">
+        <div class="text-center mb-10">
+            <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#EBE7D9] border border-[#D8D3C4] text-[10px] font-bold uppercase tracking-wider text-[#827D70] mb-4">
+                Что дальше
+            </span>
+            <h2 class="heading-font text-4xl font-extrabold text-[#3A3831]">
+                <a href="http://espoo.aurinkolab.fi/events/" class="hover:underline hover:text-[#5C594E] transition-all">Предстоящие события</a>
+            </h2>
+        </div>
+
+        <div class="mt-8 grid gap-8">
+            <!-- Go-Karts Project Card -->
+            <div class="flex flex-col md:flex-row items-stretch gap-6 bg-[#F4F2EA] border border-[#D8D3C4] rounded-[2rem] p-4 group hover:border-[#3A3831] transition-colors shadow-sm hover:shadow-lg">
+                <div class="bg-[#EBE7D9] border border-[#D8D3C4] text-[#3A3831] rounded-2xl px-4 py-8 w-full md:w-36 text-center flex-shrink-0 flex flex-col items-center justify-center">
+                    <div class="text-xl md:text-2xl font-bold leading-tight heading-font">
+                        Воскр
+                    </div>
+                </div>
+
+                <div class="flex-1 flex flex-col justify-center py-2 md:pr-6">
+                    <h4 class="text-lg font-bold text-[#3A3831] mb-1">
+                        Курс по созданию электрических карта
+                    </h4>
+                    <span class="text-xs font-bold text-[#827D70] uppercase tracking-wider mb-3 block">Возраст 12–16 лет | Осталось 6 мест</span>
+                    
+                    <p class="text-[#5C594E] text-sm leading-relaxed mb-4">
+                        6-месячная практическая инженерная DIY-программа для подростков. Изучайте сварку, механику, сборку аккумуляторов и динамику гонок под руководством экспертов. При поддержке EPICS IEEE & ESPOO Nuoriso.
+                    </p>
+                    
+                    <div>
+                        <a href="https://project.aurinkolab.fi/" target="_blank" class="inline-flex items-center gap-2 text-sm font-bold text-[#3A3831] hover:text-[#827D70] underline underline-offset-4 transition-colors">
+                            Регистрация и подробности
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+ 
+    </section>
+
+    <!-- Courses Section -->
+    <section id="courses" class="py-20 px-6 max-w-7xl mx-auto border-t border-[#D8D3C4] reveal">
+        <div class="text-center mb-16">
+            <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#EBE7D9] border border-[#D8D3C4] text-[10px] font-bold uppercase tracking-wider text-[#827D70] mb-4">
+                Программы обучения
+            </span>
+            <h2 class="heading-font text-4xl lg:text-5xl font-extrabold text-[#3A3831] mb-4">Курсы</h2>
+            <p class="text-lg text-[#5C594E] max-w-2xl mx-auto">Откройте для себя новые увлечения через творческий процесс обучения.</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+            <!-- Course 1 -->
+            <div class="group flex flex-col bg-[#F4F2EA] border border-[#D8D3C4] hover:border-[#3A3831] rounded-[2rem] overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-xl p-8">
+                <div class="flex flex-col items-center text-center mb-4">
+                    <img src="src/olgar.png" alt="Olga Rozhnova" class="w-20 h-20 object-cover rounded-2xl border border-[#D8D3C4] shadow-sm mb-3">
+                    <h4 class="font-bold text-[#3A3831]">Ольга Рожнова</h4>
+                    <p class="text-[#827D70] text-[10px] uppercase tracking-wider font-bold">Инструктор по ИИ и науке</p>
+                </div>
+                <div class="border-t border-[#D8D3C4]/60 my-4 w-full"></div>
+                <h3 class="heading-font text-2xl font-bold text-[#3A3831] text-center mb-3">AI Equity Lab: 7+</h3>
+                <p class="text-[#5C594E] text-sm leading-relaxed text-center flex-grow mb-4">
+                    Увлекательное путешествие в мир программирования через игры, проекты и творчество! Дети создают игры, анимацию, веб-сайты и участвуют в командных соревнованиях.
+                </p>
+                <div class="mt-auto border-t border-[#D8D3C4]/60 pt-4 flex items-center justify-between">
+                    <span class="text-xs font-bold text-[#827D70]">📍 InterLang</span>
+                    <span class="px-3 py-1 rounded-full bg-[#EBE7D9] border border-[#D8D3C4] text-[#827D70] text-[10px] font-bold uppercase tracking-wider">Возраст 7–10</span>
+                </div>
+                <button onclick="openRegistrationModal(event, 'AI Equity Lab: 7+')" class="mt-5 w-full bg-[#EBE7D9] border border-[#D8D3C4] text-[#3A3831] font-bold py-3 rounded-xl hover:bg-[#D8D3C4] transition-all">
+                    Записаться
+                </button>
+            </div>
+
+            <!-- Course 2 -->
+            <div class="group flex flex-col bg-[#F4F2EA] border border-[#D8D3C4] hover:border-[#3A3831] rounded-[2rem] overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-xl p-8">
+                <div class="flex flex-col items-center text-center mb-4">
+                    <img src="src/tatiana.png" alt="Tatiana Surovtsova" class="w-20 h-20 object-cover rounded-2xl border border-[#D8D3C4] shadow-sm mb-3">
+                    <h4 class="font-bold text-[#3A3831]">Татьяна Суровцова</h4>
+                    <p class="text-[#827D70] text-[10px] uppercase tracking-wider font-bold">STEM-ментор | PhD по информатике</p>
+                </div>
+                <div class="border-t border-[#D8D3C4]/60 my-4 w-full"></div>
+                <h3 class="heading-font text-2xl font-bold text-[#3A3831] text-center mb-3">StemLab</h3>
+                <p class="text-[#5C594E] text-sm leading-relaxed text-center flex-grow mb-4">
+                    Практические эксперименты с электричеством, движением и инженерией для юных ученых.
+                </p>
+                <div class="mt-auto border-t border-[#D8D3C4]/60 pt-4 flex items-center justify-between">
+                    <span class="text-xs font-bold text-[#827D70]">📍 Курс AurinkoLab</span>
+                    <span class="px-3 py-1 rounded-full bg-[#EBE7D9] border border-[#D8D3C4] text-[#827D70] text-[10px] font-bold uppercase tracking-wider">Возраст 7–10</span>
+                </div>
+                <button onclick="openRegistrationModal(event, 'StemLab')" class="mt-5 w-full bg-[#EBE7D9] border border-[#D8D3C4] text-[#3A3831] font-bold py-3 rounded-xl hover:bg-[#D8D3C4] transition-all">
+                    Записаться
+                </button>
+            </div>
+
+            <!-- Course 3 -->
+            <div class="group flex flex-col bg-[#F4F2EA] border border-[#D8D3C4] hover:border-[#3A3831] rounded-[2rem] overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-xl p-8">
+                <div class="flex flex-col items-center text-center mb-4">
+                    <img src="src/natalia.jpg" alt="Natalia Gatanova" class="w-20 h-20 object-cover rounded-2xl border border-[#D8D3C4] shadow-sm mb-3">
+                    <h4 class="font-bold text-[#3A3831]">Наталья Гатанова</h4>
+                    <p class="text-[#827D70] text-[10px] uppercase tracking-wider font-bold">Преподаватель математики</p>
+                </div>
+                <div class="border-t border-[#D8D3C4]/60 my-4 w-full"></div>
+                <h3 class="heading-font text-2xl font-bold text-[#3A3831] text-center mb-3">Семейный математический клуб</h3>
+                <p class="text-[#5C594E] text-sm leading-relaxed text-center flex-grow mb-4">
+                    Решайте головоломки, отправляйтесь в квесты и исследуйте мифы. Математика оживает, а навыки закрепляются. Приглашаются все желающие!
+                </p>
+                <div class="mt-auto border-t border-[#D8D3C4]/60 pt-4 flex items-center justify-between">
+                    <span class="text-xs font-bold text-[#827D70]">📍 Aurora Math ry</span>
+                    <span class="px-3 py-1 rounded-full bg-[#EBE7D9] border border-[#D8D3C4] text-[#827D70] text-[10px] font-bold uppercase tracking-wider">Возраст 7+ и родители</span>
+                </div>
+                <button onclick="openRegistrationModal(event, 'Family Math Club')" class="mt-5 w-full bg-[#EBE7D9] border border-[#D8D3C4] text-[#3A3831] font-bold py-3 rounded-xl hover:bg-[#D8D3C4] transition-all">
+                    Записаться
+                </button>
+            </div>
+
+            <!-- Course 4 -->
+            <div class="group flex flex-col bg-[#F4F2EA] border border-[#D8D3C4] hover:border-[#3A3831] rounded-[2rem] overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-xl p-8">
+                <div class="flex flex-col items-center text-center mb-4">
+                    <img src="src/Silvia.png" alt="Silvia Espinosa Granados" class="w-20 h-20 object-cover rounded-2xl border border-[#D8D3C4] shadow-sm mb-3">
+                    <h4 class="font-bold text-[#3A3831]">Сильвия Эспиноса Гранадос</h4>
+                    <p class="text-[#827D70] text-[10px] uppercase tracking-wider font-bold">Исследователь данных и ИИ-математика</p>
+                </div>
+                <div class="border-t border-[#D8D3C4]/60 my-4 w-full"></div>
+                <h3 class="heading-font text-2xl font-bold text-[#3A3831] text-center mb-3">Математика для любознательных</h3>
+                <p class="text-[#5C594E] text-sm leading-relaxed text-center flex-grow mb-4">
+                    Увлекательное путешествие в мир математики и умных машин! Узнайте, как компьютеры «думают» и решают задачи через интерактивные эксперименты.
+                </p>
+                <div class="mt-auto border-t border-[#D8D3C4]/60 pt-4 flex items-center justify-between">
+                    <span class="text-xs font-bold text-[#827D70]">📍 Курс AurinkoLab</span>
+                    <span class="px-3 py-1 rounded-full bg-[#EBE7D9] border border-[#D8D3C4] text-[#827D70] text-[10px] font-bold uppercase tracking-wider">Возраст 6+</span>
+                </div>
+                <button onclick="openRegistrationModal(event, 'Maths for Curious Minds')" class="mt-5 w-full bg-[#EBE7D9] border border-[#D8D3C4] text-[#3A3831] font-bold py-3 rounded-xl hover:bg-[#D8D3C4] transition-all">
+                    Записаться
+                </button>
+            </div>
+
+            <!-- Course 5 -->
+            <div class="group flex flex-col bg-[#F4F2EA] border border-[#D8D3C4] hover:border-[#3A3831] rounded-[2rem] overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-xl p-8">
+                <div class="flex flex-col items-center text-center mb-4">
+                    <div class="flex gap-2 justify-center mb-3">
+                        <img src="src/TatianaOrlova.png" alt="Tatiana Orlova" class="w-16 h-16 object-cover rounded-2xl border border-[#D8D3C4] shadow-sm">
+                        <img src="src/maria.png" alt="Maria Rohnonen" class="w-16 h-16 object-cover rounded-2xl border border-[#D8D3C4] shadow-sm">
+                    </div>
+                    <h4 class="font-bold text-[#3A3831] text-sm">Татьяна Орлова, Мария Рохнонен</h4>
+                    <p class="text-[#827D70] text-[10px] uppercase tracking-wider font-bold">Философия и ИИ</p>
+                </div>
+                <div class="border-t border-[#D8D3C4]/60 my-4 w-full"></div>
+                <h3 class="heading-font text-2xl font-bold text-[#3A3831] text-center mb-3">История мысли, математики и ИИ</h3>
+                <p class="text-[#5C594E] text-sm leading-relaxed text-center flex-grow mb-4">
+                    Проследите за великими идеями, сформировавшими наш мир! Узнайте, как древние вопросы вдохновили современную математику и проложили путь к умным машинам.
+                </p>
+                <div class="mt-auto border-t border-[#D8D3C4]/60 pt-4 flex items-center justify-between">
+                    <span class="text-xs font-bold text-[#827D70]">📍 Курс AurinkoLab</span>
+                    <span class="px-3 py-1 rounded-full bg-[#EBE7D9] border border-[#D8D3C4] text-[#827D70] text-[10px] font-bold uppercase tracking-wider">Возраст 6-8</span>
+                </div>
+                <button onclick="openRegistrationModal(event, 'Basics: The History of Thought, Math & AI 6+')" class="mt-5 w-full bg-[#EBE7D9] border border-[#D8D3C4] text-[#3A3831] font-bold py-3 rounded-xl hover:bg-[#D8D3C4] transition-all">
+                    Записаться
+                </button>
+            </div>
+
+            <!-- Course 6 -->
+            <div class="group flex flex-col bg-[#F4F2EA] border border-[#D8D3C4] hover:border-[#3A3831] rounded-[2rem] overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-xl p-8">
+                <div class="flex flex-col items-center text-center mb-4">
+                    <img src="src/Evgenia.jpeg" alt="Evgenia Levina" class="w-20 h-20 object-cover rounded-2xl border border-[#D8D3C4] shadow-sm mb-3">
+                    <h4 class="font-bold text-[#3A3831]">Евгения Левина</h4>
+                    <p class="text-[#827D70] text-[10px] uppercase tracking-wider font-bold">Математика и олимпиады</p>
+                </div>
+                <div class="border-t border-[#D8D3C4]/60 my-4 w-full"></div>
+                <h3 class="heading-font text-2xl font-bold text-[#3A3831] text-center mb-3">Олимпиадная математика 11+</h3>
+                <p class="text-[#5C594E] text-sm leading-relaxed text-center flex-grow mb-4">
+                    Испытайте себя в продвинутых математических концепциях и методах соревновательного решения задач.
+                </p>
+                <div class="mt-auto border-t border-[#D8D3C4]/60 pt-4 flex items-center justify-between">
+                    <span class="text-xs font-bold text-[#827D70]">📍 Курс AurinkoLab</span>
+                    <span class="px-3 py-1 rounded-full bg-[#EBE7D9] border border-[#D8D3C4] text-[#827D70] text-[10px] font-bold uppercase tracking-wider">Возраст 11-13</span>
+                </div>
+                <button onclick="openRegistrationModal(event, 'Olympiad Maths 11+')" class="mt-5 w-full bg-[#EBE7D9] border border-[#D8D3C4] text-[#3A3831] font-bold py-3 rounded-xl hover:bg-[#D8D3C4] transition-all">
+                    Записаться
+                </button>
+            </div>
+
+            <!-- Course 7 -->
+            <div class="group flex flex-col bg-[#F4F2EA] border border-[#D8D3C4] hover:border-[#3A3831] rounded-[2rem] overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-xl p-8">
+                <div class="flex flex-col items-center text-center mb-4">
+                    <img src="src/pavel.png" alt="Pavel Poppel" class="w-20 h-20 object-cover rounded-2xl border border-[#D8D3C4] shadow-sm mb-3">
+                    <h4 class="font-bold text-[#3A3831]">Павел Поппель</h4>
+                    <p class="text-[#827D70] text-[10px] uppercase tracking-wider font-bold">Инструктор по электротранспорту</p>
+                </div>
+                <div class="border-t border-[#D8D3C4]/60 my-4 w-full"></div>
+                <h3 class="heading-font text-2xl font-bold text-[#3A3831] text-center mb-3">Инженерия: Электрические транспортные средства 11+</h3>
+                <p class="text-[#5C594E] text-sm leading-relaxed text-center flex-grow mb-4">
+                    Проектируйте и создавайте инновационный транспорт. Проект 2026-27: сборка двух солнечных электрокартов.
+                </p>
+                <div class="mt-auto border-t border-[#D8D3C4]/60 pt-4 flex items-center justify-between">
+                    <span class="text-xs font-bold text-[#827D70]">📍 Курс AurinkoLab</span>
+                    <span class="px-3 py-1 rounded-full bg-[#EBE7D9] border border-[#D8D3C4] text-[#827D70] text-[10px] font-bold uppercase tracking-wider">Возраст 11-15</span>
+                </div>
+                <button onclick="openRegistrationModal(event, 'Engineering: Electrical Vehicles 11+')" class="mt-5 w-full bg-[#EBE7D9] border border-[#D8D3C4] text-[#3A3831] font-bold py-3 rounded-xl hover:bg-[#D8D3C4] transition-all">
+                    Записаться
+                </button>
+            </div>
+
+            <!-- Course 8 -->
+            <div class="group flex flex-col bg-[#F4F2EA] border border-[#D8D3C4] hover:border-[#3A3831] rounded-[2rem] overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-xl p-8">
+                <div class="flex flex-col items-center text-center mb-4">
+                    <div class="flex gap-2 justify-center mb-3">
+                        <img src="src/Huyen.png" alt="Huyen Dinh" class="w-16 h-16 object-cover rounded-2xl border border-[#D8D3C4] shadow-sm">
+                        <img src="src/Silvia.png" alt="Silvia Espinosa Granados" class="w-16 h-16 object-cover rounded-2xl border border-[#D8D3C4] shadow-sm">
+                    </div>
+                    <h4 class="font-bold text-[#3A3831] text-sm">Хуен Динь, Сильвия Э.</h4>
+                    <p class="text-[#827D70] text-[10px] uppercase tracking-wider font-bold">Исследователи данных</p>
+                </div>
+                <div class="border-t border-[#D8D3C4]/60 my-4 w-full"></div>
+                <h3 class="heading-font text-2xl font-bold text-[#3A3831] text-center mb-3">ИИ и наука</h3>
+                <p class="text-[#5C594E] text-sm leading-relaxed text-center flex-grow mb-4">
+                    Узнайте, как ИИ «видит» и принимает решения с помощью повседневных научных активностей — без написания кода.
+                </p>
+                <div class="mt-auto border-t border-[#D8D3C4]/60 pt-4 flex items-center justify-between">
+                    <span class="text-xs font-bold text-[#827D70]">📍 Курс AurinkoLab</span>
+                    <span class="px-3 py-1 rounded-full bg-[#EBE7D9] border border-[#D8D3C4] text-[#827D70] text-[10px] font-bold uppercase tracking-wider">Возраст 11-13</span>
+                </div>
+                <button onclick="openRegistrationModal(event, 'AI and Science')" class="mt-5 w-full bg-[#EBE7D9] border border-[#D8D3C4] text-[#3A3831] font-bold py-3 rounded-xl hover:bg-[#D8D3C4] transition-all">
+                    Записаться
+                </button>
+            </div>
+
+            <!-- Course 9 -->
+            <div class="group flex flex-col bg-[#F4F2EA] border border-[#D8D3C4] hover:border-[#3A3831] rounded-[2rem] overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-xl p-8">
+                <div class="flex flex-col items-center text-center mb-4">
+                    <img src="src/Huyen.png" alt="Huyen Dinh" class="w-20 h-20 object-cover rounded-2xl border border-[#D8D3C4] shadow-sm mb-3">
+                    <h4 class="font-bold text-[#3A3831]">Хуен Динь</h4>
+                    <p class="text-[#827D70] text-[10px] uppercase tracking-wider font-bold">Тренер по математике</p>
+                </div>
+                <div class="border-t border-[#D8D3C4]/60 my-4 w-full"></div>
+                <h3 class="heading-font text-2xl font-bold text-[#3A3831] text-center mb-3">Математика (уверенность в силах)</h3>
+                <p class="text-[#5C594E] text-sm leading-relaxed text-center flex-grow mb-4">
+                    Укрепляйте базовые навыки, работайте с логикой, закономерностями и решением задач на реальных примерах.
+                </p>
+                <div class="mt-auto border-t border-[#D8D3C4]/60 pt-4 flex items-center justify-between">
+                    <span class="text-xs font-bold text-[#827D70]">📍 Курс AurinkoLab</span>
+                    <span class="px-3 py-1 rounded-full bg-[#EBE7D9] border border-[#D8D3C4] text-[#827D70] text-[10px] font-bold uppercase tracking-wider">Возраст 11-13</span>
+                </div>
+                <button onclick="openRegistrationModal(event, 'Maths (Building Confidence)')" class="mt-5 w-full bg-[#EBE7D9] border border-[#D8D3C4] text-[#3A3831] font-bold py-3 rounded-xl hover:bg-[#D8D3C4] transition-all">
+                    Записаться
+                </button>
+            </div>
+
+            <!-- Course 10 -->
+            <div class="group flex flex-col bg-[#F4F2EA] border border-[#D8D3C4] hover:border-[#3A3831] rounded-[2rem] overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-xl p-8">
+                <div class="flex flex-col items-center text-center mb-4">
+                    <img src="src/tatiana.png" alt="Tatiana Surovtsova" class="w-20 h-20 object-cover rounded-2xl border border-[#D8D3C4] shadow-sm mb-3">
+                    <h4 class="font-bold text-[#3A3831]">Татьяна Суровцова</h4>
+                    <p class="text-[#827D70] text-[10px] uppercase tracking-wider font-bold">PhD по информатике</p>
+                </div>
+                <div class="border-t border-[#D8D3C4]/60 my-4 w-full"></div>
+                <h3 class="heading-font text-2xl font-bold text-[#3A3831] text-center mb-3">Введение в машинное обучение</h3>
+                <p class="text-[#5C594E] text-sm leading-relaxed text-center flex-grow mb-4">
+                    Освойте основы интеллектуальных алгоритмов. Пишите практические программы на Python для решения реальных задач.
+                </p>
+                <div class="mt-auto border-t border-[#D8D3C4]/60 pt-4 flex items-center justify-between">
+                    <span class="text-xs font-bold text-[#827D70]">📍 Курс AurinkoLab</span>
+                    <span class="px-3 py-1 rounded-full bg-[#EBE7D9] border border-[#D8D3C4] text-[#827D70] text-[10px] font-bold uppercase tracking-wider">Возраст 14+</span>
+                </div>
+                <button onclick="openRegistrationModal(event, 'Introduction to Machine Learning')" class="mt-5 w-full bg-[#EBE7D9] border border-[#D8D3C4] text-[#3A3831] font-bold py-3 rounded-xl hover:bg-[#D8D3C4] transition-all">
+                    Записаться
+                </button>
+            </div>
+
+            <!-- Course 11 -->
+            <div class="group flex flex-col bg-[#F4F2EA] border border-[#D8D3C4] hover:border-[#3A3831] rounded-[2rem] overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-xl p-8 lg:col-span-2">
+                <div class="flex flex-col items-center text-center mb-4">
+                    <div class="flex gap-2 justify-center mb-3">
+                        <img src="src/TatianaOrlova.png" alt="Tatiana Orlova" class="w-16 h-16 object-cover rounded-2xl border border-[#D8D3C4] shadow-sm">
+                        <img src="src/maria.png" alt="Maria Rohnonen" class="w-16 h-16 object-cover rounded-2xl border border-[#D8D3C4] shadow-sm">
+                    </div>
+                    <h4 class="font-bold text-[#3A3831] text-sm">Татьяна Орлова, Мария Рохнонен</h4>
+                    <p class="text-[#827D70] text-[10px] uppercase tracking-wider font-bold">ИИ и философия</p>
+                </div>
+                <div class="border-t border-[#D8D3C4]/60 my-4 w-full"></div>
+                <h3 class="heading-font text-2xl font-bold text-[#3A3831] text-center mb-3">AI Equity Lab (25+)</h3>
+                <p class="text-[#5C594E] text-sm leading-relaxed text-center flex-grow mb-4">
+                    Структурированное введение в программирование, анализ данных и ИИ. Узнайте, как ранние идеи об мыслящих машинах эволюционировали в современные ИИ-системы.
+                </p>
+                <div class="mt-auto border-t border-[#D8D3C4]/60 pt-4 flex items-center justify-between mb-5">
+                    <span class="text-xs font-bold text-[#827D70]">📍 Курс AurinkoLab</span>
+                    <span class="px-3 py-1 rounded-full bg-[#EBE7D9] border border-[#D8D3C4] text-[#827D70] text-[10px] font-bold uppercase tracking-wider">Возраст 25+</span>
+                </div>
+                <div class="flex flex-col sm:flex-row gap-3">
+                    <a href="https://irradiated-range-462.notion.site/Python-for-Ladies-2f3c1e1fe9b3805fb036d569ff0161bd?source=copy_link" target="_blank" class="w-full bg-transparent border border-[#3A3831] text-[#3A3831] font-bold py-3 rounded-xl hover:bg-[#3A3831] hover:text-[#F4F2EA] transition-all text-center">
+                        Материалы курса
+                    </a>
+                    <button onclick="openRegistrationModal(event, 'AI Equity Lab 25+')" class="w-full bg-[#EBE7D9] border border-[#D8D3C4] text-[#3A3831] font-bold py-3 rounded-xl hover:bg-[#D8D3C4] transition-all">
+                        Записаться
+                    </button>
+                </div>
+            </div>
+
+            <!-- Course 12 -->
+            <div class="group flex flex-col bg-[#F4F2EA] border border-[#D8D3C4] hover:border-[#3A3831] rounded-[2rem] overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-xl p-8">
+                <div class="flex flex-col items-center text-center mb-4">
+                    <h4 class="font-bold text-[#3A3831] h-12 flex items-center">Приглашенные спикеры</h4>
+                    <p class="text-[#827D70] text-[10px] uppercase tracking-wider font-bold">Инноваторы и педагоги</p>
+                </div>
+                <div class="border-t border-[#D8D3C4]/60 my-4 w-full"></div>
+                <h3 class="heading-font text-2xl font-bold text-[#3A3831] text-center mb-3">EdTech Talks</h3>
+                <p class="text-[#5C594E] text-sm leading-relaxed text-center flex-grow mb-4">
+                    Присоединяйтесь к вдохновляющим дискуссиям о будущем образовательных технологий. Изучайте тренды цифрового обучения и инструменты творчества.
+                </p>
+                <div class="mt-auto border-t border-[#D8D3C4]/60 pt-4 flex items-center justify-between">
+                    <span class="text-xs font-bold text-[#827D70]">📍 AurinkoLab</span>
+                    <span class="px-3 py-1 rounded-full bg-[#EBE7D9] border border-[#D8D3C4] text-[#827D70] text-[10px] font-bold uppercase tracking-wider">Возраст 11+</span>
+                </div>
+                <button onclick="openRegistrationModal(event, 'EdTech Talks')" class="mt-5 w-full bg-[#EBE7D9] border border-[#D8D3C4] text-[#3A3831] font-bold py-3 rounded-xl hover:bg-[#D8D3C4] transition-all">
+                    Подробнее / Записаться
+                </button>
+            </div>
+            
+        </div> <!-- End Grid -->
+
+        <div class="mt-12 text-center">
+            <button onclick="openTermsModal()" class="text-sm font-bold text-[#3A3831] underline underline-offset-4 hover:text-[#827D70] transition-colors">
+                Посмотреть условия и положения
+            </button>
+        </div>
+    </section>
+
+    <!-- Schedule Section -->
+    <section id="schedule" class="py-20 px-6 max-w-7xl mx-auto border-t border-[#D8D3C4] reveal">
+        <div class="text-center mb-16">
+            <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#EBE7D9] border border-[#D8D3C4] text-[10px] font-bold uppercase tracking-wider text-[#827D70] mb-4">
+                Спланируйте свою неделю
+            </span>
+            <h2 class="heading-font text-4xl lg:text-5xl font-extrabold text-[#3A3831] mb-4">Расписание занятий</h2>
+            <p class="text-lg text-[#5C594E]">Начиная с 20.08.2026</p>
+        </div>
+
+        <div class="bg-[#F4F2EA] border border-[#D8D3C4] rounded-[2.5rem] p-8 overflow-x-auto">
+            <div class="grid grid-cols-8 gap-4 min-w-[900px]">
+                
+                <!-- Headers -->
+                <div class="font-bold text-[#3A3831] text-center pb-4 border-b border-[#D8D3C4]/60">Время</div>
+                <div class="font-bold text-[#3A3831] text-center pb-4 border-b border-[#D8D3C4]/60">Пн</div>
+                <div class="font-bold text-[#3A3831] text-center pb-4 border-b border-[#D8D3C4]/60">Вт</div>
+                <div class="font-bold text-[#3A3831] text-center pb-4 border-b border-[#D8D3C4]/60">Ср</div>
+                <div class="font-bold text-[#3A3831] text-center pb-4 border-b border-[#D8D3C4]/60">Чт</div>
+                <div class="font-bold text-[#3A3831] text-center pb-4 border-b border-[#D8D3C4]/60">Пт</div>
+                <div class="font-bold text-[#3A3831] text-center pb-4 border-b border-[#D8D3C4]/60">Сб</div>
+                <div class="font-bold text-[#3A3831] text-center pb-4 border-b border-[#D8D3C4]/60">Вс</div>
+
+                <!-- 10:00 -->
+                <div class="font-bold text-[#827D70] text-center py-3 flex items-center justify-center border-b border-[#D8D3C4]/40">10:00</div>
+                <div class="border-b border-[#D8D3C4]/40"></div><div class="border-b border-[#D8D3C4]/40"></div><div class="border-b border-[#D8D3C4]/40"></div><div class="border-b border-[#D8D3C4]/40"></div><div class="border-b border-[#D8D3C4]/40"></div>
+                <div class="bg-[#EBE7D9] border border-[#D8D3C4] rounded-xl p-3 shadow-sm hover:border-[#3A3831] transition-colors mb-2">
+                    <a href="#courses" class="text-[#3A3831] font-bold text-xs hover:underline">STEM for Kids 6+ (En/Es)</a>
+                    <div class="text-[#827D70] text-[10px] uppercase font-bold mt-1">10:00-11:00</div>
+                </div>
+                <div class="border-b border-[#D8D3C4]/40"></div>
+
+                <!-- 11:00 -->
+                <div class="font-bold text-[#827D70] text-center py-3 flex items-center justify-center border-b border-[#D8D3C4]/40">11:00</div>
+                <div class="border-b border-[#D8D3C4]/40"></div><div class="border-b border-[#D8D3C4]/40"></div><div class="border-b border-[#D8D3C4]/40"></div><div class="border-b border-[#D8D3C4]/40"></div><div class="border-b border-[#D8D3C4]/40"></div>
+                <div class="flex flex-col gap-2 border-b border-[#D8D3C4]/40 pb-2">
+                    <div class="bg-[#EBE7D9] border border-[#D8D3C4] rounded-xl p-3 shadow-sm hover:border-[#3A3831] transition-colors">
+                        <a href="#courses" class="text-[#3A3831] font-bold text-xs hover:underline">AI and Robotics 11+ (En/Vi)</a>
+                        <div class="text-[#827D70] text-[10px] uppercase font-bold mt-1">11:00-12:00</div>
+                    </div>
+                    <div class="bg-[#EBE7D9] border border-[#D8D3C4] rounded-xl p-3 shadow-sm hover:border-[#3A3831] transition-colors">
+                        <a href="#courses" class="text-[#3A3831] font-bold text-xs hover:underline">Olympics Maths 11+(Ru/En)</a>
+                        <div class="text-[#827D70] text-[10px] uppercase font-bold mt-1">11:00-13:00</div>
+                    </div>
+                </div>
+                <div class="flex flex-col gap-2 border-b border-[#D8D3C4]/40 pb-2">
+                    <div class="bg-[#EBE7D9] border border-[#D8D3C4] rounded-xl p-3 shadow-sm hover:border-[#3A3831] transition-colors">
+                        <a href="#courses" class="text-[#3A3831] font-bold text-xs hover:underline">AI Equity Lab (25+)</a>
+                        <div class="text-[#827D70] text-[10px] uppercase font-bold mt-1">9:00-10:30</div>
+                    </div>
+                    <div class="bg-[#EBE7D9] border border-[#D8D3C4] rounded-xl p-3 shadow-sm hover:border-[#3A3831] transition-colors">
+                        <a href="#courses" class="text-[#3A3831] font-bold text-xs hover:underline">AI and Science 11+(Vi)</a>
+                        <div class="text-[#827D70] text-[10px] uppercase font-bold mt-1">11:30-13:00</div>
+                    </div>
+                </div>
+
+                <!-- 13:00 -->
+                <div class="font-bold text-[#827D70] text-center py-3 flex items-center justify-center border-b border-[#D8D3C4]/40">13:00</div>
+                <div class="border-b border-[#D8D3C4]/40"></div><div class="border-b border-[#D8D3C4]/40"></div><div class="border-b border-[#D8D3C4]/40"></div><div class="border-b border-[#D8D3C4]/40"></div><div class="border-b border-[#D8D3C4]/40"></div><div class="border-b border-[#D8D3C4]/40"></div>
+                <div class="bg-[#EBE7D9] border border-[#D8D3C4] rounded-xl p-3 shadow-sm hover:border-[#3A3831] transition-colors mb-2">
+                    <a href="#courses" class="text-[#3A3831] font-bold text-xs hover:underline">AI and Science 11+(Es)</a>
+                    <div class="text-[#827D70] text-[10px] uppercase font-bold mt-1">13:30-15:00</div>
+                </div>
+
+                <!-- 15:00 -->
+                <div class="font-bold text-[#827D70] text-center py-3 flex items-center justify-center border-b border-[#D8D3C4]/40">15:00</div>
+                <div class="bg-[#EBE7D9] border border-[#D8D3C4] rounded-xl p-3 shadow-sm hover:border-[#3A3831] transition-colors mb-2">
+                    <a href="#courses" class="text-[#3A3831] font-bold text-xs hover:underline">Maths for Curious Minds</a>
+                    <div class="text-[#827D70] text-[10px] uppercase font-bold mt-1">15:00-16:00</div>
+                </div>
+                <div class="bg-[#EBE7D9] border border-[#D8D3C4] rounded-xl p-3 shadow-sm hover:border-[#3A3831] transition-colors mb-2">
+                    <a href="#courses" class="text-[#3A3831] font-bold text-xs hover:underline">Basics: History of Thought & AI</a>
+                    <div class="text-[#827D70] text-[10px] uppercase font-bold mt-1">15:00-16:00</div>
+                </div>
+                <div class="bg-[#EBE7D9] border border-[#D8D3C4] rounded-xl p-3 shadow-sm hover:border-[#3A3831] transition-colors mb-2">
+                    <a href="#courses" class="text-[#3A3831] font-bold text-xs hover:underline">Olympiad Maths 11+</a>
+                    <div class="text-[#827D70] text-[10px] uppercase font-bold mt-1">15:00-16:30</div>
+                </div>
+                <div class="flex flex-col gap-2 border-b border-[#D8D3C4]/40 pb-2">
+                    <div class="bg-[#EBE7D9] border border-[#D8D3C4] rounded-xl p-3 shadow-sm hover:border-[#3A3831] transition-colors">
+                        <a href="#courses" class="text-[#3A3831] font-bold text-xs hover:underline">Olympiad Maths 11+</a>
+                        <div class="text-[#827D70] text-[10px] uppercase font-bold mt-1">15:30-17:00</div>
+                    </div>
+                    <div class="bg-[#EBE7D9] border border-[#D8D3C4] rounded-xl p-3 shadow-sm hover:border-[#3A3831] transition-colors">
+                        <a href="#courses" class="text-[#3A3831] font-bold text-xs hover:underline">Robotics Basics</a>
+                        <div class="text-[#827D70] text-[10px] uppercase font-bold mt-1">15:30-17:00</div>
+                    </div>
+                </div>
+                <div class="bg-[#EBE7D9] border border-[#D8D3C4] rounded-xl p-3 shadow-sm hover:border-[#3A3831] transition-colors mb-2">
+                    <a href="#upcoming-events" class="text-[#3A3831] font-bold text-xs hover:underline">Olympics Maths 11+</a>
+                    <div class="text-[#827D70] text-[10px] uppercase font-bold mt-1">15:30</div>
+                </div>
+                <div class="border-b border-[#D8D3C4]/40"></div>
+                <div class="bg-[#EBE7D9] border border-[#D8D3C4] rounded-xl p-3 shadow-sm hover:border-[#3A3831] transition-colors mb-2">
+                    <a href="#courses" class="text-[#3A3831] font-bold text-xs hover:underline">Hands On STEM 6+</a>
+                    <div class="text-[#827D70] text-[10px] uppercase font-bold mt-1">15:30-16:30</div>
+                </div>
+
+                <!-- 16:30/17:00 -->
+                <div class="font-bold text-[#827D70] text-center py-3 flex items-center justify-center border-b border-[#D8D3C4]/40">17:00</div>
+                <div class="border-b border-[#D8D3C4]/40"></div><div class="border-b border-[#D8D3C4]/40"></div><div class="border-b border-[#D8D3C4]/40"></div><div class="border-b border-[#D8D3C4]/40"></div>
+                <div class="bg-[#EBE7D9] border border-[#D8D3C4] rounded-xl p-3 shadow-sm hover:border-[#3A3831] transition-colors mb-2">
+                    <a href="#courses" class="text-[#3A3831] font-bold text-xs hover:underline">Kids' Art & Activity (6+)</a>
+                    <div class="text-[#827D70] text-[10px] uppercase font-bold mt-1">16:30-18:00</div>
+                </div>
+                <div class="bg-[#EBE7D9] border border-[#D8D3C4] rounded-xl p-3 shadow-sm hover:border-[#3A3831] transition-colors mb-2">
+                    <a href="#courses" class="text-[#3A3831] font-bold text-xs hover:underline">Family Math Club (7+)</a>
+                    <div class="text-[#827D70] text-[10px] uppercase font-bold mt-1">16:30-18:00</div>
+                </div>
+                <div class="flex flex-col gap-2 border-b border-[#D8D3C4]/40 pb-2">
+                    <div class="bg-[#EBE7D9] border border-[#D8D3C4] rounded-xl p-3 shadow-sm hover:border-[#3A3831] transition-colors">
+                        <a href="#courses" class="text-[#3A3831] font-bold text-xs hover:underline">Coding 14+</a>
+                        <div class="text-[#827D70] text-[10px] uppercase font-bold mt-1">17:00-18:30</div>
+                    </div>
+                    <div class="bg-[#EBE7D9] border border-[#D8D3C4] rounded-xl p-3 shadow-sm hover:border-[#3A3831] transition-colors">
+                        <a href="#upcoming-events" class="text-[#3A3831] font-bold text-xs hover:underline">Go-Karts Construction</a>
+                        <div class="text-[#827D70] text-[10px] uppercase font-bold mt-1">17:00-18:30</div>
+                    </div>
+                </div>
+
+                <!-- 18:30 -->
+                <div class="font-bold text-[#827D70] text-center py-3 flex items-center justify-center">18:30</div>
+                <div></div><div></div><div></div><div></div><div></div>
+                <div class="bg-[#EBE7D9] border border-[#D8D3C4] rounded-xl p-3 shadow-sm hover:border-[#3A3831] transition-colors">
+                    <a href="#courses" class="text-[#3A3831] font-bold text-xs hover:underline">EdTechTalks</a>
+                    <div class="text-[#827D70] text-[10px] uppercase font-bold mt-1">18:30-21:00</div>
+                </div>
+                <div class="bg-[#EBE7D9] border border-[#D8D3C4] rounded-xl p-3 shadow-sm hover:border-[#3A3831] transition-colors">
+                    <a href="#courses" class="text-[#3A3831] font-bold text-xs hover:underline">EdTechTalks</a>
+                    <div class="text-[#827D70] text-[10px] uppercase font-bold mt-1">18:30-21:00</div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- Location Section -->
+    <section id="location" class="py-20 px-6 max-w-7xl mx-auto border-t border-[#D8D3C4] reveal">
+        <div class="text-center mb-16">
+            <h2 class="heading-font text-4xl lg:text-5xl font-extrabold text-[#3A3831] mb-4">Наш адрес</h2>
+            <p class="text-lg text-[#5C594E]">В самом сердце Эспоо</p>
+        </div>
+
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+            <!-- Contact Card -->
+            <div class="bg-[#EBE7D9] border border-[#D8D3C4] rounded-[2.5rem] p-10">
+                <h3 class="heading-font text-3xl font-extrabold text-[#3A3831] mb-8">Свяжитесь с нами</h3>
+                
+                <div class="space-y-8">
+                    <div class="flex items-start space-x-5">
+                        <div class="w-12 h-12 bg-[#F4F2EA] border border-[#D8D3C4] rounded-xl flex items-center justify-center flex-shrink-0 text-[#3A3831]">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-[#3A3831] mb-1">Адрес</h4>
+                            <p class="text-[#5C594E] text-sm">Vanhan-Mankkaan kuja 2</p>
+                            <p class="text-[#5C594E] text-sm">02180 Эспоо, Финляндия</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start space-x-5">
+                        <div class="w-12 h-12 bg-[#F4F2EA] border border-[#D8D3C4] rounded-xl flex items-center justify-center flex-shrink-0 text-[#3A3831]">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-[#3A3831] mb-1">Эл. почта</h4>
+                            <p class="text-[#5C594E] text-sm">info@aurinkolab.fi</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start space-x-5">
+                        <div class="w-12 h-12 bg-[#F4F2EA] border border-[#D8D3C4] rounded-xl flex items-center justify-center flex-shrink-0 text-[#3A3831]">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-[#3A3831] mb-1">Телефон</h4>
+                            <p class="text-[#5C594E] text-sm">+358 45 3123388</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-10">
+                    <a href="https://www.google.com/maps/dir/?api=1&destination=Vanhan-Mankkaan+kuja+2,+02180+Espoo,+Finland" target="_blank">
+                        <button class="w-full bg-transparent border border-[#3A3831] text-[#3A3831] hover:bg-[#3A3831] hover:text-[#F4F2EA] font-bold py-4 rounded-xl transition-all">
+                            Проложить маршрут
+                        </button>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Map -->
+            <div class="h-[500px] rounded-[2.5rem] overflow-hidden border border-[#D8D3C4]">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1984.2211079005495!2d24.70231551601079!3d60.17520318197086!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46920763d4a0bc81%3A0x73a2bc9e4f3521db!2sVanhan-Mankkaan%20kuja%202%2C%2002180%20Espoo%2C%20Finland!5e0!3m2!1sen!2sus!4v1691748564246!5m2!1sen!2sus"
+                    width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-[#D8D3C4] py-16 px-6 text-[#827D70] bg-[#F4F2EA]">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-4 gap-12 text-sm">
+            
+            <div>
+                <div class="flex items-center space-x-3 mb-4">
+                    <div class="w-10 h-10 bg-[#EBE7D9] border border-[#D8D3C4] rounded-xl flex items-center justify-center">
+                        <span class="text-[#3A3831] font-bold text-lg">A</span>
+                    </div>
+                    <span class="heading-font text-[#3A3831] font-bold text-xl">AurinkoLab</span>
+                </div>
+                <p class="text-[#5C594E]">Создаем инноваторов будущего уже сегодня.</p>
+            </div>
+
+            <div>
+                <h4 class="font-bold text-[#3A3831] mb-4 uppercase tracking-wider">Ссылки</h4>
+                <ul class="space-y-3">
+                    <li><a href="https://aurinkolab.fi/" target="_blank" class="hover:text-[#3A3831] transition">AurinkoLab Главная</a></li>
+                    <li><a href="https://camps.aurinkolab.fi" class="hover:text-[#3A3831] transition">Лагеря</a></li>
+                    <li><a href="#courses" class="hover:text-[#3A3831] transition">Программы</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="font-bold text-[#3A3831] mb-4 uppercase tracking-wider">Контакты</h4>
+                <ul class="space-y-3">
+                    <li><a href="mailto:info@aurinkolab.fi" class="hover:text-[#3A3831] transition">info@aurinkolab.fi</a></li>
+                    <li><a href="tel:+358453123388" class="hover:text-[#3A3831] transition">+358 45 3123388</a></li>
+                    <li>Vanhan-Mankkaan kuja 2, Эспоо</li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="font-bold text-[#3A3831] mb-4 uppercase tracking-wider">Соцсети</h4>
+                <div class="flex space-x-5 text-[#3A3831]">
+                    <a href="https://www.linkedin.com/company/aurinkolab" target="_blank" class="hover:text-[#827D70] transition"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M4.98 3.5C4.98 4.88 3.88 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM.25 8.5h4.5v15h-4.5v-15zm7.25 0h4.3v2.07h.06c.6-1.14 2.07-2.34 4.27-2.34 4.57 0 5.41 3.01 5.41 6.93v7.94h-4.5v-7.04c0-1.68-.03-3.85-2.35-3.85-2.36 0-2.72 1.84-2.72 3.74v7.15h-4.5v-15z"/></svg></a>
+                    <a href="https://www.instagram.com/aurinkolab.fi/" target="_blank" class="hover:text-[#827D70] transition"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M7.75 2h8.5A5.75 5.75 0 0122 7.75v8.5A5.75 5.75 0 0116.25 22h-8.5A5.75 5.75 0 012 16.25v-8.5A5.75 5.75 0 017.75 2zm0 2A3.75 3.75 0 004 7.75v8.5A3.75 3.75 0 007.75 20h8.5a3.75 3.75 0 003.75-3.75v-8.5A3.75 3.75 0 0016.25 4h-8.5zM12 7a5 5 0 110 10 5 5 0 010-10zm0 2a3 3 0 100 6 3 3 0 000-6zm4.5-.5a1.25 1.25 0 110 2.5 1.25 1.25 0 010-2.5z"/></svg></a>
+                    <a href="https://www.facebook.com/profile.php?id=61560710825089" target="_blank" class="hover:text-[#827D70] transition"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M22 12.07C22 6.48 17.52 2 12 2S2 6.48 2 12.07c0 4.99 3.66 9.12 8.44 9.92v-7.03H7.9v-2.89h2.54V9.65c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.22.2 2.22.2v2.45h-1.26c-1.24 0-1.63.78-1.63 1.57v1.9h2.78l-.44 2.89h-2.34v7.03C18.34 21.18 22 17.06 22 12.07z"/></svg></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-12 border-t border-[#D8D3C4] pt-6 text-center">
+            <p class="text-[#827D70] text-xs">&copy; 2026 AurinkoLab Espoo. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <!-- REGISTRATION MODAL -->
+    <div id="registrationModal" class="fixed inset-0 z-[1000] hidden items-center justify-center bg-[#3A3831]/40 backdrop-blur-sm transition-opacity" onclick="closeRegistrationModal()">
+        <div class="bg-[#F4F2EA] border border-[#D8D3C4] p-8 rounded-[2rem] max-w-lg w-full mx-4 relative shadow-2xl max-h-[90vh] overflow-y-auto modal-scroll" onclick="event.stopPropagation()">
+            
+            <button onclick="closeRegistrationModal()" class="absolute top-6 right-6 text-[#827D70] hover:text-[#3A3831] transition-colors">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+            
+            <h3 class="heading-font text-3xl font-bold text-[#3A3831] mb-6 text-center">Регистрация</h3>
+            
+            <form action="https://formspree.io/f/xwleoqdd" method="POST" class="space-y-5">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+                    <div class="md:col-span-2">
+                        <label class="block text-[#5C594E] text-sm font-bold mb-1">ФИО</label>
+                        <input type="text" name="name" required class="w-full rounded-xl px-4 py-3 transition-colors" placeholder="Ваше имя">
+                    </div>
+                    <div class="md:col-span-1">
+                        <label class="block text-[#5C594E] text-sm font-bold mb-1">Возраст</label>
+                        <input type="number" name="age" min="1" max="99" required class="w-full rounded-xl px-4 py-3 transition-colors" placeholder="12">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-[#5C594E] text-sm font-bold mb-1">Эл. почта</label>
+                    <input type="email" name="email" required class="w-full rounded-xl px-4 py-3 transition-colors" placeholder="email@example.com">
+                </div>
+
+                <div>
+                    <label class="block text-[#5C594E] text-sm font-bold mb-1">Курс / Событие</label>
+                    <input type="text" id="courseInput" name="course" required class="w-full rounded-xl px-4 py-3 transition-colors">
+                </div>
+
+                <div>
+                    <label class="block text-[#5C594E] text-sm font-bold mb-2">Предпочитаемый язык(и)</label>
+                    <div class="grid grid-cols-2 md:grid-cols-3 gap-3 bg-[#EBE7D9] border border-[#D8D3C4] rounded-xl p-4">
+                        <label class="flex items-center space-x-2 cursor-pointer text-sm font-semibold text-[#5C594E]">
+                            <input type="checkbox" name="language" value="English" class="w-4 h-4 rounded border-[#D8D3C4] text-[#3A3831]"> Английский
+                        </label>
+                        <label class="flex items-center space-x-2 cursor-pointer text-sm font-semibold text-[#5C594E]">
+                            <input type="checkbox" name="language" value="Finnish" class="w-4 h-4 rounded border-[#D8D3C4] text-[#3A3831]"> Финский
+                        </label>
+                        <label class="flex items-center space-x-2 cursor-pointer text-sm font-semibold text-[#5C594E]">
+                            <input type="checkbox" name="language" value="Russian" class="w-4 h-4 rounded border-[#D8D3C4] text-[#3A3831]"> Русский
+                        </label>
+                        <label class="flex items-center space-x-2 cursor-pointer text-sm font-semibold text-[#5C594E]">
+                            <input type="checkbox" name="language" value="Spanish" class="w-4 h-4 rounded border-[#D8D3C4] text-[#3A3831]"> Испанский
+                        </label>
+                        <label class="flex items-center space-x-2 cursor-pointer text-sm font-semibold text-[#5C594E]">
+                            <input type="checkbox" name="language" value="Swedish" class="w-4 h-4 rounded border-[#D8D3C4] text-[#3A3831]"> Шведский
+                        </label>
+                        <label class="flex items-center space-x-2 cursor-pointer text-sm font-semibold text-[#5C594E]">
+                            <input type="checkbox" name="language" value="Vietnamese" class="w-4 h-4 rounded border-[#D8D3C4] text-[#3A3831]"> Вьетнамский
+                        </label>
+                    </div>
+                </div>
+                
+                <div>
+                    <label class="block text-[#5C594E] text-sm font-bold mb-1">Сообщение (необязательно)</label>
+                    <textarea name="message" rows="3" class="w-full rounded-xl px-4 py-3 transition-colors" placeholder="Любые вопросы или примечания..."></textarea>
+                </div>
+                
+                <button type="submit" class="w-full bg-[#EBE7D9] hover:bg-[#D8D3C4] border border-[#D8D3C4] text-[#3A3831] font-bold py-4 rounded-xl transition-all mt-2">
+                    Отправить заявку
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- TERMS MODAL -->
+    <div id="termsModal" class="fixed inset-0 z-[1000] hidden items-center justify-center bg-[#3A3831]/40 backdrop-blur-sm transition-opacity" onclick="closeTermsModal()">
+        <div class="bg-[#F4F2EA] border border-[#D8D3C4] p-8 md:p-12 rounded-[2rem] max-w-3xl w-full mx-4 relative shadow-2xl max-h-[85vh] overflow-y-auto modal-scroll text-[#5C594E]" onclick="event.stopPropagation()">
+            
+            <button onclick="closeTermsModal()" class="absolute top-6 right-6 text-[#827D70] hover:text-[#3A3831] transition-colors">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+     
+            <h1 class="heading-font text-3xl font-extrabold text-[#3A3831] text-center mb-2">ОФЕРТА-СОГЛАШЕНИЕ</h1>
+            <h2 class="text-lg font-bold text-center text-[#827D70] mb-2 uppercase tracking-wide">на оказание услуг досуга</h2>
+            <p class="text-center text-sm mb-8">Настоящая редакция вступает в силу с 1 сентября 2026 года.</p>
+     
+            <p class="text-center font-bold text-[#3A3831] mb-8">AurinkoLab ry<br>Эспоо, Финляндия</p>
+     
+            <hr class="border-[#D8D3C4] my-8">
+     
+            <h2 class="heading-font text-xl font-bold text-[#3A3831] mt-8 mb-4">1. ОБЩИЕ ПОЛОЖЕНИЯ</h2>
+            <div class="space-y-4 text-sm leading-relaxed">
+                <p><strong>1.1.</strong> Настоящее оферта-соглашение (далее — «Соглашение») является официальным публичным предложением некоммерческой организации <strong>AurinkoLab ry</strong> (далее — «Поставщик») заключить договор на оказание услуг досуга на изложенных ниже условиях.</p>
+                <p><strong>1.2.</strong> Акцептом оферты является посещение занятий и/или оплата Участником услуг Поставщика.</p>
+                <p><strong>1.3.</strong> Участник — физическое лицо, принявшее условия настоящего Соглашения путем совершения действий, указанных в пункте 1.2.</p>
+                <p><strong>1.4. Посещая занятия, Участник автоматически соглашается со всеми условиями настоящего Соглашения.</strong></p>
+            </div>
+     
+            <h2 class="heading-font text-xl font-bold text-[#3A3831] mt-8 mb-4">2. ПРЕДМЕТ СОГЛАШЕНИЯ</h2>
+            <div class="space-y-4 text-sm leading-relaxed">
+                <p><strong>2.1.</strong> Поставщик обязуется предоставить Участнику услуги досуга в виде групповых/индивидуальных занятий по предметам (дисциплинам) — кружкам, мастерским, секциям и т.д., а Участник обязуется оплатить эти услуги в порядке и на условиях, предусмотренных настоящим Соглашением.</p>
+                <p><strong>2.2.</strong> Конкретный перечень предметов, расписание занятий и стоимость определяются Поставщиком и публикуются на сайте / в информационных материалах организации.</p>
+            </div>
+     
+            <h2 class="heading-font text-xl font-bold text-[#3A3831] mt-8 mb-4">3. СТОИМОСТЬ И ОПЛАТА</h2>
+            <h3 class="font-bold text-[#3A3831] mt-6 mb-2">3.1. Годовое членство</h3>
+            <div class="space-y-4 text-sm leading-relaxed">
+                <p><strong>3.1.1.</strong> Стоимость обучения по одному предмету составляет <strong>500 € за учебный год</strong> (учебный год начинается 1 сентября).</p>
+                <p><strong>3.1.2.</strong> Оплата производится на условиях предоплаты одним из следующих способов: <strong>единовременным платежом за весь учебный год</strong> или <strong>по семестрам (250 € за семестр)</strong>.</p>
+                <p><strong>3.1.3.</strong> При оплате по семестрам за каждый дополнительно выставляемый счет взимается комиссия <strong>10 € (за каждый новый счет)</strong>.</p>
+                <p><strong>3.1.4.</strong> Оплата должна быть произведена не позднее первого занятия оплачиваемого периода.</p>
+                <p><strong>3.1.5.</strong> Стоимость годового абонемента рассчитана на опубликованные учебные недели с учетом каникул.</p>
+            </div>
+     
+            <h3 class="font-bold text-[#3A3831] mt-6 mb-2">3.2. Разовое посещение</h3>
+            <p class="text-sm leading-relaxed mb-4"><strong>3.2.1.</strong> Разовое посещение отдельного занятия без годового членства составляет <strong>20 € за занятие</strong> и оплачивается до начала занятия.</p>
+     
+            <h3 class="font-bold text-[#3A3831] mt-6 mb-2">3.3. Скидки</h3>
+            <div class="space-y-4 text-sm leading-relaxed">
+                <p><strong>3.3.1.</strong> Если один Участник посещает <strong>два предмета</strong>, предоставляется скидка <strong>30% на второй предмет</strong>.</p>
+                <p><strong>3.3.2.</strong> Если занятия посещают <strong>несколько детей из одной семьи</strong>, предоставляется скидка <strong>30% на обучение второго ребенка</strong>.</p>
+            </div>
+     
+            <h2 class="heading-font text-xl font-bold text-[#3A3831] mt-8 mb-4">4. РАСПИСАНИЕ И КАНИКУЛЫ</h2>
+            <div class="space-y-4 text-sm leading-relaxed">
+                <p><strong>4.1.</strong> Занятия проводятся в опубликованные учебные недели; конкретные дни зависят от предмета. Занятия не проводятся во время школьных каникул в Эспоо.</p>
+                <ul class="list-disc pl-5 space-y-2">
+                    <li><strong>Недели 2026 года:</strong> с 36 по 52, кроме недели 42.</li>
+                    <li><strong>Недели 2027 года:</strong> со 2 по 21, кроме недели 8.</li>
+                    <li><strong>Рождественские каникулы:</strong> 23 декабря 2026 г. – 6 января 2027 г.</li>
+                </ul>
+                <p><strong>4.3.</strong> Официальные праздничные дни: Страстная пятница 26.03.2027, Пасхальный понедельник 29.03.2027, Ваппу (Первое мая) 1.5.2027, Вознесение 6.5.2027.</p>
+            </div>
+     
+            <h2 class="heading-font text-xl font-bold text-[#3A3831] mt-8 mb-4">5. ПРОПУСКИ И ПЕРЕРАСЧЕТ</h2>
+            <div class="space-y-4 text-sm leading-relaxed">
+                <p><strong>5.1.</strong> Если Участник пропускает занятие по собственной инициативе, перерасчет не производится, за исключением случаев продолжительной болезни (>2 недель) при наличии медицинской справки.</p>
+                <p><strong>5.2.</strong> Если занятие отменяется по инициативе Поставщика, производится перерасчет или предоставляется дополнительное занятие.</p>
+            </div>
+
+            <hr class="border-[#D8D3C4] my-8">
+            <p class="text-center italic text-sm">
+                Принимая участие в занятиях и/или оплачивая услуги, Участник подтверждает, что ознакомился с условиями настоящего Оферта-соглашения, понимает их и принимает в полном объеме.
+            </p>
+        </div>
+    </div>
+
+    <!-- Scripts -->
     <script>
+        // Modal logic
+        function openRegistrationModal(e, courseName = '') {
+            if(e) e.preventDefault();
+            const modal = document.getElementById('registrationModal');
+            const courseInput = document.getElementById('courseInput');
+            if(courseInput) courseInput.value = courseName || 'Общий запрос';
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeRegistrationModal() {
+            const modal = document.getElementById('registrationModal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            document.body.style.overflow = 'auto';
+        }
+
+        function openTermsModal() {
+            const modal = document.getElementById('termsModal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeTermsModal() {
+            const modal = document.getElementById('termsModal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            document.body.style.overflow = 'auto';
+        }
+
         // Mobile menu toggle
         const btn = document.getElementById("menu-btn");
         const menu = document.getElementById("mobile-menu");
@@ -264,8 +916,6 @@
 
         btn.addEventListener("click", () => {
             menu.classList.toggle("hidden");
-
-            // Animate hamburger → X
             lines[0].classList.toggle("rotate-45");
             lines[0].classList.toggle("translate-y-2");
             lines[1].classList.toggle("opacity-0");
@@ -273,17 +923,14 @@
             lines[2].classList.toggle("-translate-y-2");
         });
 
-        // Language dropdown toggle
+        // Language Dropdown
         const langBtn = document.getElementById("lang-btn");
         const langDropdown = document.getElementById("lang-dropdown");
-
         if (langBtn && langDropdown) {
             langBtn.addEventListener("click", (e) => {
                 e.stopPropagation();
                 langDropdown.classList.toggle("hidden");
             });
-
-            // Close dropdown when clicking outside
             document.addEventListener("click", (e) => {
                 if (!langBtn.contains(e.target) && !langDropdown.contains(e.target)) {
                     langDropdown.classList.add("hidden");
@@ -294,849 +941,26 @@
         // Detect current language and update button
         const currentPath = window.location.pathname;
         const currentLangSpan = document.getElementById("current-lang");
-        
         if (currentLangSpan) {
-            if (currentPath.includes('/fin')) {
+            if (currentPath.includes('/su')) {
                 currentLangSpan.textContent = 'FI';
-            } else if (currentPath.includes('/eng')) {
-                currentLangSpan.textContent = 'EN';
+            } else if (currentPath.includes('/ru')) {
+                currentLangSpan.textContent = 'RU';
             } else {
                 currentLangSpan.textContent = 'RU';
             }
         }
-    </script>
 
-    <!-- Hero Section -->
-    <div id="hero" class="relative w-full h-[500px] overflow-hidden">
-        <video autoplay muted loop class="absolute top-0 left-0 w-full h-full object-cover">
-            <source src="src/robohack2508.mp4" type="video/mp4">
-            Ваш браузер не поддерживает видео.
-        </video>
-
-        <div class="relative z-10 flex flex-col items-center justify-center h-full gap-4">
-            <h1 class="text-3xl font-semibold tracking-wide text-white" style="text-shadow: 2px 2px 8px rgba(0,0,0,0.5);">
-                Инженерное и Творческое обучение в Эспоо
-            </h1>
-
-            <div class="flex gap-4 mt-4">
-                <a href="https://espoo.aurinkolab.fi"  
-                    class="bg-gradient-to-r from-yellow-200 to-amber-800 text-white font-semibold px-6 py-3 rounded-xl shadow-lg
-                            hover:scale-105 hover:brightness-110 transition-transform transition-all text-sm md:text-base">
-                    Предстоящие события
-                </a>
-                <a href="#courses"  
-                    class="bg-gradient-to-r from-indigo-500 to-cyan-800 text-white font-semibold px-6 py-3 rounded-xl shadow-xl
-                            hover:scale-105 hover:brightness-110 transition-transform transition-all text-sm md:text-base">
-                    Выбрать курс
-                </a>
-            </div>
-        </div>
-    </div>
-
-    <!-- Courses Section -->
-<section id="courses" class="py-20 px-6" style="background: linear-gradient(135deg, #66b0db, #0d5394);">
-    <div class="max-w-7xl mx-auto">
-        <div class="text-center mb-16">
-            <h2 class="text-4xl lg:text-5xl font-bold text-white mb-4">Курсы</h2>
-            <p class="text-xl text-white/70 max-w-2xl mx-auto">Откройте для себя свои увлечения через творческий опыт обучения</p>
-        </div>
-
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-
-            <!-- Course: ITLab: Scratch + Web (Age 7–10) -->
-            <div id="itlab" class="glass-card rounded-3xl p-8 hover-lift course-hover flex flex-col justify-between h-full">
-                <div class="flex flex-col items-center text-center mb-4">
-                    <img src="src/olgar.png" alt="Olga Rozhnova" 
-                    class="w-24 h-24 object-cover rounded-xl shadow-lg border-2 border-white/20 bg-white/10 mb-2">
-                    <h4 class="text-white font-bold text-lg">Ольга Рожнова</h4>
-                    <p class="text-white/80 text-sm">Инструктор Scratch | 7+</p>
-                </div>
-                <div class="border-t border-white/30 my-4 w-full"></div>
-                <h3 class="text-2xl font-bold text-white text-center mb-2">ITLab: Scratch + Web</h3>
-                <p class="text-white/70 text-center mb-4">
-                    Увлекательное путешествие в программирование через игры, проекты и творчество! Дети создадут свои игры, анимации и веб-сайты, а также примут участие в командных заданиях и мини-конкурсах.
-                </p>
-                <p class="text-white/80 text-sm mb-4 text-center">
-                    📍InterLang, Saukonpaadenranta 4G
-                </p>
-                <div class="flex items-center justify-between mb-4">
-                    <span class="glass-card px-3 py-1 rounded-full text-sm text-white">Возраст 7–10</span>
-                </div>
-                <div class="flex justify-center mt-4">
-                    <a href="https://forms.office.com/r/C2gQnNq6cJ" target="_blank" 
-                    class="bg-gradient-to-r from-blue-400 to-putple-800 text-white font-semibold px-6 py-3 rounded-xl shadow-lg hover:shadow-lg transition-all text-center">
-                        Регистрация
-                    </a>
-                </div>
-            </div>
-
-            <!-- Course: StemLab with Lecturer (Age 7–10) -->
-            <div id="stem" class="glass-card rounded-3xl p-8 hover-lift course-hover flex flex-col justify-between h-full">
-                <div class="flex flex-col items-center text-center mb-4">
-                    <img src="src/tatiana.png" alt="Tatiana Surovtsova" 
-                        class="w-24 h-24 object-cover rounded-xl shadow-lg border-2 border-white/20 bg-white/10 mb-2">
-                    <h4 class="text-white font-bold text-lg">Татьяна Суровцова</h4>
-                    <p class="text-white/80 text-sm">PhD в области компьютерных наук | STEM-наставник | Волонтер-преподаватель IT</p>
-                </div>
-                <div class="border-t border-white/30 my-4 w-full"></div>
-                <h3 class="text-2xl font-bold text-white text-center mb-2">StemLab</h3>
-                <p class="text-white/70 text-center mb-4">Практические эксперименты с электричеством, движением и инженерией для юных ученых.</p>
-                <p class="text-white/70 text-center mb-4">📍Курс AurinkoLab</p>
-                <div class="flex items-center justify-between mb-4">
-                    <span class="glass-card px-3 py-1 rounded-full text-sm text-white">Возраст 7–10</span>
-                </div>
-                <div class="flex justify-center mt-4">
-                    <a href="https://forms.office.com/r/C2gQnNq6cJ" target="_blank" 
-                    class="bg-gradient-to-r from-blue-400 to-putple-800 text-white font-semibold px-6 py-3 rounded-xl shadow-lg hover:shadow-lg transition-all text-center">
-                        Записаться на пробное
-                    </a>
-                </div>
-            </div>
-
-            <!-- Course: Family Math Club (Age 7+ and Parents) -->
-            <div id="family-math-club" class="glass-card rounded-3xl p-8 hover-lift course-hover flex flex-col justify-between h-full">
-                <div class="flex flex-col items-center text-center mb-4">
-                    <img src="src/natalia.jpg" alt="Natalia Gatanova" 
-                        class="w-24 h-24 object-cover rounded-xl shadow-lg border-2 border-white/20 bg-white/10 mb-2">
-                    <h4 class="text-white font-bold text-lg">Наталия Гатанова</h4>
-                    <p class="text-white/80 text-sm">Более 30 лет помогает детям полюбить обучение и увидеть красоту математики</p>
-                </div>
-                <div class="border-t border-white/30 my-4 w-full"></div>
-                <h3 class="text-2xl font-bold text-white text-center mb-2">Семейный математический клуб</h3>
-                <p class="text-white/70 text-center mb-4">
-                    В нашем клубе мы решаем головоломки, отправляемся в квесты и изучаем мифы — от Одиссея до Калевалы. Математика оживает, а навыки закрепляются. Добро пожаловать всем!
-                </p>
-                <p class="text-white/70 text-center mb-4">📍В сотрудничестве с Aurora Math ry</p>
-                <div class="flex items-center justify-between mb-4">
-                    <span class="glass-card px-3 py-1 rounded-full text-sm text-white">7+ и родители</span>
-                </div>
-                <div class="flex justify-center mt-4">
-                    <a href="https://form.eo-space.com" target="_blank" 
-                    class="bg-gradient-to-r from-blue-400 to-putple-800 text-white font-semibold px-6 py-3 rounded-xl shadow-lg hover:shadow-lg transition-all text-center">
-                        Регистрация
-                    </a>
-                </div>
-            </div>
-
-            <!-- Course: Olympiad Maths (Age 10+) -->
-            <div id="math" class="glass-card rounded-3xl p-8 hover-lift course-hover flex flex-col justify-between h-full">
-                <div class="flex flex-col items-center text-center mb-4">
-                    <img src="src/Evgenia.jpeg" alt="Evgenia Levina" 
-                        class="w-24 h-24 object-cover rounded-xl shadow-lg border-2 border-white/20 bg-white/10 mb-2">
-                    <h4 class="text-white font-bold text-lg">Евгения Левина</h4>
-                    <p class="text-white/80 text-sm">Математика & Олимпиады | Электроника и микроэлектроника</p>
-                </div>
-                <div class="border-t border-white/30 my-4 w-full"></div>
-                <h3 class="text-2xl font-bold text-white text-center mb-2">Олимпиадная математика</h3>
-                <p class="text-white/70 text-center mb-4">Испытайте себя с помощью продвинутых математических концепций и соревновательных задач.</p>
-                <p class="text-white/70 text-center mb-4">📍Курс AurinkoLab</p>
-                <div class="flex items-center justify-between mb-4">
-                    <span class="glass-card px-3 py-1 rounded-full text-sm text-white">Возраст 10+</span>
-                </div>
-                <div class="flex justify-center mt-4">
-                    <a href="https://forms.office.com/r/C2gQnNq6cJ" target="_blank" 
-                    class="bg-gradient-to-r from-blue-400 to-putple-800 text-white font-semibold px-6 py-3 rounded-xl shadow-lg hover:shadow-lg transition-all text-center">
-                        Записаться на пробное
-                    </a>
-
-                </div>
-            </div>
-
-            <!-- Course: Engineering: Electrical Vehicles (Age 11+) -->
-            <div id="engineering" class="glass-card rounded-3xl p-8 hover-lift course-hover flex flex-col justify-between h-full">
-                <div class="flex flex-col items-center text-center mb-4">
-                    <img src="src/pavel.png" alt="Pavel Poppel" 
-                        class="w-24 h-24 object-cover rounded-xl shadow-lg border-2 border-white/20 bg-white/10 mb-2">
-                    <h4 class="text-white font-bold text-lg">Павел Поппель</h4>
-                    <p class="text-white/80 text-sm">Инструктор по инженерным транспортным средствам | 11+</p>
-                </div>
-                <div class="border-t border-white/30 my-4 w-full"></div>
-                <h3 class="text-2xl font-bold text-white text-center mb-2">Инженерия: Электромобили</h3>
-                <p class="text-white/70 text-center mb-4">Проектирование и создание инновационных транспортных средств на основе возобновляемых источников энергии.</p>
-                <p class="text-white/70 text-center mb-4">📍Курс AurinkoLab</p>
-                <div class="flex items-center justify-between mb-4">
-                    <span class="glass-card px-3 py-1 rounded-full text-sm text-white">Возраст 11+</span>
-                </div>
-                <div class="flex justify-center mt-4">
-                    <a href="https://forms.office.com/r/C2gQnNq6cJ" target="_blank" 
-                    class="bg-gradient-to-r from-blue-400 to-putple-800 text-white font-semibold px-6 py-3 rounded-xl shadow-lg hover:shadow-lg transition-all text-center">
-                        Регистрация
-                    </a>
-                </div>
-            </div>
-
-            <!-- Course: Coding: Python (Age 13+) -->
-            <div class="glass-card rounded-3xl p-8 hover-lift course-hover flex flex-col justify-between h-full">
-                <div class="flex flex-col items-center text-center mb-4">
-                    <img src="src/tatiana.png" alt="Tatiana Surovtsova" 
-                        class="w-24 h-24 object-cover rounded-xl shadow-lg border-2 border-white/20 bg-white/10 mb-2">
-                    <h4 class="text-white font-bold text-lg">Татьяна Суровцова</h4>
-                    <p class="text-white/80 text-sm">PhD в области компьютерных наук | STEM-наставник | Волонтер IT</p>
-                </div>
-                <div class="border-t border-white/30 my-4 w-full"></div>
-                <h3 class="text-2xl font-bold text-white text-center mb-2">Программирование: Python</h3>
-                <p class="text-white/70 text-center mb-4">Освойте основы Python через проекты и практические примеры из реального мира.</p>
-                <p class="text-white/70 text-center mb-4">📍Курс AurinkoLab</p>
-                <div class="flex items-center justify-between mb-4">
-                    <span class="glass-card px-3 py-1 rounded-full text-sm text-white">Возраст 13+</span>
-                </div>
-                <div class="flex justify-center mt-4">
-                    <a href="https://forms.office.com/r/C2gQnNq6cJ" target="_blank" 
-                    class="bg-gradient-to-r from-blue-400 to-putple-800 text-white font-semibold px-6 py-3 rounded-xl shadow-lg hover:shadow-lg transition-all text-center">
-                        Записаться на пробное
-                    </a>
-                </div>
-            </div>
-
-            <!-- Курс: Опера по пятницам (Возраст 18+) -->
-            <div id="operaonfridays" class="glass-card rounded-3xl p-8 hover-lift course-hover flex flex-col justify-between h-full">
-                <div class="flex flex-col items-center text-center mb-4">
-                    <img src="src/julia.png" alt="Юлия Прібиткова" class="w-24 h-24 object-cover rounded-xl shadow-lg border-2 border-white/20 bg-white/10 mb-2">
-                    <h4 class="text-white font-bold text-lg">Юлия Прибыткова</h4>
-                    <p class="text-white/80 text-sm">Главный преподаватель (Дискуссионный клуб)</p>
-                    <p class="text-white/60 text-xs mt-1">+ приглашенные эксперты Финской национальной оперы</p>
-                </div>
-                <div class="border-t border-white/30 my-4 w-full"></div>
-
-                <h3 class="text-2xl font-bold text-white text-center mb-2">🎭 Опера по пятницам</h3>
-                <p class="text-white/70 text-center mb-4">
-                    Глубокое погружение в оперу как в искусство, театр и культурное явление. Смотрите, слушайте и обсуждайте оперу, изучая музыку, драматургию, историю и философию.
-                </p>
-
-                <div class="text-white/80 text-sm mb-4 space-y-2">
-                    <p>✨ <strong>Включает:</strong></p>
-                    <ul class="list-disc list-inside ml-2 space-y-1">
-                        <li>Экскурсия по Национальной финской опере и балету</li>
-                    </ul>
-                </div>
-
-                <div class="text-white/80 text-sm mb-4 space-y-1">
-                    <p>🎯 <strong>Первое занятие:</strong> 23 января, 18:00</p>
-                </div>
-
-                <div class="flex items-center justify-between mb-4">
-                    <span class="glass-card px-3 py-1 rounded-full text-sm text-white">Возраст 18+</span>
-                </div>
-
-                <div class="flex justify-center mt-4">
-                    <a href="https://espoo.aurinkolab.fi/operatalks" target="_blank" 
-                    class="bg-gradient-to-r from-blue-400 to-putple-800 text-white py-3 px-6 rounded-2xl font-semibold hover:shadow-lg transition-all text-center">
-                        Подробнее
-                    </a>
-                </div>
-            </div>
-
-            <!-- НОВЫЙ КУРС 1: Искусственный интеллект: от философии до инструментов и методов (Возраст 25+) -->
-            <div id="ai-philosophy" class="glass-card rounded-3xl p-8 hover-lift course-hover flex flex-col justify-between h-full">
-                <div class="flex flex-col items-center text-center mb-4">
-                    <div class="flex gap-2 mb-2 justify-center flex-wrap">
-                        <img src="src/TatianaOrlova.png" alt="Tatiana Orlova" 
-                            class="w-24 h-24 object-cover rounded-xl shadow-lg border-2 border-white/20 bg-white/10">
-                        <img src="src/maria.png" alt="Maria Rohnonen" 
-                            class="w-24 h-24 object-cover rounded-xl shadow-lg border-2 border-white/20 bg-white/10">
-                    </div>
-                    <h4 class="text-white font-bold text-lg">Татьяна Орлова, Мария Ро́ннонен</h4>
-                    <p class="text-white/80 text-sm">ИИ, философия и программирование</p>
-                </div>
-                <div class="border-t border-white/30 my-4 w-full"></div>
-                <h3 class="text-2xl font-bold text-white text-center mb-2">Искусственный интеллект: от философии до инструментов и методов</h3>
-                <p class="text-white/70 text-center mb-4">
-                    Структурированное введение в программирование, данные и ИИ. Узнайте, как ранние идеи о мыслящих машинах эволюционировали в современные системы ИИ.
-                </p>
-
-                <p class="text-white/70 text-center mb-4">📍Курс AurinkoLab</p>
-                <p class="text-white/60 text-xs text-center mb-4">*Ранняя регистрация до 10 января. Обычная цена: 60€/месяц. Пробное занятие: после первого урока можно решить не продолжать — оплата не требуется.</p>
-                <div class="flex items-center justify-between mb-4">
-                    <span class="glass-card px-3 py-1 rounded-full text-sm text-white">Возраст 25+</span>
-                </div>
-                <div class="flex justify-center mt-4">
-                    <a href="https://forms.office.com/r/C2gQnNq6cJ" target="_blank" 
-                    class="bg-gradient-to-r from-blue-400 to-putple-800 text-white font-semibold px-6 py-3 rounded-xl shadow-lg hover:shadow-lg transition-all text-center">
-                        Регистрация
-                    </a>
-                </div>
-            </div>
-
-            <!-- Курс: EdTech Talks -->
-            <div id="edtech" class="glass-card rounded-3xl p-8 hover-lift course-hover flex flex-col justify-between h-full">
-                <div class="flex flex-col items-center text-center mb-4">
-                    <h4 class="text-white font-bold text-lg">Приглашенные спикеры</h4>
-                    <p class="text-white/80 text-sm">Инноваторы и педагоги</p>
-                </div>
-
-                <div class="border-t border-white/30 my-4 w-full"></div>
-
-                <h3 class="text-2xl font-bold text-white text-center mb-2">EdTech Talks: Обучение в цифровую эпоху</h3>
-                <p class="text-white/70 text-center mb-4">
-                    Присоединяйтесь к вдохновляющим дискуссиям о будущем образовательных технологий. 
-                    Изучайте цифровые тренды, ИИ в классе и креативные инструменты, меняющие способ преподавания и обучения.
-                </p>
-                <p class="text-white/70 text-center mb-4">📍AurinkoLab </p>
-
-                <div class="flex items-center justify-between mb-4">
-                    <span class="glass-card px-3 py-1 rounded-full text-sm text-white">Возраст 11+</span>
-                </div>
-
-                <div class="flex justify-center mt-4">
-                    <a href="https://aurinkolab.fi" target="_blank" 
-                    class="bg-gradient-to-r from-blue-400 to-putple-800 text-white py-3 px-6 rounded-2xl font-semibold hover:shadow-lg transition-all text-center">
-                        Подробнее
-                    </a>
-                </div>
-            </div>
-
-            </div>
-            <!-- Terms Button -->
-            <button onclick="openTermsModal()" class="terms-button mt-8">
-                📄 Условия предоставления услуг
-            </button>
-        </div>
-    </section>
-
-<!-- Terms Modal -->
-<div id="termsModal" class="terms-modal" onclick="closeTermsModalOnOutside(event)">
-    <div class="terms-modal-content" onclick="event.stopPropagation()">
-        <button class="terms-close-btn" onclick="closeTermsModal()">&times;</button>
- 
-        <h1>ДОГОВОР-ОФЕРТА</h1>
-        <h2 style="text-align: center; color: #66b0db; margin-bottom: 0.5rem;">об оказании досуговых услуг</h2>
-        <p style="text-align: center; color: #888; margin-bottom: 2rem;">Редакция действует с 1 сентября 2026 г.</p>
- 
-        <p style="text-align: center; font-weight: bold;">AurinkoLab ry<br>Эспоо, Финляндия</p>
- 
-        <hr style="margin: 2rem 0; border: 1px solid #ccc;">
- 
-        <h2>1. ОБЩИЕ ПОЛОЖЕНИЯ</h2>
- 
-        <p><strong>1.1.</strong> Настоящий договор-оферта (далее – «Договор») является официальным публичным предложением некоммерческой организации <strong>AurinkoLab ry</strong> (далее – «Исполнитель») заключить договор об оказании досуговых услуг на изложенных ниже условиях.</p>
- 
-        <p><strong>1.2.</strong> Акцептом настоящей оферты является посещение занятий и/или внесение оплаты Участником за услуги Исполнителя.</p>
- 
-        <p><strong>1.3.</strong> Участником (далее – «Участник») признается физическое лицо, принявшее условия настоящего Договора путем совершения действий, указанных в п. 1.2.</p>
- 
-        <p><strong>1.4. Приходя на занятия, Участник автоматически соглашается со всеми условиями настоящего Договора.</strong></p>
- 
-        <h2>2. ПРЕДМЕТ ДОГОВОРА</h2>
- 
-        <p><strong>2.1.</strong> Исполнитель обязуется оказывать Участнику досуговые услуги в виде проведения групповых/индивидуальных занятий по предметам (направлениям) — кружков, мастер-классов, секций и т.д., — а Участник обязуется оплачивать данные услуги в порядке и на условиях, предусмотренных настоящим Договором.</p>
- 
-        <p><strong>2.2.</strong> Конкретный перечень предметов, расписание занятий и стоимость определяются Исполнителем и публикуются на сайте/в информационных материалах организации.</p>
- 
-        <h2>3. СТОИМОСТЬ И ПОРЯДОК ОПЛАТЫ</h2>
- 
-        <h3>3.1. Годовой абонемент</h3>
- 
-        <p><strong>3.1.1.</strong> Стоимость обучения по одному предмету составляет <strong>500 € за учебный год</strong> (учебный год начинается 1 сентября).</p>
- 
-        <p><strong>3.1.2.</strong> Оплата производится по методу предоплаты одним из способов: <strong>единовременно за весь учебный год</strong> либо <strong>по полугодиям (по 250 € за каждое полугодие)</strong>.</p>
- 
-        <p><strong>3.1.3.</strong> При оплате по полугодиям за каждый дополнительно выставленный счёт взимается комиссия <strong>10 € (за каждый новый счёт)</strong>.</p>
- 
-        <p><strong>3.1.4.</strong> Оплата (или оплата соответствующего полугодия) должна быть произведена не позднее первого занятия оплачиваемого периода.</p>
- 
-        <p><strong>3.1.5.</strong> Стоимость годового абонемента рассчитана на опубликованные учебные недели (раздел 4) и уже учитывает школьные каникулы и праздничные дни.</p>
- 
-        <h3>3.2. Разовое посещение</h3>
- 
-        <p><strong>3.2.1.</strong> Разовое посещение отдельного занятия предмета без оформления годового абонемента составляет <strong>20 € за занятие</strong> и оплачивается до начала занятия.</p>
- 
-        <h3>3.3. Скидки</h3>
- 
-        <p><strong>3.3.1.</strong> При посещении одним Участником <strong>двух предметов</strong> предоставляется скидка <strong>30 % на второй предмет</strong> (скидка применяется к предмету с меньшей стоимостью).</p>
- 
-        <p><strong>3.3.2.</strong> При посещении занятий <strong>несколькими детьми из одной семьи</strong> предоставляется скидка <strong>30 % на обучение второго ребёнка</strong>.</p>
- 
-        <p><strong>3.3.3.</strong> Порядок применения скидок при их одновременном возникновении определяется Исполнителем.</p>
- 
-        <h2>4. РАСПИСАНИЕ И КАНИКУЛЫ</h2>
- 
-        <p><strong>4.1.</strong> Занятия проводятся в опубликованные учебные недели; конкретный день недели зависит от выбранного предмета. Занятия не проводятся в школьные каникулы и праздничные дни Эспоо.</p>
- 
-        <p><strong>4.2.</strong> Учебные недели учебного года 2026–2027:</p>
-        <ul>
-            <li><strong>Недели 2026 года:</strong> с 36 по 52, кроме недели 42 (осенние каникулы 12–16.10.2026).</li>
-            <li><strong>Недели 2027 года:</strong> с 2 по 21, кроме недели 8 (зимние каникулы 22–26.2.2027).</li>
-            <li><strong>Рождественский перерыв:</strong> 23.12.2026 – 6.1.2027 (между неделями 52 и 1).</li>
-        </ul>
- 
-        <p><strong>4.3.</strong> Праздничные дни, в которые занятия не проводятся: Страстная пятница 26.3.2027, Пасхальный понедельник 29.3.2027, Ваппу 1.5.2027, Вознесение 6.5.2027.</p>
- 
-        <p><strong>4.4.</strong> Особые мероприятия года: первое воскресенье декабря (6.12.2026) — новогодняя ёлка; последнее воскресенье мая (30.5.2027) — итоговая экскурсия.</p>
- 
-        <p><strong>4.5.</strong> График каникул и любые изменения расписания публикуются Исполнителем заблаговременно.</p>
- 
-        <h2>5. ПРАВА И ОБЯЗАННОСТИ СТОРОН</h2>
- 
-        <h3>5.1. Исполнитель обязуется:</h3>
-        <ul>
-            <li>Обеспечить проведение занятий в соответствии с расписанием</li>
-            <li>Предоставлять качественные досуговые услуги</li>
-            <li>Своевременно информировать Участников об изменениях в расписании</li>
-        </ul>
- 
-        <h3>5.2. Исполнитель имеет право:</h3>
-        <ul>
-            <li>Изменять расписание занятий с предварительным уведомлением Участников</li>
-            <li>Отменить занятие по объективным причинам с предоставлением замены или перерасчётом</li>
-        </ul>
- 
-        <h3>5.3. Участник обязуется:</h3>
-        <ul>
-            <li>Своевременно вносить оплату за услуги</li>
-            <li>Соблюдать правила поведения на занятиях</li>
-            <li>Информировать Исполнителя о невозможности посещения занятий</li>
-        </ul>
- 
-        <h3>5.4. Участник имеет право:</h3>
-        <ul>
-            <li>Получать услуги надлежащего качества</li>
-            <li>Получать информацию о расписании и изменениях в нём</li>
-        </ul>
- 
-        <h2>6. ПРОПУСКИ И ПЕРЕРАСЧЁТ</h2>
- 
-        <h3>6.1. Годовой абонемент</h3>
- 
-        <p><strong>6.1.1.</strong> При пропуске занятия по инициативе Участника перерасчёт не производится, за исключением случаев длительной болезни (более 2 недель подряд) при предоставлении медицинской справки.</p>
- 
-        <p><strong>6.1.2.</strong> При отмене занятия по инициативе Исполнителя производится перерасчёт или предоставляется дополнительное занятие.</p>
- 
-        <h3>6.2. Пакеты предметов (STEMLab, Семейный математический клуб)</h3>
- 
-        <p><strong>6.2.1.</strong> В случае отсутствия на предмете по инициативе Участника пропущенный предмет засчитывается в общее количество пакета, не возмещается и не переносится.</p>
- 
-        <p><strong>6.2.2.</strong> Если предмет отменён по инициативе Исполнителя, он не засчитывается в общее количество пакета, и Участник может посетить замещающий предмет в течение срока действия пакета.</p>
- 
-        <p><strong>6.2.3.</strong> Срок действия пакета (2 месяца) не продлевается из-за отсутствия Участника.</p>
- 
-        <h2>7. ОТВЕТСТВЕННОСТЬ СТОРОН</h2>
- 
-        <p><strong>7.1.</strong> За неисполнение или ненадлежащее исполнение обязательств по настоящему Договору Стороны несут ответственность в соответствии с законодательством Финляндии.</p>
- 
-        <p><strong>7.2.</strong> Исполнитель не несёт ответственности за ущерб, причинённый Участнику вследствие несоблюдения им правил безопасности и инструкций.</p>
- 
-        <h2>8. ПОРЯДОК РАСТОРЖЕНИЯ ДОГОВОРА</h2>
- 
-        <p><strong>8.1.</strong> Участник вправе отказаться от услуг в любое время, уведомив Исполнителя не менее чем за 7 дней.</p>
- 
-        <p><strong>8.2.</strong> При досрочном расторжении Договора по инициативе Участника неиспользованные оплаченные занятия не возвращаются, за исключением случаев, предусмотренных законодательством.</p>
- 
-        <p><strong>8.3.</strong> Исполнитель вправе расторгнуть Договор в одностороннем порядке при систематическом нарушении Участником условий настоящего Договора.</p>
- 
-        <h2>9. ЗАКЛЮЧИТЕЛЬНЫЕ ПОЛОЖЕНИЯ</h2>
- 
-        <p><strong>9.1.</strong> Настоящий Договор вступает в силу с момента акцепта оферты Участником и действует до полного исполнения Сторонами своих обязательств.</p>
- 
-        <p><strong>9.2.</strong> Все споры и разногласия решаются путём переговоров, а при недостижении согласия – в соответствии с законодательством Финляндии.</p>
- 
-        <p><strong>9.3.</strong> Исполнитель оставляет за собой право вносить изменения в настоящий Договор с обязательным уведомлением Участников не менее чем за 14 дней до вступления изменений в силу.</p>
- 
-        <h2>10. РЕКВИЗИТЫ ИСПОЛНИТЕЛЯ</h2>
- 
-        <p><strong>AurinkoLab ry</strong><br>
-        Y-tunnus (Business ID): 3431482-5<br>
-        IBAN: FI72 7997 7998 4286 22<br>
-        Электронная почта: info@aurinkolab.fi<br>
-        Телефон: +358 45 312 3388</p>
- 
-        <hr style="margin: 2rem 0; border: 1px solid #ccc;">
- 
-        <p style="text-align: center; font-style: italic; margin-top: 2rem;">
-            Принимая участие в занятиях и/или оплачивая услуги, Участник подтверждает, что ознакомлен с условиями настоящего Договора-оферты, понимает их и принимает в полном объёме.
-        </p>
-    </div>
-</div>
-
-    <!-- Schedule Section -->
-    <section id="schedule" class="py-20 px-6" style="background: linear-gradient(135deg, #87e6d6, #0b7d5f);">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl lg:text-5xl font-bold text-white mb-4">Weekly Schedule</h2>
-                <p class="text-xl text-white/70">Find your perfect learning time</p>
-            </div>
-
-            <div class="glass-card rounded-3xl p-8 overflow-x-auto">
-                <div class="grid grid-cols-6 gap-4 min-w-[700px]">
-                    <!-- Header -->
-                    <div class="font-bold text-white text-center py-4">Time</div>
-                    <div class="font-bold text-white text-center py-4">Wed</div>
-                    <div class="font-bold text-white text-center py-4">Thu</div>
-                    <div class="font-bold text-white text-center py-4">Fri</div>
-                    <div class="font-bold text-white text-center py-4">Sat</div>
-                    <div class="font-bold text-white text-center py-4">Sun</div>
-
-                    <!-- 11:00 Row -->
-                    <div class="text-white/70 text-center py-3 mono-font">11:00</div>
-                    <div></div><div></div><div></div>
-                    <div class="bg-gradient-to-r from-amber-400 to-yellow-300 rounded-xl p-3 border border-amber-400/50 shadow-md">
-                        <div class="text-white font-semibold text-sm">
-                            <a href="#itlab" target="_blank" class="hover:underline">ITLab</a>
-                        </div>
-                        <div class="text-white/80 text-xs">10:30-11:30</div>
-                    </div>
-                    <div></div>
-
-                    <!-- 12:00 Row -->
-                    <div class="text-white/70 text-center py-3 mono-font">12:00</div>
-                    <div></div><div></div><div></div>
-                    <div class="bg-gradient-to-r from-purple-400 to-indigo-400 rounded-xl p-3 border border-purple-400/50 shadow-md">
-                        <div class="text-white font-semibold text-sm">
-                            <a href="#python-ladies" target="_blank" class="hover:underline">Python for Ladies</a>
-                        </div>
-                        <div class="text-white/80 text-xs">11:30-13:00 (time flexible)</div>
-                    </div>
-                    <div></div>
-
-                    <!-- 13:00 Row -->
-                    <div class="text-white/70 text-center py-3 mono-font">13:00</div>
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                        <div class="bg-gradient-to-r from-blue-400 to-violet-500 rounded-xl p-3 border border-blue-400/50 shadow-md">
-                            <div class="text-white font-semibold text-sm">
-                                <a href="#ai-philosophy" target="_blank" class="hover:underline">AI: From Philosophy to Tools</a>
-                            </div>
-                            <div class="text-white/80 text-xs">13:00-14:30 (time flexible)</div>
-                        </div>
-                        <div></div>
-
-                    <!-- 14:00 Row -->
-                    <div class="text-white/70 text-center py-3 mono-font">14:00</div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div class="bg-gradient-to-r from-blue-400 to-violet-500 rounded-xl p-3 border border-blue-400/50 shadow-md">
-                        <div class="text-white font-semibold text-sm">
-                            <a href="#ai-philosophy" target="_blank" class="hover:underline">AI: From Philosophy to Tools</a>
-                        </div>
-                        <div class="text-white/80 text-xs">13:00-14:30 (time flexible)</div>
-                    </div>
-                    <div></div>
-
-                    <!-- 15:00 Row -->
-                    <div class="text-white/70 text-center py-3 mono-font">15:00</div>
-                    <div class="bg-gradient-to-r from-amber-400 to-yellow-300 rounded-xl p-3 border border-amber-400/50 shadow-md">
-                        <div class="text-white font-semibold text-sm">
-                            <a href="#math" target="_blank" class="hover:underline">Olympiad Maths</a>
-                        </div>
-                        <div class="text-white/70 text-xs">15:00-16:30</div>
-                    </div>
-                    <div></div><div></div><div></div>
-                    <div></div>
-
-                    <!-- 16:00 Row -->
-                    <div class="text-white/70 text-center py-3 mono-font">16:00</div>
-                    <div class="bg-gradient-to-r from-amber-400 to-yellow-300 rounded-xl p-3 border border-amber-400/50 shadow-md">
-                        <div class="text-white font-semibold text-sm">
-                            <a href="#math" target="_blank" class="hover:underline">Olympiad Maths</a>
-                        </div>
-                        <div class="text-white/70 text-xs">15:00-16:30</div>
-                    </div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div class="bg-gradient-to-r from-orange-400 to-amber-300 rounded-xl p-3 border border-orange-400/50 shadow-md">
-                        <div class="text-white font-semibold text-sm">
-                            <a href="#stem" target="_blank" class="hover:underline">Stem Lab</a>
-                        </div>
-                        <div class="text-white/70 text-xs">15:30-16:30</div>
-                    </div>
-
-                    <!-- 17:00 Row -->
-                    <div class="text-white/70 text-center py-3 mono-font">17:00</div>
-                    <div></div>
-                    <div></div>
-                    <div class="bg-gradient-to-r from-teal-400 to-cyan-500 rounded-xl p-3 border border-teal-400/50 shadow-md">
-                        <div class="text-white font-semibold text-sm">Family Club & Math (7+)</div>
-                        <div class="text-white/70 text-xs">17:00-19:00</div>
-                    </div>
-                    <div></div>
-                    <!-- Sun split cells -->
-                    <div class="bg-gradient-to-r from-orange-400 to-amber-300 rounded-xl p-3 border border-orange-400/50 shadow-md">
-                            <div class="text-white font-semibold text-sm">
-                                    <a href="#code" target="_blank" class="hover:underline">Coding</a>
-                            </div>
-                        <div class="text-white/70 text-xs">17:00-18:30</div>
-                    </div>
-
-                    <!-- 18:00 Row -->
-                    <div class="text-white/70 text-center py-3 mono-font">18:00</div>
-                    <div></div><div></div>
-                    <div class="bg-gradient-to-r from-teal-400 to-cyan-500 rounded-xl p-3 border border-teal-400/50 shadow-md">
-                        <div class="text-white font-semibold text-sm">Family Club & Math (7+)</div>
-                        <div class="text-white/70 text-xs">17:00-19:00</div>
-                    </div>
-                    <div></div>
-                    <!-- Sun split cells -->
-                    <div class="bg-gradient-to-r from-orange-400 to-amber-300 rounded-xl p-3 border border-orange-400/50 shadow-md">
-                        <div class="text-white font-semibold text-sm">
-                            <a href="#engineering" target="_blank" class="hover:underline">Engineering</a>
-                        </div>
-                        <div class="text-white/70 text-xs">17:00-18:30</div>
-                    </div>
-
-                    <!-- 19:00 Row -->
-                    <div class="text-white/70 text-center py-3 mono-font">19:00</div>
-                    <div></div><div></div>
-                    <div class="bg-gradient-to-r from-cyan-300 to-teal-400 rounded-xl p-3 border border-cyan-300/50 shadow-md">
-                        <div class="text-white font-semibold text-sm">
-                            <a href="https://creativelab-helsinki.github.io/cinematalks" target="_blank" class="hover:underline">CinemaTalks</a>
-                        </div>
-                        <div class="text-white/70 text-xs">19:00-21:00</div>
-                    </div>
-                    <div></div>
-                    <div></div>
-
-                    <!-- 20:00 Row -->
-                    <div class="text-white/70 text-center py-3 mono-font">20:00</div>
-                    <div></div><div></div>
-                    <div class="bg-gradient-to-r from-cyan-300 to-teal-400 rounded-xl p-3 border border-cyan-300/50 shadow-md">
-                        <div class="text-white font-semibold text-sm">
-                            <a href="https://forms.office.com/r/C2gQnNq6cJ" target="_blank" class="hover:underline">Opera on Fridays</a>
-                        </div>
-                        <div class="text-white/70 text-xs">19:00-21:00</div>
-                    </div>
-                    <div></div>
-                    <div></div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Location Section -->
-    <section id="location" class="py-20 px-6" style="background: linear-gradient(135deg, #f7e3b3, #f1c85b);">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl lg:text-5xl font-bold text-white mb-4">Как нас найти</h2>
-                <p class="text-xl text-white/70">Мы находимся в центре Манкка, 10 минут от метро Тапиола</p>
-            </div>
-
-            <div class="grid lg:grid-cols-2 gap-12 items-center">
-                <div class="glass-card rounded-3xl p-8">
-                    <h3 class="text-2xl font-bold text-white mb-6">Адрес и контакты</h3>
-                    <div class="space-y-6">
-                        <div class="flex items-start space-x-4">
-                            <div class="w-12 h-12 bg-gradient-to-r from-blue-500 to-violet-500 rounded-xl flex items-center justify-center flex-shrink-0">
-                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
-                                </svg>
-                            </div>
-                            <div>
-                                <h4 class="text-white font-semibold mb-1">Адрес</h4>
-                                <p class="text-white/70">Vanhan-Mankkaan kuja 2</p>
-                                <p class="text-white/70">02180 Эспоо, Финляндия</p>
-                            </div>
-                        </div>
-
-                        <div class="flex items-start space-x-4">
-                            <div class="w-12 h-12 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-xl flex items-center justify-center flex-shrink-0">
-                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-                                </svg>
-                            </div>
-                            <div>
-                                <h4 class="text-white font-semibold mb-1">Электронная почта</h4>
-                                <p class="text-white/70">info@aurinkolab.fi</p>
-                            </div>
-                        </div>
-
-                        <div class="flex items-start space-x-4">
-                            <div class="w-12 h-12 bg-gradient-to-r from-green-500 to-emerald-500 rounded-xl flex items-center justify-center flex-shrink-0">
-                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
-                                </svg>
-                            </div>
-                            <div>
-                                <h4 class="text-white font-semibold mb-1">Телефон</h4>
-                                <p class="text-white/70">+358 45 3123388</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="mt-8">
-                        <a href="https://www.google.com/maps/dir/?api=1&destination=Vanhan-Mankkaan+kuja+2,+02180+Espoo,+Finland" target="_blank">
-                            <button class="w-full bg-gradient-to-r from-blue-300 to-blue-600/80 text-white py-4 rounded-2xl font-semibold hover:shadow-lg transition-all">
-                                Построить маршрут
-                            </button>
-                        </a>
-                    </div>
-                </div>
-
-                <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1984.2211079005495!2d24.70231551601079!3d60.17520318197086!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46920763d4a0bc81%3A0x73a2bc9e4f3521db!2sVanhan-Mankkaan%20kuja%202%2C%2002180%20Espoo%2C%20Finland!5e0!3m2!1sen!2sus!4v1691748564246!5m2!1sen!2sus"
-                width="100%" height="450" style="border:0; border-radius:1rem;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
-                </iframe>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="py-16 px-6" style="background: linear-gradient(135deg, #66b0db, #0d5394);">
-        <div class="max-w-7xl mx-auto grid md:grid-cols-4 gap-12 text-white/70">
-            
-            <div>
-                <div class="flex items-center space-x-3 mb-4">
-                    <div class="w-10 h-10 bg-gradient-to-r from-blue-500 to-violet-500 rounded-xl flex items-center justify-center">
-                        <span class="text-white font-bold text-lg">A</span>
-                    </div>
-                    <span class="text-white font-bold text-xl mono-font">AurinkoLab Espoo</span>
-                </div>
-                <p class="text-white/70">Создаем инноваторов завтрашнего дня сегодня</p>
-            </div>
-
-            <div>
-                <h4 class="text-white font-semibold mb-4">Быстрые ссылки</h4>
-                <ul class="space-y-2">
-                    <li><a href="https://aurinkolab.fi/" target="_blank" class="hover:text-white transition">AurinkoLab</a></li>
-                    <li><a href="https://espoo.aurinkolab.fi/" target="_blank" class="hover:text-white transition">Espoo.AurinkoLab</a></li>
-                    <li><a href="#courses" class="hover:text-white transition">Программы</a></li>
-                </ul>
-            </div>
-
-            <div>
-                <h4 class="text-white font-semibold mb-4">Контакты</h4>
-                <ul class="space-y-2">
-                    <li>Email: <a href="mailto:info@aurinkolab.fi" class="hover:text-white transition">info@aurinkolab.fi</a></li>
-                    <li>Телефон: <a href="tel:+358453123388" class="hover:text-white transition">+358 45 3123388</a></li>
-                    <li>Адрес: Vanhan-Mankkaan kuja 2, 02180 Эспоо</li>
-                </ul>
-            </div>
-
-            <div>
-                <h4 class="text-white font-semibold mb-4">Следите за нами</h4>
-                <div class="flex space-x-6">
-                    <a href="https://www.linkedin.com/company/aurinkolab" target="_blank" class="hover:text-white transition" aria-label="LinkedIn">
-                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M4.98 3.5C4.98 4.88 3.88 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM.25 8.5h4.5v15h-4.5v-15zm7.25 0h4.3v2.07h.06c.6-1.14 2.07-2.34 4.27-2.34 4.57 0 5.41 3.01 5.41 6.93v7.94h-4.5v-7.04c0-1.68-.03-3.85-2.35-3.85-2.36 0-2.72 1.84-2.72 3.74v7.15h-4.5v-15z"/></svg>
-                    </a>
-                    <a href="https://www.instagram.com/aurinkolab.fi/" target="_blank" class="hover:text-white transition" aria-label="Instagram">
-                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M7.75 2h8.5A5.75 5.75 0 0122 7.75v8.5A5.75 5.75 0 0116.25 22h-8.5A5.75 5.75 0 012 16.25v-8.5A5.75 5.75 0 017.75 2zm0 2A3.75 3.75 0 004 7.75v8.5A3.75 3.75 0 007.75 20h8.5a3.75 3.75 0 003.75-3.75v-8.5A3.75 3.75 0 0016.25 4h-8.5zM12 7a5 5 0 110 10 5 5 0 010-10zm0 2a3 3 0 100 6 3 3 0 000-6zm4.5-.5a1.25 1.25 0 110 2.5 1.25 1.25 0 010-2.5z"/></svg>
-                    </a>
-                    <a href="https://www.facebook.com/profile.php?id=61560710825089" target="_blank" class="hover:text-white transition" aria-label="Facebook">
-                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M22 12.07C22 6.48 17.52 2 12 2S2 6.48 2 12.07c0 4.99 3.66 9.12 8.44 9.92v-7.03H7.9v-2.89h2.54V9.65c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.22.2 2.22.2v2.45h-1.26c-1.24 0-1.63.78-1.63 1.57v1.9h2.78l-.44 2.89h-2.34v7.03C18.34 21.18 22 17.06 22 12.07z"/></svg>
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        <div class="mt-12 border-t border-white/10 pt-6 text-center">
-            <p class="text-white/50 text-sm">&copy; 2025 AurinkoLab Espoo. Все права защищены.</p>
-        </div>
-    </footer>
-
-    <script>
-        function openTermsModal() {
-            const modal = document.getElementById('termsModal');
-            modal.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-        
-        function closeTermsModal() {
-            const modal = document.getElementById('termsModal');
-            modal.classList.remove('active');
-            document.body.style.overflow = 'auto';
-        }
-        
-        function closeTermsModalOnOutside(event) {
-            if (event.target.id === 'termsModal') {
-                closeTermsModal();
-            }
-        }
-
-        // Smooth scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
+        // Scroll reveal logic
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
                 }
             });
-        });
-
-        // Navigation scroll effect
-        window.addEventListener('scroll', () => {
-            const nav = document.querySelector('nav');
-            if (window.scrollY > 100) {
-                nav.classList.add('bg-white/10');
-            } else {
-                nav.classList.remove('bg-white/10');
-            }
-        });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
     </script>
-
-    <!-- Terms Modal -->
-        <script>
-        function openTermsModal() {
-            const modal = document.getElementById('termsModal');
-            modal.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-        
-        function closeTermsModal() {
-            const modal = document.getElementById('termsModal');
-            modal.classList.remove('active');
-            document.body.style.overflow = 'auto';
-        }
-        
-        function closeTermsModalOnOutside(event) {
-            if (event.target.id === 'termsModal') {
-                closeTermsModal();
-            }
-        }
-    </script>
-
-
-    <script>
-        // Mobile menu toggle
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
-
-        if (mobileMenuButton && mobileMenu) {
-            mobileMenuButton.addEventListener('click', () => {
-                mobileMenu.classList.toggle('hidden');
-            });
-        }
-
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Add scroll effect to navigation
-        window.addEventListener('scroll', () => {
-            const nav = document.querySelector('nav');
-            if (window.scrollY > 100) {
-                nav.classList.add('bg-white/10');
-            } else {
-                nav.classList.remove('bg-white/10');
-            }
-        });
-    </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'96d7831b91898d70',t:'MTc1NDkxMjk5Mi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
-
-<script>
-const navTeamLink = document.querySelector('a[href="#team"]');
-const teamSection = document.getElementById('team');
-
-navTeamLink.addEventListener('click', (e) => {
-    e.preventDefault();           // prevent default jump
-    teamSection.classList.remove('hidden'); // show the section
-    teamSection.scrollIntoView({ behavior: 'smooth' }); // smooth scroll
-});
-</script>
-
 </body>
 </html>
