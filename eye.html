@@ -1,0 +1,1064 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Erasmus для начинающих предпринимателей — AurinkoLab Эспоо</title>
+<meta name="description" content="Бесплатный онлайн-курс в собственном темпе по подготовке к программе обмена «Erasmus для начинающих предпринимателей». 7 модулей: критерии соответствия, бизнес-план, поиск хост-предпринимателя, контракты и финансы.">
+<meta name="color-scheme" content="light">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Erasmus для начинающих предпринимателей — AurinkoLab Эспоо">
+<meta property="og:description" content="Бесплатный онлайн-курс в собственном темпе. Подготовка к европейской программе обмена для новых предпринимателей. AurinkoLab не является местной контактной точкой и не обрабатывает заявки.">
+<meta property="og:site_name" content="AurinkoLab Эспоо">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Space+Grotesk:wght@500;700&amp;display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F4F2EA; --panel:#EBE7D9; --line:#D8D3C4; --line-soft:rgba(216,211,196,.6);
+  --ink:#3A3831; --soft:#5C594E; --faint:#827D70; --ghost:#A39E8F;
+  --a1:#2F7D6E; --a2:#2F5FA8; --a3:#A8414F; --a4:#71499B;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:'Plus Jakarta Sans',sans-serif;font-size:16px;line-height:1.6;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden}
+.hf{font-family:'Space Grotesk',sans-serif}
+a{color:inherit}
+button{font:inherit}
+:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;padding:4px 12px;border-radius:999px;
+  background:var(--panel);border:1px solid var(--line);font-size:10px;font-weight:700;
+  letter-spacing:.08em;text-transform:uppercase;color:var(--faint)}
+
+/* ---------------- top banner + nav (matches the main site) ---------------- */
+.banner{background:var(--panel);border-bottom:1px solid var(--line);padding:10px 16px;text-align:center;
+  font-size:13px;font-weight:500;color:var(--soft);letter-spacing:.01em}
+.banner .in{max-width:80rem;margin:0 auto;display:flex;flex-wrap:wrap;justify-content:center;
+  align-items:center;gap:10px}
+.banner .pill{padding:3px 12px;border-radius:999px;background:var(--bg);border:1px solid var(--line);
+  font-weight:700;font-size:10px;letter-spacing:.09em;text-transform:uppercase}
+.banner .dot{color:var(--line)}
+
+nav.top{position:sticky;top:0;z-index:50;background:rgba(244,242,234,.92);
+  backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+nav.top .in{max-width:80rem;margin:0 auto;padding:0 24px;height:80px;display:flex;
+  align-items:center;justify-content:space-between;gap:16px}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none}
+.logo .sq{width:44px;height:44px;border-radius:12px;background:var(--panel);border:1px solid var(--line);
+  display:flex;align-items:center;justify-content:center;font-weight:700;font-size:24px;flex:none}
+.logo .nm{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:24px;letter-spacing:-.02em;line-height:1.05}
+.logo .nm span{font-weight:400}
+.logo .sub{display:block;font-size:8px;letter-spacing:.3em;text-transform:uppercase;color:var(--soft);
+  margin-top:-2px;font-family:'Plus Jakarta Sans',sans-serif;font-weight:600}
+nav.top .links{display:flex;align-items:center;gap:22px;font-size:14px;font-weight:600;color:var(--soft)}
+nav.top .links a{text-decoration:none}
+nav.top .links a:hover{color:var(--ink)}
+@media(max-width:680px){
+  nav.top .in{height:auto;padding:12px 18px;flex-wrap:wrap}
+  nav.top .links{gap:14px;font-size:13px}
+  .logo .sub{display:none}
+}
+
+/* ---------------------------- course intro ---------------------------- */
+.wrap{max-width:80rem;margin:0 auto;padding:0 24px}
+.intro{padding:56px 0 8px}
+.intro h1{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(34px,6vw,60px);
+  line-height:1.04;letter-spacing:-.025em;margin:18px 0 18px;max-width:22ch}
+.intro .lede{font-size:18px;color:var(--soft);max-width:60ch;margin:0 0 24px;line-height:1.7}
+.grid2{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:36px;align-items:start;padding-bottom:20px}
+@media(max-width:900px){.grid2{grid-template-columns:1fr;gap:26px}}
+.box{background:var(--panel);border:1px solid var(--line);border-radius:2rem;padding:28px 30px}
+.box h3{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:22px;margin:0 0 18px}
+.box dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:9px 16px;font-size:14px}
+.box dt{color:var(--faint);font-weight:600}
+.box dd{margin:0;font-weight:600}
+h3.sect{font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--faint);margin:28px 0 10px}
+.intro ul{margin:0 0 6px;padding-left:20px;color:var(--soft)}
+.intro li{margin-bottom:8px}
+
+.alert{border:1px solid var(--line);border-left:4px solid #A8414F;background:#fff;
+  border-radius:0 1rem 1rem 0;padding:16px 20px;margin:0 0 22px;font-size:14.5px;color:var(--soft);line-height:1.65}
+.alert b{color:var(--ink)}
+.cta{display:flex;align-items:center;justify-content:center;width:100%;text-align:center;background:var(--bg);border:1px solid var(--line);
+  color:var(--ink);font-weight:700;padding:15px 20px;border-radius:12px;text-decoration:none;
+  cursor:pointer;margin-top:20px;transition:background .2s}
+.cta:hover{background:var(--line)}
+.cta.solid{background:var(--panel)}
+.tiny{font-size:12px;color:var(--faint);margin:12px 0 0;line-height:1.5}
+.pbar{height:6px;background:var(--bg);border:1px solid var(--line);border-radius:999px;overflow:hidden;margin:0 0 8px}
+.pbar i{display:block;height:100%;background:var(--faint)}
+
+/* ---------------------------- module list ---------------------------- */
+.modules{border-top:1px solid var(--line);margin-top:20px;padding:44px 0 60px}
+.modules>h2{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:36px;margin:14px 0 10px}
+.modules>p{color:var(--soft);max-width:66ch;margin:0 0 30px}
+.mrow{display:grid;grid-template-columns:auto 1fr auto;gap:22px;align-items:start;
+  background:var(--bg);border:1px solid var(--line);border-radius:2rem;padding:22px 26px;margin-bottom:14px;
+  transition:border-color .2s,transform .2s,box-shadow .2s;text-align:left;width:100%;cursor:pointer}
+.mrow:hover{border-color:var(--ink);transform:translateY(-2px);box-shadow:0 10px 24px rgba(58,56,49,.08)}
+.mrow .n{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:26px;color:var(--faint);
+  width:52px;height:52px;border-radius:14px;background:var(--panel);border:1px solid var(--line);
+  display:flex;align-items:center;justify-content:center;flex:none}
+.mrow h3{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:21px;margin:4px 0 6px}
+.mrow p{margin:0 0 10px;font-size:14px;color:var(--soft);max-width:64ch}
+.mrow .ls{display:flex;flex-wrap:wrap;gap:6px 14px;list-style:none;margin:0;padding:0;font-size:12.5px;color:var(--faint)}
+.mrow .cnt{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--faint);
+  background:var(--panel);border:1px solid var(--line);padding:5px 11px;border-radius:999px;white-space:nowrap}
+@media(max-width:620px){.mrow{grid-template-columns:auto 1fr;gap:16px;padding:18px}.mrow .cnt{display:none}}
+
+/* ------------------------------- player ------------------------------- */
+.player{display:grid;grid-template-columns:340px minmax(0,1fr);gap:28px;
+  max-width:80rem;margin:0 auto;padding:30px 24px 80px;align-items:start}
+@media(max-width:980px){.player{grid-template-columns:1fr;gap:18px;padding:20px 18px 60px}}
+.rail{background:var(--panel);border:1px solid var(--line);border-radius:2rem;padding:24px 0 16px;
+  position:sticky;top:104px;max-height:calc(100vh - 124px);overflow-y:auto}
+@media(max-width:980px){.rail{position:static;max-height:none}}
+.rail::-webkit-scrollbar{width:6px}
+.rail::-webkit-scrollbar-track{background:transparent}
+.rail::-webkit-scrollbar-thumb{background:var(--line);border-radius:10px}
+.rail .up{display:block;background:none;border:0;padding:0 26px;margin:0 0 14px;color:var(--faint);
+  font-size:13px;font-weight:600;cursor:pointer;text-decoration:none}
+.rail .up:hover{color:var(--ink)}
+.rail h2{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:20px;line-height:1.25;margin:0 26px 16px}
+.rail .prog{margin:0 26px 18px}
+.rail .prog .lbl{display:flex;justify-content:space-between;font-size:12px;font-weight:600;color:var(--faint)}
+.rail .toggle{display:none}
+@media(max-width:980px){.rail .toggle{display:block;margin:0 26px 14px;background:var(--bg);
+  border:1px solid var(--line);border-radius:10px;padding:9px 14px;font-size:13px;font-weight:700;
+  color:var(--ink);cursor:pointer;width:calc(100% - 52px)}}
+.mod{border-top:1px solid var(--line-soft)}
+.mod>button{width:100%;text-align:left;background:none;border:0;padding:13px 26px;cursor:pointer;
+  display:flex;gap:12px;align-items:center;font-size:14px;font-weight:600;color:var(--soft)}
+.mod>button:hover{color:var(--ink)}
+.mod>button .cv{margin-left:auto;font-size:10px;font-weight:700;letter-spacing:.06em;color:var(--faint);
+  background:var(--bg);border:1px solid var(--line);padding:3px 8px;border-radius:999px}
+.mod.open>button{background:var(--bg);color:var(--ink);font-weight:700}
+.mod ol{list-style:none;margin:0;padding:6px 0;background:var(--bg)}
+.mod li button{width:100%;text-align:left;background:none;border:0;cursor:pointer;color:var(--soft);
+  padding:9px 26px 9px 22px;display:grid;grid-template-columns:22px 1fr auto;gap:10px;align-items:start;
+  border-left:4px solid transparent;font-size:13.5px;line-height:1.4}
+.mod li button:hover{color:var(--ink)}
+.mod li button[aria-current="true"]{border-left-color:var(--ink);color:var(--ink);font-weight:600}
+.mod li .ic{color:var(--ghost);font-size:13px;text-align:center}
+.mod li .ty{display:block;font-size:11px;font-weight:600;letter-spacing:.03em;color:var(--ghost);
+  text-transform:uppercase;margin-top:2px}
+.mod li .dn{color:var(--a1);font-size:12px;font-weight:700}
+
+.stage{background:var(--bg);border:1px solid var(--line);border-radius:2rem;padding:38px 42px 40px;min-width:0}
+@media(max-width:700px){.stage{padding:26px 22px 30px;border-radius:1.5rem}}
+.stage .crumb{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--faint);margin:0 0 12px}
+.stage h1{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(26px,4vw,36px);
+  line-height:1.15;letter-spacing:-.02em;margin:0 0 8px}
+.stage .ltype{font-size:13px;color:var(--faint);font-weight:600;margin:0 0 28px}
+.stage h4{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:18px;margin:30px 0 10px}
+.stage p{margin:0 0 15px;max-width:66ch;color:var(--soft);line-height:1.72}
+.stage ul,.stage ol{margin:0 0 18px;padding-left:22px;max-width:66ch;color:var(--soft)}
+.stage li{margin-bottom:9px;line-height:1.65}
+.stage b,.stage strong{color:var(--ink)}
+
+.qa{border-top:1px solid var(--line-soft);padding:15px 0;max-width:66ch}
+.qa b{display:block;color:var(--ink);font-weight:700;margin-bottom:5px}
+.qa p{margin:0}
+
+.notice{background:var(--panel);border:1px solid var(--line);border-radius:1rem;padding:16px 20px;
+  margin:0 0 18px;font-size:14.5px;color:var(--soft);line-height:1.65;max-width:66ch}
+.notice.warn{background:#fff;border-left:4px solid #A8414F;border-radius:0 1rem 1rem 0}
+.notice.sun{background:var(--panel);border-left:4px solid var(--faint);border-radius:0 1rem 1rem 0}
+.notice b{color:var(--ink)}
+.notice p{margin:0 0 8px}.notice p:last-child{margin:0}
+
+.linkcard{display:block;background:var(--panel);border:1px solid var(--line);border-radius:1rem;
+  padding:16px 20px;margin:0 0 14px;text-decoration:none;max-width:66ch;transition:border-color .2s}
+.linkcard:hover{border-color:var(--ink)}
+.linkcard b{display:block;font-weight:700;margin-bottom:4px;color:var(--ink)}
+.linkcard span{font-size:14px;color:var(--soft);line-height:1.55}
+.linkcard .host{display:block;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--ghost);margin-top:9px}
+
+.vid{background:var(--panel);border:1px solid var(--line);border-radius:1.5rem;overflow:hidden;
+  margin:0 0 18px;max-width:66ch}
+
+/* click-to-play facade: nothing is requested from YouTube until this is pressed */
+.vid .fr{display:block;width:100%;background:var(--bg);border:0;border-bottom:1px solid var(--line);
+  padding:52px 24px;text-align:center;cursor:pointer;font:inherit;color:inherit;transition:background .2s}
+.vid .fr:hover{background:var(--panel)}
+.vid .fr .play{display:inline-flex;align-items:center;justify-content:center;width:68px;height:68px;
+  border-radius:999px;background:var(--panel);border:1px solid var(--line);color:var(--ink);
+  font-size:24px;padding-left:5px;transition:background .2s,transform .2s}
+.vid .fr:hover .play{background:var(--line);transform:scale(1.04)}
+.vid .fr .lb{display:block;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:16px;
+  color:var(--ink);margin-top:18px}
+.vid .fr .hint{display:block;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--ghost);margin-top:8px}
+
+/* 16:9 player, responsive */
+.vid .ratio{position:relative;width:100%;padding-top:56.25%;background:#000;
+  border-bottom:1px solid var(--line)}
+.vid .ratio iframe,.vid .ratio video{position:absolute;inset:0;width:100%;height:100%;border:0;display:block}
+
+.vid .bd{padding:18px 20px 20px}
+.vid b{display:block;font-weight:700;margin-bottom:5px}
+.vid p{margin:0 0 14px;font-size:14px}
+.vid .alt{display:inline-block;background:var(--bg);border:1px solid var(--line);color:var(--ink);
+  font-weight:700;font-size:13px;padding:9px 16px;border-radius:12px;text-decoration:none}
+.vid .alt:hover{background:var(--line)}
+.vid .fallback{display:block;font-size:11.5px;color:var(--ghost);margin-top:10px;line-height:1.55}
+
+.check{list-style:none;margin:0 0 6px;padding:0;max-width:66ch;
+  background:var(--panel);border:1px solid var(--line);border-radius:1rem;overflow:hidden}
+.check li+li{border-top:1px solid var(--line-soft)}
+.check label{display:grid;grid-template-columns:22px 1fr;gap:14px;padding:14px 20px;cursor:pointer;align-items:start}
+.check input{margin:3px 0 0;width:17px;height:17px;accent-color:var(--ink);
+  background:transparent!important;border:1px solid var(--line)!important}
+.check .tx{font-size:14.5px;color:var(--ink);font-weight:600;line-height:1.5}
+.check .sub{display:block;font-size:13px;font-weight:400;color:var(--faint);margin-top:4px;line-height:1.5}
+.checksum{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--faint);margin:10px 0 22px}
+
+.tmpl{background:var(--panel);border:1px solid var(--line);border-radius:1.5rem;overflow:hidden;
+  margin:0 0 20px;max-width:66ch}
+.tmpl .hd{display:flex;align-items:center;gap:12px;padding:13px 20px;border-bottom:1px solid var(--line);
+  font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--faint)}
+.tmpl .hd button{margin-left:auto;background:var(--bg);border:1px solid var(--line);border-radius:10px;
+  padding:6px 13px;font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+  color:var(--ink);cursor:pointer}
+.tmpl .hd button:hover{background:var(--line)}
+.tmpl pre{margin:0;padding:20px;background:var(--bg);white-space:pre-wrap;
+  font-family:'Plus Jakarta Sans',sans-serif;font-size:13.5px;line-height:1.65;color:var(--ink)}
+
+.ev{background:var(--panel);border:1px dashed var(--line);border-radius:1.5rem;padding:20px 22px;
+  margin:26px 0 8px;max-width:66ch}
+.ev p{font-size:13px;color:var(--faint);margin:0 0 12px;max-width:none}
+.ev ul{display:flex;flex-wrap:wrap;gap:8px;list-style:none;margin:0;padding:0}
+.ev li{font-size:12px;font-weight:700;padding:5px 12px;border-radius:999px;background:var(--bg);
+  border:1px solid var(--line);color:var(--ink);margin:0}
+.ev li.a1{border-left:4px solid var(--a1)}.ev li.a2{border-left:4px solid var(--a2)}
+.ev li.a3{border-left:4px solid var(--a3)}.ev li.a4{border-left:4px solid var(--a4)}
+
+.navrow{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-top:38px;padding-top:26px;
+  border-top:1px solid var(--line)}
+.navrow .sp{flex:1}
+.navrow button{background:var(--panel);border:1px solid var(--line);color:var(--ink);font-weight:700;
+  font-size:14px;padding:12px 20px;border-radius:12px;cursor:pointer}
+.navrow button:hover:not(:disabled){background:var(--line)}
+.navrow button:disabled{opacity:.4;cursor:default}
+.navrow .mark[data-done="1"]{background:var(--bg);color:var(--faint)}
+
+/* ------------------------------- footer ------------------------------- */
+footer.site{border-top:1px solid var(--line);background:var(--bg);padding:56px 0 40px;color:var(--faint)}
+footer.site .cols{max-width:80rem;margin:0 auto;padding:0 24px;display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:40px;font-size:14px}
+footer.site h4{font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--ink);margin:0 0 14px}
+footer.site ul{list-style:none;margin:0;padding:0}
+footer.site li{margin-bottom:10px}
+footer.site a{text-decoration:none}
+footer.site a:hover{color:var(--ink)}
+footer.site .brandline{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+footer.site .brandline .sq{width:40px;height:40px;border-radius:12px;background:var(--panel);
+  border:1px solid var(--line);display:flex;align-items:center;justify-content:center;
+  font-weight:700;font-size:18px;color:var(--ink)}
+footer.site .legal{max-width:80rem;margin:40px auto 0;padding:24px 24px 0;border-top:1px solid var(--line)}
+footer.site .legal p{font-size:12px;line-height:1.65;color:var(--ghost);max-width:88ch;margin:0 0 10px}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<script>
+/* Данные курса AurinkoLab. Факты программы проверены на сайте erasmus-entrepreneurs.eu, сентябрь 2026 г. */
+"use strict";
+
+var OFFICIAL = {
+  home:  "https://www.erasmus-entrepreneurs.eu/",
+  about: "https://www.erasmus-entrepreneurs.eu/page.php?cid=20",
+  who:   "https://www.erasmus-entrepreneurs.eu/page.php?cid=3",
+  how:   "https://www.erasmus-entrepreneurs.eu/page.php?cid=4",
+  neprof:"https://www.erasmus-entrepreneurs.eu/page.php?pid=08",
+  neact: "https://www.erasmus-entrepreneurs.eu/page.php?pid=004",
+  money: "https://www.erasmus-entrepreneurs.eu/page.php?pid=005",
+  heprof:"https://www.erasmus-entrepreneurs.eu/page.php?pid=09",
+  prac:  "https://www.erasmus-entrepreneurs.eu/page.php?pid=014",
+  contr: "https://www.erasmus-entrepreneurs.eu/page.php?pid=015",
+  lcp:   "https://www.erasmus-entrepreneurs.eu/page.php?cid=5",
+  faq:   "https://www.erasmus-entrepreneurs.eu/page.php?cid=6",
+  apply: "https://www.erasmus-entrepreneurs.eu/page.php?cid=19",
+  tool:  "https://webgate.ec.europa.eu/erasmus-entrepreneurs/",
+  stories:"https://www.erasmus-entrepreneurs.eu/page.php?cid=9",
+  matls: "https://www.erasmus-entrepreneurs.eu/page.php?cid=25",
+  help:  "https://supportoffice.erasmus-entrepreneurs.eu/portal/en/kb",
+  video: "https://www.youtube.com/watch?v=FtLvelrD6UM",
+  videoId: "FtLvelrD6UM",   /* используется для плеера на странице */
+  chan:  "https://www.youtube.com/user/ErasmusEntrepreneurs"
+};
+
+var COURSE = {
+  id: "eye",
+  title: "Erasmus для начинающих предпринимателей",
+  subtitle: "Самостоятельная подготовка для тех, кто начинает с нуля и не имеет работы, к которой можно вернуться",
+  lede: "Программа отправляет вас работать бок о бок с опытным предпринимателем в другую страну-участницу на срок от одного до шести месяцев при поддержке ежемесячного пособия на покрытие расходов. Успех подачи заявки почти полностью зависит от качества вашего бизнес-плана и правильности подбора партнера. Этот курс готовит к обоим аспектам. Он не подает заявку за вас и не является самой программой обмена.",
+  forWhom: [
+    "Вы временно не работаете (или рискуете оказаться в таком положении), и создание собственного дела — это путь, который вы серьезно рассматриваете.",
+    "У вас есть идея (или пока еще сырая задумка) и полное отсутствие истории продаж.",
+    "Вы управляли бизнесом менее трех лет и хотите перенять опыт у того, кто продвинулся дальше.",
+    "Вам больше 18 лет, и вы являетесь постоянным резидентом страны-участницы."
+  ],
+  notFor: [
+    "Вы хотите найти работу за рубежом. Это не трудоустройство, и принимающий предприниматель не может использовать вас в качестве обычного сотрудника.",
+    "Вы хотите, чтобы кто-то подал заявку за вас. Никому не разрешено подавать ее от вашего имени.",
+    "Вам нужны деньги для жизни на родине. Пособие покрывает только время за рубежом, и редко покрывает его полностью."
+  ],
+  facts: [
+    ["Стоимость", "Бесплатно. Никаких сборов"],
+    ["Длительность", "1–6 месяцев за рубежом"],
+    ["Время прохождения", "Около 6 часов"],
+    ["Попытки", "Участие в программе возможно только один раз"],
+    ["Организатор", "AurinkoLab ry, Хельсинки"]
+  ],
+
+  modules: [
+  /* ============================== 1 ============================== */
+  { n:1, title:"С чего начать", blurb:"Что представляет собой программа, что такое этот курс и та самая деталь, о которой вам обычно не говорят до самого конца.",
+    lessons:[
+    { id:"1.1", title:"Кому предназначен этот курс", type:"reading", dur:"5 min", blocks:[
+      {p:"Большинство материалов об «Erasmus для начинающих предпринимателей» написаны для людей, у которых уже есть компания, бухгалтер и веские причины для расширения. Этот курс создан для тех, кто находится на более раннем этапе: работы нет, идея может не выдержать столкновения с реальностью клиентов, а впереди — серьезные размышления о том, разумен ли ваш старт или безрассуден."},
+      {p:"Это раннее положение не является дисквалификацией. Программа прямо разрешает участие тем, кто еще ничего не запустил, при условии жизнеспособности плана. Но это значит, что успех будет зависеть от трех факторов, и лишь один из них касается бумаг."},
+      {ol:[
+        "Сможете ли вы составить бизнес-план, который незнакомый человек, оценивающий десятки заявок, сочтет надежным.",
+        "Сможете ли вы найти принимающего предпринимателя, чей бизнес действительно нуждается в ваших навыках, а не просто потерпит ваше присутствие.",
+        "Сможете ли вы покрыть разницу между ежемесячной выплатой и реальной стоимостью жизни за рубежом."
+      ]},
+      {p:"Курс уделяет основное внимание первым двум пунктам, так как на них можно повлиять своими усилиями. Третий пункт — это чистая арифметика, и в модуле 1 мы разбираем его честно и сразу, а не в самом конце."},
+      {note:"Ничто здесь не заменяет официальные страницы программы. Правила меняются, и официальный текст всегда имеет приоритет. В каждом модуле есть ссылки на соответствующие официальные страницы, чтобы вы могли все перепроверить самостоятельно."}
+    ]},
+
+    { id:"1.2", title:"Что делает и чего не делает AurinkoLab", type:"reading", dur:"4 min", blocks:[
+      {p:"AurinkoLab ry — финская некоммерческая ассоциация, которая разрабатывает и проводит программы неформального обучения. Мы не являемся частью программы Erasmus для начинающих предпринимателей. Мы не выступаем местной контактной точкой, не участвуем в оценке или пересылке заявок и не связаны с Европейской комиссией."},
+      {warn:"<b>Вы должны подать заявку самостоятельно.</b> Правила программы требуют, чтобы предприниматели лично подавали заявку через официальную платформу программы. Подача заявок через сторонних лиц не допускается. Нарушение этого правила может привести к исключению из программы и требованию вернуть полученные выплаты. Если какая-либо организация (включая нас) предлагает подать заявку за вас — откажитесь."},
+      {p:"Подача заявки и участие в программе бесплатны. Правила программы запрещают любым организациям взимать плату за подачу заявки или участие. Если с вас требуют деньги за участие, значит, что-то идет не так."},
+      {h:"Тогда что это за курс?"},
+      {ul:[
+        "Подготовка. Чтение, составление черновиков и расчет расходов, которые в противном случае вы делали бы в спешке.",
+        "Архив вашей работы. Каждый модуль определяет, какие вещественные результаты (артефакты) должны остаться после работы, так что в итоге вы получаете готовые материалы, а не просто сертификат о прослушивании.",
+        "Ссылки на официальные страницы именно в том порядке, в котором они вам понадобятся."
+      ]},
+      {p:"Чем этот курс не является: каналом подачи заявок, оценкой вашей квалификации, гарантией принятия или консультацией по пособиям. Если вопрос требует обращения в официальный орган, мы прямо указываем, в какой именно."}
+    ]},
+
+    { id:"1.3", title:"Программа в описании ее организаторов", type:"video", dur:"3 min", blocks:[
+      {p:"Прежде чем вдаваться в детали, послушайте официальное описание. Оно короткое и сразу обрисует общую картину: два предпринимателя, один обмен, частичное покрытие расходов и долгий шлейф полезных знакомств после."},
+      {vid:{yt:"FtLvelrD6UM", href:"VIDEO", title:"Программа «Erasmus для начинающих предпринимателей»",
+        desc:"Официальное вводное видео программы, опубликованное ее организаторами. Воспроизводится на этой странице."}},
+      {link:{href:"CHAN", title:"Официальный канал программы", desc:"Информационные сессии по странам и отзывы участников, в том числе на других языках."}},
+      {p:"Обратите внимание на одну деталь: как часто вместо слова «обучение» используется слово «сотрудничество». Это различие имеет решающее значение, поскольку обмен, похожий на обычную стажировку, не подходит под критерии программы."}
+    ]},
+
+    { id:"1.4", title:"Честная арифметика", type:"reading", dur:"8 min", blocks:[
+      {p:"Финансовая поддержка представляет собой частичное покрытие расходов на проезд и проживание во время пребывания за рубежом. Она рассчитывается ежемесячно на основе фиксированной суммы, установленной для страны пребывания, и выплачивается выбранной вами местной контактной точкой в рамках подписанного между вами соглашения."},
+      {p:"Из этого вытекают три важных последствия, которые люди обычно осознают слишком поздно."},
+      {h:"Выплаты производятся только за время, проведенное за рубежом"},
+      {p:"Поддержка покрывает исключительно тот период, когда вы физически находитесь у принимающего предпринимателя. Подготовка дома, поездка на встречу с потенциальным хостом или месяц после возвращения — ничего из этого не оплачивается."},
+      {h:"Она не предназначена для покрытия абсолютно всех расходов"},
+      {p:"Программа требует, чтобы новые предприниматели были готовы дополнять средства программы из собственных источников для покрытия реальных расходов на пребывание. Это обязательное условие участия, а не предупреждение мелким шрифтом. Прежде чем двигаться дальше, посчитайте, во сколько обойдется месяц в предполагаемой стране и откуда возьмется разница."},
+      {link:{href:"MONEY", title:"Ежемесячная финансовая поддержка по странам пребывания", desc:"Официальные суммы и единственное надежное место для их проверки. Цифры пересматриваются, поэтому любые данные из сторонних курсов или видео могут быть устаревшими."}},
+      {note:"В этом курсе намеренно не приводятся конкретные суммы. Число, скопированное в учебные материалы, быстро устаревает, а цифра, которую вы запомнили наполовину, хуже ее отсутствия. Откройте официальную таблицу и запишите актуальную цифру для вашей страны вместе с датой проверки."},
+      {h:"Если вы получаете пособие по безработице, сначала проконсультируйтесь"},
+      {p:"Можете ли вы участвовать в программе во время получения пособия, что с ним станет за рубежом и доступен ли вам вместо этого грант на стартап — это вопросы к вашему местному органу занятости и ведомству по социальному обеспечению. В Финляндии это службы занятости (Työllisyyspalvelut) и Kela. Уточняйте конкретно поездку на срок от одного до шести месяцев за рубеж по линии обмена ЕС, а также возможность получения гранта на стартап (starttiraha) в рамках того же разговора."},
+      {warn:"Получите этот ответ в письменном виде до того, как зафиксируете даты. Никто в программе и никто в AurinkoLab не может сказать вам, как именно будет расцениваться ваше пособие. Это может сделать только орган, который его выплачивает."},
+      {ev:[["2.4","Финансовая грамотность"],["3.3","Неопределенность и риск"]]}
+    ]}
+  ]},
+
+  /* ============================== 2 ============================== */
+  { n:2, title:"Можете ли вы принять участие?", blurb:"Два пути входа, условия для каждого из них и отношения, которые делают обмен недопустимым.",
+    lessons:[
+    { id:"2.1", title:"Два пути входа", type:"reading", dur:"5 min", blocks:[
+      {p:"Вы можете участвовать в качестве нового предпринимателя на одном из двух оснований. Достаточно выполнить лишь одно из них."},
+      {ol:[
+        "Вы твердо планируете начать бизнес на основе жизнеспособного бизнес-плана.",
+        "У вас есть менее трех лет общего предпринимательского опыта."
+      ]},
+      {p:"Первый путь будут использовать большинство участников этого курса, и стоит заметить, как много веса возлагается на один-единственный документ. Если у вас еще нет истории продаж, ваш план — это исчерпывающее доказательство того, что у вас вообще есть серьезные намерения."},
+      {p:"Сфера деятельности значения не имеет. Верхнего возрастного ограничения нет, хотя всем участникам должно быть больше 18 лет. Второй путь измеряется общим опытом предпринимательства, поэтому время, потраченное на управление бизнесом, который вы впоследствии закрыли, все равно засчитывается в эти три года."},
+      {link:{href:"NEPROF", title:"Профиль нового предпринимателя, официальные критерии", desc:"Первоисточник для обоих путей и условий из следующего урока. Прочитайте его самостоятельно, а не полагайтесь на это краткое изложение."}}
+    ]},
+
+    { id:"2.2", title:"Условия, стоящие за этими путями", type:"checklist", dur:"6 min", blocks:[
+      {p:"Соответствие одному из двух путей само по себе еще не гарантирует успех. Программа предъявляет дополнительные требования к каждому новому предпринимателю. Проработайте их честно. Ответ «нет» на этом этапе — это полезная информация, а не неудача, и обойдется она гораздо дешевле, чем в четвертый месяц программы."},
+      {check:{id:"c2-2", items:[
+        {t:"Мне больше 18 лет.", s:"Верхнего предела нет, но этот нижний предел абсолютен."},
+        {t:"Я являюсь постоянным резидентом страны-участницы.", s:"Именно резидентство, а не гражданство. Официальный список стран-участниц — главный авторитет; проверяйте его, а не полагайтесь на предположения."},
+        {t:"У меня есть конкретный проект или бизнес-идея, отраженные в бизнес-плане.", s:"Ключевая фраза здесь — «отраженные в плане». Идея, которую вы можете устно описать, таковой еще не является."},
+        {t:"Я готов(а) вносить вклад в бизнес принимающего предпринимателя, а не только учиться у него.", s:"Ожидается, что вы предоставите в распоряжение свои навыки и компетенции. Хост, который ничего не получает от обмена, означает несостоявшийся мэтчинг."},
+        {t:"Я смогу дополнить средства программы своими силами, чтобы покрыть реальные расходы на пребывание.", s:"Обязательное условие. В модуле 1.4 вы рассчитывали точную сумму."},
+        {t:"Я готов(а) уехать из дома на срок от одного до шести месяцев.", s:"С учетом того, чем бы вы иначе занимались в эти месяцы."}
+      ]}},
+      {p:"Если вы не можете поставить галочку напротив резидентства или денег, остановитесь и решите этот вопрос до того, как что-либо писать. Оба требования обязательны, и их невозможно компенсировать более сильным бизнес-планом."}
+    ]},
+
+    { id:"2.3", title:"Что делает обмен неприемлемым", type:"reading", dur:"7 min", blocks:[
+      {p:"Вы можете полностью соответствовать всем критериям и все же предложить обмен, который отклонят, поскольку правила регулируют отношения между двумя предпринимателями так же строго, как и их самих. Базовый принцип простой: обмен должен привносить то, чего бы не произошло само по себе."},
+      {h:"Запрещенные виды отношений"},
+      {ul:[
+        "Принимающий предприниматель, который является или станет совладельцем или инвестором вашего бизнеса.",
+        "Обмен, в ходе которого вы планируете открыть филиал бизнеса принимающей стороны.",
+        "Хост, на чью площадку вы уже попали благодаря другой программе или стипендии.",
+        "Семья: родственники, супруги, партнеры или члены семей партнеров.",
+        "Любые прошлые или запланированные деловые или профессиональные отношения, которые делают обмен избыточным."
+      ]},
+      {h:"Запрещенные цели"},
+      {p:"Хосты должны предлагать подлинное предпринимательское сотрудничество и не имеют права использовать обмен как источник бесплатной рабочей силы или стажировку. Со своей стороны, обмен должен способствовать развитию ваших навыков управления бизнесом. Он не может быть профессиональным тренингом, стажировкой или продолжением работы на известном вам рабочем месте."},
+      {p:"Существует еще одно правило, которое стоит знать тем, кто родился в другой стране: вам не запрещено проходить обмен в стране, с которой вас связывает прошлое (через учебу или поездки). Однако программу нельзя использовать не по назначению — например, исключительно для возвращения на родину или в место, где вы недавно провели много времени. Каждое дело оценивается индивидуально."},
+      {warn:"Самый простой способ потратить свою единственную попытку — договориться об удобном размещении с кем-то, кого вы уже знаете, а затем обнаружить, что этот вариант неприемлем. Если у вас уже есть на примете кандидат в хосты, сверьте его с этим уроком, прежде чем вкладывать во что-то силы."},
+      {link:{href:"ABOUT", title:"Правила программы в отношении соответствия критериям, целей и конфликта интересов", desc:"Официальное изложение всех вышеперечисленных ограничений, включая правила о конфликте интересов для сотрудников контактных точек."}}
+    ]},
+
+    { id:"2.4", title:"У вас есть всего одна попытка", type:"reading", dur:"3 min", blocks:[
+      {p:"Новые предприниматели могут участвовать в программе только один раз. Не один раз на бизнес, не один раз на страну. Всего один раз."},
+      {p:"Этот простой факт должен полностью изменить ваш подход к остальной части курса. Цена посредственного совпадения (мэтчинга) — это не просто несколько потраченных месяцев, а безвозвратная потеря самой возможности. Стоит потратить несколько дополнительных недель на подготовку, провести больше разговоров с потенциальными хостами и иметь смелость отказаться от принимающей стороны, которая кажется просто «подходящей по случаю»."},
+      {p:"Это также аргумент в пользу того, чтобы отправляться в поездку позже, а не раньше. Обмен, совершенный тогда, когда ваша идея еще туманна, превращает вашу единственную попытку в общее бизнес-образование, которое можно получить и в другом месте. Если же вы поедете тогда, когда у вас есть конкретный пробел в знаниях, названный дефицитный навык и хост, у которого он есть, эти же месяцы принесут в разы больше пользы."},
+      {ev:[["1.3","Видение"],["3.3","Неопределенность и риск"]]}
+    ]},
+
+    { id:"2.5", title:"Каково ваше реальное положение", type:"checklist", dur:"5 min", blocks:[
+      {p:"Краткая проверка перед тем, как приступить к составлению документов. Отмечайте только то, что верно на сегодняшний день, а не то, что будет верно при благоприятном стечении обстоятельств."},
+      {check:{id:"c2-5", items:[
+        {t:"Я самостоятельно прочитал(а) официальные критерии для новых предпринимателей.", s:"Не краткую выжимку. Ссылка на страницу дана в пункте 2.1."},
+        {t:"Я подтвердил(а), что моя страна входит в список участников.", s:""},
+        {t:"Я знаю, по какому из двух путей я соответствую критериям.", s:"Планирую запуск на основе жизнеспособного плана или имею менее трех лет опыта."},
+        {t:"Я сверил(а) планируемые отношения с хостом со списком запрещенных вариантов.", s:"Либо у меня пока нет кандидата в хосты, что на этом этапе нормально."},
+        {t:"У меня есть письменный ответ относительно моего статуса получателя пособия.", s:"Либо пособия ко мне не относятся."},
+        {t:"Я знаю ежемесячную сумму для предполагаемой страны и дату, когда я ее проверил(а).", s:""},
+        {t:"Я знаю, откуда возьмется разница между этой суммой и моими реальными расходами.", s:"Сбережения, семья, удаленная подработка или план пока не сходятся."}
+      ]}},
+      {p:"Шесть или семь галочек означают, что можно переходить к модулю 3 и садиться за написание. Три или четыре галочки говорят о том, что пробелы носят чисто практический характер, и их стоит закрыть в первую очередь — никакой объем черновиков их не исправит."}
+    ]}
+  ]},
+
+  /* ============================== 3 ============================== */
+  { n:3, title:"Бизнес-план — это пропуск", blurb:"Заявки проходят жесткий отбор по качеству. Этот модуль посвящен созданию плана, способного пройти этот фильтр без истории продаж.",
+    lessons:[
+    { id:"3.1", title:"Почему заявки отклоняют", type:"reading", dur:"5 min", blocks:[
+      {p:"Программа заявляет, что к участию могут быть допущены только надежные, хорошо проработанные заявки, отвечающие стандартам качества, и публикует соответствующие руководства. Воспринимайте это буквально: полностью заполненная заявка еще не означает автоматически одобренную заявку."},
+      {p:"Для человека без истории продаж типичной ошибкой является не плохая идея сама по себе, а план, состоящий сплошь из благих намерений. Каждое предложение описывает то, что «будет сделано», но ничто не описывает то, что уже было сделано. У эксперта нет никакой возможности отличить такой документ от двадцати других планов на его столе, которые точно так же описывают лишь туманное будущее."},
+      {h:"Что отличает один план от другого"},
+      {ul:[
+        "Реальный человек вне вашего круга общения, который заявил, что купит, использует или оплатит продукт, с описанием его слов.",
+        "Показатель затрат с указанием источника и даты, а не абстрактная оценка.",
+        "Описание того, что вы уже попробовали сделать, но что не сработало, и какие выводы вы сделали.",
+        "Конкретный пробел в ваших собственных компетенциях, четко названный по имени — именно то, для чего и нужен обмен."
+      ]},
+      {p:"Последний пункт выполняет двойную задачу. Он делает план заслуживающим доверия и делает очевидным обоснование мэтчинга: вот этот пробел, у данного хоста он закрыт, поэтому нужен именно обмен, а не курс лекций."},
+      {link:{href:"APPLY", title:"Руководство по подаче заявок", desc:"Официальные рекомендации о том, что должна содержать заявка и каким стандартам она должна соответствовать."}}
+    ]},
+
+    { id:"3.2", title:"Что содержит план, если вы еще ничего не продавали", type:"reading", dur:"8 min", blocks:[
+      {p:"От вас не требуют презентации для инвесторов, а выдумывание пятилетних прогнозов выручки из ниоткуда только навредит вам. Ниже приведена структура, которая работает в условиях, когда честный ответ на большинство финансовых вопросов вам пока неизвестен."},
+      {h:"Проблема словами кого-то другого"},
+      {p:"Начните с описания проблемы так, как ее сформулировал реальный человек (можно сослаться на роль, а не на имя). Это сильнейшее начало для человека без выручки, поскольку это единственная часть плана, которую вы можете полностью подкрепить фактами."},
+      {h:"Что вы собираетесь с этим делать"},
+      {p:"Достаточно предметно, чтобы читатель мог представить себе первую сделку. Что покупается, кем, примерно за сколько и как доставляется."},
+      {h:"Сколько стоит доставка одной единицы"},
+      {p:"Себестоимость единицы с указанием источников. Не общий бюджет бизнеса, а стоимость одной поставки. Это та часть, которую пропускают большинство первых планов и которую ищут эксперты, поскольку она показывает, соприкасались ли вы с реальным миром."},
+      {h:"Кто еще это делает и почему вы — не они"},
+      {p:"Назовите реальных конкурентов. Заявление о том, что их нет, расценивается как нежелание искать. Если они существуют и имеют лучшее финансирование, объясните, что остается для вас."},
+      {h:"Чего вы еще не умеете"},
+      {p:"Пробел в компетенциях, сформулированный прямо. И затем обмен как средство его устранения. План, который признает свой пробел и предлагает конкретное лекарство, вызывает больше доверия, чем претендующий на абсолютную полноту, и он служит аргументом не просто для вашего бизнеса, а для вашей заявки."},
+      {h:"Что произойдет в первые полгода после обмена"},
+      {p:"Короткий, привязанный к датам и достаточно скромный план, чтобы в него поверили. Три шага с указанием месяцев."},
+      {note:"Сначала напишите план на своем родном языке, если английский для вас не первый. Точный вариант на вашем языке с последующим переводом лучше, чем расплывчатый английский текст, составленный лишь потому, что так было проще."}
+    ]},
+
+    { id:"3.3", title:"Две недели клиентской проверки", type:"reading", dur:"7 min", blocks:[
+      {p:"Это двухнедельный отрезок с максимальной отдачей, который не стоит ничего, кроме легкого дискомфорта. Цель — заменить благие намерения в вашем плане фактами о том, что уже произошло."},
+      {h:"Дни 1–4: найдите проблему, не продавайте ничего"},
+      {p:"Поговорите с десятью людьми, у которых гарантированно есть эта проблема. Не с друзьями, не с родственниками, не с теми, кто хочет поддержать вас. Спросите, как они справляются с ней сейчас и во что это обходится им в плане денег или времени. Не описывайте свою идею: вы не продаете, а описание изменит их ответы."},
+      {p:"Запишите деталь, которая противоречит вашей задумке. Именно это предложение — главная цель всего упражнения, и именно его все обычно упускают."},
+      {h:"Дни 5–8: оцените всё правильно"},
+      {p:"Получите три реальных коммерческих предложения от реальных поставщиков всего необходимого для доставки одной единицы. Никаких поисковых выдач и воспоминаний по памяти. Нужен email с конкретной цифрой. Фиксируйте дату каждого предложения, так как цены меняются, а цифра без даты — не доказательство."},
+      {h:"Дни 9–12: сделайте одно маленькое дело для одного человека"},
+      {p:"Доставьте что-то действительно полезное одному человеку вне вашего круга бесплатно и попросите его написать одно предложение о том, была ли польза. Это намеренно маленький шаг. Он превращает вас из человека с планом в человека с опытом реализации, и эта фраза отправится в вашу заявку."},
+      {h:"Дни 13–14: оформление"},
+      {p:"Десять разговоров, три коммерческих предложения, одна доставка, один письменный отзыв. Вот вам план с фундаментом, и на него ушло две недели."},
+      {ev:[["1.1","Выявление возможностей"],["1.4","Оценка ценности идей"],["2.4","Финансовая грамотность"],["4.1","Создание известности"],["3.1","Инициативность"]]}
+    ]},
+
+    { id:"3.4", title:"Расчет стоимости одной поставки", type:"template", dur:"6 min", blocks:[
+      {p:"Скопируйте этот шаблон, заполните его реальными цифрами с указанием источников и сохраните в качестве приложения к плану. Даты здесь не для красоты: эксперт сразу отличит расчет, сделанный на прошлой неделе, от собранного по памяти."},
+      {tmpl:{title:"Лист себестоимости единицы", text:
+"ЧТО ПРЕДСТАВЛЯЕТ СОБОЙ ОДНА ЕДИНИЦА ПОСТАВКИ\nОпишите конкретный результат, получаемый клиентом:\n\nПРЯМЫЕ ЗАТРАТЫ\nНаименование | Стоимость | Источник (кто предоставил цену) | Дата запроса\n------------ | --------- | ------------------------------- | ------------\n             |           |                                 |\n             |           |                                 |\n             |           |                                 |\n\nМОЕ ВРЕМЯ\nЧасов на подготовку одной единицы:\nВо сколько я оцениваю один час и почему:\n\nИТОГО СЕБЕСТОИМОСТЬ ОДНОЙ ЕДИНИЦЫ:\n\nСКОЛЬКО, ПО МОЕМУ МНЕНИЮ, ЗА ЭТО ГОТОВЫ ЗАПЛАТИТЬ\nКто мне это сказал и когда:\n\nМАРЖА НА ОДНУ ЕДИНИЦУ:\nКОЛИЧЕСТВО ЕДИНИЦ В МЕСЯЦ ДЛЯ ПОКРЫТИЯ МОИХ РАСХОДОВ:\n\nПОКАЗАТЕЛЬ, В КОТОРОМ Я МЕНЬШЕ ВСЕГО УВЕРЕН(А)\nЧто потребуется, чтобы в нем убедиться:\n\nДЕЙСТВИТЕЛЬНО ДО: (12 месяцев от самой старой даты в таблице выше)"}},
+      {p:"Последние две строки — самые ценные. Указание показателя, в котором вы сомневаетесь больше всего, — это поступок грамотного основателя, и наличие такого анализа в плане (а не в ответ на каверзный вопрос) воспринимается как уверенность, а не неуверенность."},
+      {ev:[["2.4","Финансовая грамотность"],["3.2","Планирование"]]}
+    ]},
+
+    { id:"3.5", title:"Структура бизнес-плана", type:"template", dur:"6 min", blocks:[
+      {p:"Каркас, соответствующий модулю 3.2, рассчитанный на человека без опыта продаж. Ориентируйтесь на 4–6 страниц. Больший объем не означает большую глубину — это воспринимается как «вода»."},
+      {tmpl:{title:"Шаблон бизнес-плана", text:
+"1. ПРОБЛЕМА\n   - Описание проблемы глазами человека, который с ней столкнулся (цитата или точный перефраз)\n   - Сколько людей потенциально ею страдают и откуда вам это известно\n   - Как они решают ее сейчас и во сколько это им обходится\n\n2. ЧТО Я БЫ СДЕЛАЛ(А) ДЛЯ ЕЕ РЕШЕНИЯ\n   - Конкретное предложение\n   - Описание первой сделки от начала до конца\n   - Что намеренно исключено из сферы охвата\n\n3. ДОКАЗАТЕЛЬСТВА К НАСТОЯЩЕМУ МОМЕНТУ\n   - Проведенные беседы: сколько, с кем (по ролям), что меня удивило\n   - Что я попытался(ась) сделать, но оно не сработало, и что я изменил(а)\n   - Все, что уже удалось поставить клиентам, и отзывы получателей\n\n4. ЦИФРЫ\n   - Себестоимость одной единицы (приложение: лист себестоимости)\n   - Цена и подтверждения того, что за нее готовы платить\n   - Что мне необходимо ежемесячно для поддержания работы\n   - Предположение, разрушающее эту модель, если оно окажется неверным\n\n5. РЫНОК И КОНКУРЕНТЫ\n   - Именные конкуренты или заменители\n   - Что реально остается для меня\n\n6. ЧЕГО Я ПОКА НЕ УМЕЮ\n   - Конкретный пробел в компетенциях\n   - Почему обмен решает эту задачу лучше, чем курс или найм сотрудника\n   - Какой тип принимающей компании обладает нужным опытом\n\n7. ПОСЛЕ ОБМЕНА\n   - Три шага с привязкой по месяцам\n   - Как в течение полугода я пойму, работает ли эта модель\n\nПРИЛОЖЕНИЯ\n   - Лист себестоимости единицы\n   - Письменный отзыв от клиента, получившего продукт\n   - Резюме (CV)"}},
+      {note:"Раздел 6 — это то самое, что превращает обычный бизнес-план в заявку на участие. Большинство соискателей сдают план, который выглядел бы абсолютно одинаково независимо от того, существовала бы программа вообще или нет. Ваш план должен быть другим."}
+    ]}
+  ]},
+
+  /* ============================== 4 ============================== */
+  { n:4, title:"Поиск принимающего предпринимателя (хоста)", blurb:"Как работает подбор на практике, как сделать выбор и как написать ключевое сообщение.",
+    lessons:[
+    { id:"4.1", title:"Как на самом деле устроен подбор партнера", type:"reading", dur:"6 min", blocks:[
+      {p:"После одобрения вашей регистрации вы выстраиваете отношения с принимающим предпринимателем за рубежом по одному из двух путей. Вы можете предложить местной контактной точке хоста, с которым уже общаетесь, либо воспользоваться онлайн-каталогом при содействии контактной точки. Контактные точки также могут помогать в установлении контактов и предлагать варианты сами."},
+      {p:"Из этого описания вытекают два нюанса, которые легко упустить из виду."},
+      {ul:[
+        "Одобрение заявки в программе не означает автоматического нахождения пары. Некоторые участники получают одобрение, но так и не находят хоста. Каталог — это не живая очередь, которая рано или поздно дойдет до вас.",
+        "Ваша контактная точка — это рабочий партнер, а не просто бюрократический этап. Они видят каталог, знают, какие хосты реально отвечают, и подписывают ваше финансовое соглашение. Выбирайте организацию, которая работает по вашему региону и действительно вовлечена в процесс."
+      ]},
+      {p:"Правила соответствия из модуля 2.3 распространяются на любые ваши предложения. Обмен могут отклонить, если он не отвечает критериям, причем проверка происходит уже после того, как вы проделали всю работу по его организации."},
+      {link:{href:"HOW", title:"Как участвовать: официальные шаги", desc:"Последовательность действий от подготовки документов и регистрации до мэтчинга собственными словами программы."}},
+      {link:{href:"LCP", title:"Найдите свою местную контактную точку", desc:"Поиск по странам. Это организация, которая займется вашим договором и выплатой пособия."}}
+    ]},
+
+    { id:"4.2", title:"Выбор страны и сферы деятельности", type:"reading", dur:"6 min", blocks:[
+      {p:"Первый импульс — выбрать страну, которая вам просто нравится. На время откажитесь от этого желания и выбирайте по трем другим критериям, а личные предпочтения оставьте лишь для разрешения спорных ситуаций."},
+      {h:"Где на самом деле решается ваш пробел в навыках"},
+      {p:"Если ваш пробел — это регулируемое производство продуктов питания, страна с самыми жесткими требованиями научит вас большему, чем комфортное направление. Если вы учитесь B2B-продажам вместо работы с розницей, отправляйтесь туда, где сосредоточены покупатели вашей сферы."},
+      {h:"Что ваши деньги значат в этой стране"},
+      {p:"Ежемесячное пособие привязано к стране пребывания, и стоимость жизни там же. Эти две величины растут не параллельно. Меньшая сумма в более доступной стране может поставить вас в лучшие условия, чем крупная выплата в дорогом мегаполисе, и разница за четыре месяца решит, дойдете ли вы до конца или вернетесь домой досрочно."},
+      {h:"На каком языке ведется реальный бизнес"},
+      {p:"И дело не в государственном языке страны. Внутренняя жизнь небольшой компании, ее поставщики и клиенты могут общаться исключительно на местном языке, даже если английский у владельца беглый. Напрямую уточните, что именно вы рискуете не понимать."},
+      {note:"Подумайте и о том, что останется у вас после поездки. Главная долгосрочная ценность, по отзывам участников, — это контакты и потенциальные партнеры за рубежом. Отрасль, в которой вы впоследствии сможете реально продавать или закупать товары, ценнее той, где у вас таких перспектив нет."}
+    ]},
+
+    { id:"4.3", title:"Первое сообщение принимающему предпринимателю", type:"template", dur:"7 min", blocks:[
+      {p:"Хосты получают множество писем, где все крутится вокруг отправителя. Ваше письмо должно быть в основном о них, достаточно конкретным, чтобы доказать внимательное изучение их бизнеса, и оставлять им право легко отказаться. Возможность легко сказать «нет» — это не слабость, а то, что помогает вообще получить хоть какой-то ответ."},
+      {tmpl:{title:"Первое обращение к принимающему предпринимателю", text:
+"Тема: Обмен EYE — [ваша сфера], [месяцы, когда вы свободны]\n\nУважаемый(-ая) [Имя],\n\nЯ подаю заявку на участие в программе Erasmus для начинающих\nпредпринимателей в качестве нового предпринимателя и ищу хоста в сфере [сфера].\n\nПочему именно вы: [1–2 предложения, которые можно написать только\nпро этот бизнес. Что-то, что вы заметили в их работе, рынке,\nна который они вышли, или ограничениях, в условиях которых они действуют.]\n\nЧто я могу предложить: [конкретный навык, который можно проверить.\nНе «трудолюбие» и «мотивацию». Например: я пересобрал(-а) модель\nценообразования поставщиков, свободно говорю по-фински и по-русски,\nмогу вести ваши продажи на рынках Северной Европы.]\n\nЧему я хочу научиться: [пробел в компетенциях из вашего плана, названный прямо.]\n\nПрактические детали: [месяцы доступности], [от 1 до 6] месяцев,\nпрограмма частично покрывает мои расходы на проезд и проживание,\nпоэтому для вас не будет затрат на зарплату. Мой собственный план — [одна строка].\n\nЕсли это не ваш формат, отказ в одну строку будет мне чрезвычайно\nполезен, и я не стану писать во второй раз. Если тема стоит обсуждения,\nя на связи в любые дни с [диапазон дат].\n\n[Ваше имя]\n[Ссылка на что-то созданное вами, если есть]"}},
+      {h:"Два правила отправки писем"},
+      {ul:[
+        "Напишите напоминание ровно один раз примерно через десять дней, после чего остановитесь. Второе напоминание гарантированно сожжет этот контакт.",
+        "Ведите учет всех обращений с датами и результатами, включая молчание в ответ. Десять записанных обращений — это полноценный документ; анализ отказов подскажет, как переписать одиннадцатое письмо."
+      ]},
+      {ev:[["2.5","Вовлечение других"],["4.2","Преодоление отказов"],["4.1","Создание известности"]]}
+    ]},
+
+    { id:"4.4", title:"Вопросы, которые нужно задать до подписания", type:"checklist", dur:"6 min", blocks:[
+      {p:"К моменту, когда потенциальный хост отвечает согласием, инерция процесса мешает вовремя остановиться. Задайте эти вопросы тогда, когда отступить еще легко. Помните, что у вас есть всего одна попытка на программу, поэтому вежливый отказ посредственному хосту — это разумный шаг, а вовсе не неблагодарность."},
+      {check:{id:"c4-4", items:[
+        {t:"Я точно знаю, чем именно буду заниматься в первую неделю.", s:"Хост, который не может ответить на этот вопрос, даже не думал об обмене."},
+        {t:"Я знаю, кому подчиняюсь и как часто мы будем реально общаться.", s:"Уточните количество часов в неделю. Расплывчатая «доступность» означает ее полное отсутствие."},
+        {t:"Я спросил(-а), что они рассчитывают получить от этого процесса.", s:"Хост без ответа предлагает вам «терпимость», а не сотрудничество. Это также создает проблему с соответствием критериям программы."},
+        {t:"Я подтвердил(-а), что это сотрудничество, а не стажировка или замена штатного сотрудника.", s:"Хосты не могут использовать обмен как источник бесплатного труда. Если описание похоже на обычную работу, скажите об этом вслух прямо сейчас."},
+        {t:"Я убедился(-ась), что у нас нет прошлых или запланированных деловых или семейных связей.", s:"Проверьте по списку из модуля 2.3."},
+        {t:"Я уточнил(-а), на каком языке реально ведется бизнес.", s:"Включая поставщиков, программное обеспечение и клиентов."},
+        {t:"Я спросил(-а) насчет жилья и получил(-а) конкретный ответ или четкое «нет».", s:"Некоторые хосты помогают. Исходить из презумпции «они сами помогут», не спрашивая об этом, — верный способ остаться без крыши над головой."},
+        {t:"Я пообщался(-ась) с предыдущим новым предпринимателем, которого они принимали, либо убедился(-ась), что таких не было.", s:"Большинство хостов, которым нравится процесс, принимают участников регулярно. Если прошлые участники были, попросите дать контакт одного из них."}
+      ]}},
+      {p:"Шесть или более галочек означают, что это партнерство стоит того, чтобы предложить его вашей контактной точке. Три или меньше — и вы собираетесь потратить свою единственную попытку ради простого удобства."}
+    ]}
+  ]},
+
+  /* ============================== 5 ============================== */
+  { n:5, title:"Документы и деньги", blurb:"Четыре этапа, документы, которые вы подписываете, и бюджет, который определяет, дойдете ли вы до конца.",
+    lessons:[
+    { id:"5.1", title:"Четыре этапа программы", type:"reading", dur:"5 min", blocks:[
+      {p:"Процесс выявления потребности, валидации, реализации и оценки обмена проходит в четыре этапа. Понимание этой структуры убережет вас от восприятия затянувшейся фазы подбора как отказа."},
+      {ol:[
+        "<b>Подача заявки.</b> Вы подаете заявку онлайн и выбираете контактную point. Эта организация оценивает заявку и дает обратную связь по критериям соответствия и допуску.",
+        "<b>Подбор партнера (мэтчинг).</b> После одобрения вы получаете доступ к онлайн-каталогу и можете искать пару самостоятельно, либо вам помогает контактная точка. У этого этапа нет фиксированной длительности, и это нормально.",
+        "<b>Заключение договоров и подготовка.</b> Когда пара найдена, при содействии контактных точек составляется соглашение о намерениях (план деятельности), которое подписывают все стороны. Вы подписываете отдельное финансовое соглашение со своей контактной точкой. Перед поездкой вы проходите инструктаж.",
+        "<b>Реализация.</b> Вы проходите стажировку (одним или несколькими периодами) и отчитываетесь по ней. Ответственные контактные точки мониторят ценность процесса и оценивают результаты."
+      ]},
+      {p:"После завершения обмена и вы, и принимающий предприниматель обязаны заполнить онлайн-анкету обратной связи о совместной работе."},
+      {link:{href:"PRAC", title:"Обмен на практике", desc:"Официальные подробности о том, как подготавливается, проводится и завершается обмен."}}
+    ]},
+
+    { id:"5.2", title:"Соглашение о намерениях и план деятельности", type:"reading", dur:"6 min", blocks:[
+      {p:"Соглашение о намерениях — это онлайн-документ, который оформляется после одобрения вашей пары. В нем прописываются цели и ожидания от обмена, план бизнеса, работы и обучения, задачи, обязанности и юридические аспекты. Его подписываете вы, хост и контактные точки."},
+      {p:"Рассматривайте составление этого документа как самую полезную неделю во всем процессе, а не как формальную галочку. Это единственный момент, когда ваши ожидания и ожидания хоста сводятся в один документ, позволяя дешево обнаружить любые расхождения. В дальнейшем этот документ станет главным ориентиром, когда в третий месяц начнется неизбежное рассогласование."},
+      {h:"Убедитесь, что там четко прописано"},
+      {ul:[
+        "Что именно вы создадите к концу стажировки (выраженное в существительных, а не в глаголах).",
+        "Какую конкретно проблему хоста вы решаете.",
+        "Сколько часов в неделю вы и хост проводите вместе.",
+        "Кому принадлежит всё, что вы создадите в ходе обмена.",
+        "Что происходит, если работа не клеится, и в какой момент об этом следует сказать вслух."
+      ]},
+      {p:"Четвертый пункт требует особого внимания до подписания. Если вы пишете код, разрабатываете процесс или создаете материалы, имеющие ценность в дальнейшем, зафиксируйте права собственности в документе, вместо того чтобы полагаться на устную добрую волю."},
+      {link:{href:"CONTR", title:"Договорные и финансовые аспекты", desc:"Официальные рекомендации по соглашению, договорам и тому, что подписывает каждая из сторон."}},
+      {ev:[["3.2","Планирование"],["1.3","Видение"],["3.4","Сотрудничество"]]}
+    ]},
+
+    { id:"5.3", title:"Финансовое соглашение", type:"reading", dur:"5 min", blocks:[
+      {p:"Вы и ваша местная контактная точка подписываете соглашение, определяющее объем выделяемого финансирования на время пребывания и порядок его выплаты. Пособие рассчитывается ежемесячно на базе фиксированной суммы для страны пребывания и покрывает исключительно время, проведенное за рубежом в сотрудничестве с хостом."},
+      {h:"Спросите об этом до подписания"},
+      {ul:[
+        "Когда поступает каждый платеж относительно даты оплаты аренды на месте.",
+        "Выплачивается ли что-то до поездки и как вы покроете возможный разрыв, если нет.",
+        "Какое подтверждение присутствия требуется и что будет в случае прерывания периода.",
+        "Что происходит при досрочном прекращении обмена по вашей инициативе или инициативе хоста."
+      ]},
+      {p:"Вопрос о графике выплат — сугубо практический. Если пособие выплачивается по факту прошедшего месяца, а залог и аренда за первый месяц нужны сразу по приезде, вам потребуется иметь эту сумму на руках до отъезда, независимо от красивых цифр в таблице выплат."},
+      {link:{href:"MONEY", title:"Финансовая поддержка и таблица ежемесячных пособий", desc:"Официальные суммы по странам пребывания. Проверяйте дату публикации таблицы, которую читаете."}},
+      {warn:"Деньги предназначены на проезд и проживание в период обмена. Использование их на иные цели является нарушением заявленных условий программы."}
+    ]},
+
+    { id:"5.4", title:"Страховка, право на пребывание и жилье", type:"reading", dur:"6 min", blocks:[
+      {p:"Это практические вопросы, которые не будет решать за вас никто другой, и именно они чаще всего превращают рабочий план в финансово неподъемный. Ни один из ответов ниже не является юридическим советом; каждый из них — это вопрос с указанием ведомства, способного на него ответить."},
+      {h:"Медицинская страховка и полисы"},
+      {p:"Уточните у контактной точки, какие виды страхования требует программа и что она не покрывает. Затем обратитесь в орган медицинского страхования своей страны, чтобы узнать правила для поездки вашей длительности в выбранную страну, и получите ответ в письменно виде. Ответственность при работе на чужом предприятии — отдельный вопрос; спросите хоста, что покрывает их корпоративная страховка."},
+      {h:"Право на пребывание и работу"},
+      {p:"Обмен не является трудоустройством, что может сделать ваш юридический статус менее очевидным. Если у вас есть ВНЖ или ПМЖ, но нет гражданства вашей страны, уточните у властей страны назначения правила пребывания на срок от одного до шести месяцев. Сделайте это заранее: это процедура с самым долгим сроком оформления во всем процессе."},
+      {h:"Жилье"},
+      {p:"Исходите из того, что искать жилье придется самостоятельно, и закладывайте это в бюджет. Спросите хоста, могут ли они что-то посоветовать (многие могут), но не стройте план только на этом. Избегайте выплаты крупных депозитов до того, как увидите жилье своими глазами или пообщаетесь с тем, кто там побывал."},
+      {h:"Налоги"},
+      {p:"Проконсультируйтесь в налоговой службе вашей страны насчет налогообложения пособия и влияния поездки на ваш налоговый статус резидента. Ответ зависит от страны и срока, поэтому здесь нужны официальные разъяснения, а не догадки."},
+      {note:"Ваша контактная точка сталкивается с этим регулярно и знает типичные ошибки. Приходите к ним с этим списком вопросов, а не пытайтесь разобраться в одиночку."}
+    ]},
+
+    { id:"5.5", title:"Бюджет вашего пребывания", type:"template", dur:"6 min", blocks:[
+      {p:"Одна страница, заполненная реальными цифрами до подписания любых документов. Значение имеет только самая последняя строка."},
+      {tmpl:{title:"Бюджет пребывания", text:
+"СТРАНА НАЗНАЧЕНИЯ:                 МЕСЯЦЕВ:\nЕЖЕМЕСЯЧНОЕ ПОСОБИЕ (из официальной таблицы):\nДАТА ПРОВЕРКИ ЭТОЙ ЦИФРЫ:\n\nДО ОТЪЕЗДА (не покрывается пособием)\n  Билеты в одну/обе стороны        \n  Депозит и аренда за первый месяц  \n  Разрешения, страховка, документы \n  Необходимое снаряжение/техника   \n  ИТОГО ДО ПОЕЗДКИ:\n\nЕЖЕМЕСЯЧНО НА МЕСТЕ\n  Аренда жилья                     \n  Питание                          \n  Местный транспорт                \n  Связь и интернет                 \n  Медицинская страховка            \n  Сохраняющиеся расходы на родине  \n  ИТОГО В МЕСЯЦ:\n\nРАЗРЫВ В МЕСЯЦ (пособие минус ежемесячные расходы):\nОБЩИЙ РАЗРЫВ ЗА ВЕСЬ ПЕРИОД:\nПЛЮС РАСХОДЫ ДО ОТЪЕЗДА:\n\nИТОГО МНЕ ПОТРЕБУЕТСЯ СОБСТВЕННЫХ СРЕДСТВ:\nИСТОЧНИКИ ФИНАНСИРОВАНИЯ:\nЧТО Я ДЕЛАЮ, ЕСЛИ НЕ ХВАТАЕТ НА ОДИН МЕСЯЦ:"}},
+      {p:"Если две последние строки остались пустыми, план не завершен, сколь бы прекрасным ни был мэтчинг. Рассчитайте их сейчас, пока ответ еще может скорректировать ваши даты или выбор страны."},
+      {ev:[["2.4","Финансовая грамотность"],["3.2","Планирование"],["3.3","Неопределенность и риск"]]}
+    ]}
+  ]},
+
+  /* ============================== 6 ============================== */
+  { n:6, title:"Извлеките максимум пользы", blurb:"Сама поездка и то, как вернуться домой с чем-то более долговечным, чем просто хорошие воспоминания.",
+    lessons:[
+    { id:"6.1", title:"Первые две недели", type:"reading", dur:"5 min", blocks:[
+      {p:"Первые две недели определяют, как пройдут оставшиеся месяцы, а сценарий по умолчанию — это дрейф: вам поручают что-то безопасное и второстепенное, все предельно вежливы, а к началу второго месяца модель работы оказывается жестко зафиксированной."},
+      {ul:[
+        "В первую неделю попросите показать вам ту часть бизнеса, которая работает плохо. Именно там вы будете учиться и там сможете внести реальный вклад, который хост оценит по достоинству.",
+        "Сделайте что-то небольшое, но завершенное в течение первых двух недель. Это изменит отношение к вам сильнее любых разговоров.",
+        "Зафиксируйте еженедельное время для встреч с хостом в письменном виде на первой же неделе. Если встречи нет в календаре, она не переживет загруженный рабочий месяц.",
+        "Озвучьте вслух хотя бы раз, чего именно вы надеетесь достичь к концу срока. Хосты не могут целиться в ориентир, о котором они не слышали."
+      ]},
+      {p:"Если вторая неделя начинает напоминать неоплачиваемую административную рутину, поднимите этот вопрос, ссылаясь на план деятельности. Исправить ошибку на второй неделе гораздо проще, чем на третьем месяце, а план существует как раз для того, чтобы под этим разговором была документальная база."}
+    ]},
+
+    { id:"6.2", title:"Фиксация доказательств (evidence) по ходу дела", type:"reading", dur:"6 min", blocks:[
+      {p:"В конце вам захочется продемонстрировать, чему вы научились. Воссоздание этого по памяти породит лишь общие фразы. Двадцать минут в неделю дают конкретные результаты."},
+      {h:"Еженедельная заметка из четырех строк"},
+      {ol:[
+        "Что я сделал(а) такого, чего не смог(ла) бы месяц назад.",
+        "В чем я ошибся(-лась) и что я изменил(а).",
+        "Какое решение принял хост, которое я бы сделал(а) иначе, и почему они были правы или неправы.",
+        "Один артефакт: документ, модель, сообщение, фотография созданного объекта."
+      ]},
+      {p:"Третий пункт — ключевой для накопления опыта. Фиксация вашего собственного мышления в сопоставлении с решениями опытного предпринимателя неделя за неделей — это ближайший аналог журнала развития профессионального суждения, и он куда убедительнее любой рекомендательной грамоты."},
+      {p:"Сохраняйте артефакты по мере их появления с проставленными датами. Папка с датированными файлами в конце будет стоить дороже рекомендательного письма, поскольку демонстрирует реальную работу, а не просто утверждения о вашем качестве."},
+      {note:"Это тот же принцип, на котором строится учет компетенций в AurinkoLab: фиксируйте то, что вы сделали, заметили и подтвердили фактами, а не то, что вы рассказываете о себе задним числом. Еженедельная заметка — это простейшая форма такого учета."},
+      {ev:[["3.5","Обучение через действие"],["2.1","Самопознание"],["4.4","Вербализация эмоций"]]}
+    ]},
+
+    { id:"6.3", title:"Отчетность и финальная анкета", type:"reading", dur:"4 min", blocks:[
+      {p:"Вы отчитываетесь о поездке, а ответственные контактные точки отслеживают ценность мероприятия и оценивают его результаты. По завершении обмена и вы, и хост заполняете обязательную онлайн-анкету обратной связи о вашем сотрудничестве."},
+      {p:"К ее заполнению стоит отнестись серьезно, а не наспех. Эта анкета — одно из немногих мест, где фиксируется реальный опыт небольших обменов, и она влияет на то, как программа оценивается и финансируется. Честный рассказ о том, что не сработало, принесет гораздо больше пользы следующему участнику, чем дежурные благодарности."},
+      {p:"Сохраняйте собственную копию всего, что вы отправляете. Отчетность, подготовленная для программы, также послужит отличным сырьем для всего, что вы напишете о себе в будущем."}
+    ]},
+
+    { id:"6.4", title:"Что останется у вас после окончания", type:"reading", dur:"5 min", blocks:[
+      {p:"Будьте реалистичны в отношении того, что дает и чего не дает обмен, поскольку разрыв между ожиданиями и реальностью — главная причина, почему люди разочаровываются."},
+      {h:"Что у вас, скорее всего, останется"},
+      {ul:[
+        "Контакты за рубежом в вашей сфере, а в некоторых случаях — прямые каналы на поставщиков, клиентов или партнеров.",
+        "Конкретное понимание того, как небольшой бизнес в вашей области устроен изнутри в повседневной жизни.",
+        "Доказательства: датированные артефакты работы, выполненной в реальной компании.",
+        "Более качественный (и обычно более скромный) план, поскольку соприкосновение с работающим бизнесом сужает амбиции до реально выполнимых форм."
+      ]},
+      {h:"Чего программа вам не дает"},
+      {ul:[
+        "Никакой квалификации. В конце не выдается диплом или лицензия.",
+        "Финансирования для вашего бизнеса. Пособие покрывает пребывание, а не сам стартап.",
+        "Гарантий того, что ваш бизнес обязательно взлетит. Ничто в этом процессе, включая то, что измеряет AurinkoLab, не может предсказать это."
+      ]},
+      {p:"Самый частый реальный итог — изменение вектора: идея, с которой вы приехали, отличается от той, с которой вы уезжаете. Это признак успешного обмена, а не неудачи. Полученные компетенции остаются вашими независимо от того, выжила ли самая первая идея."}
+    ]}
+  ]},
+
+  /* ============================== 7 ============================== */
+  { n:7, title:"Ответы и официальные ссылки", blurb:"Часто задаваемые вопросы, глоссарий и те самые две ссылки, которые действительно имеют значение.",
+    lessons:[
+    { id:"7.1", title:"Часто задаваемые вопросы", type:"reading", dur:"7 min", blocks:[
+      {p:"Здесь приведены ответы, отражающие официальную позицию по состоянию на сентябрь 2026 года. Если речь идет о деньгах, вашем резидентстве или личных обстоятельствах, обязательно уточняйте информацию в службе поддержки программы или у контактной точки, а не полагайтесь только на эту страницу."},
+      {qa:[
+        ["Требуется ли плата за подачу заявки?","Нет. Подача заявки и участие бесплатны. Правила программы гласят, что никакая организация не имеет права взимать плату за подачу заявки или участие. Если с вас требуют деньги, воспринимайте это как тревожный сигнал."],
+        ["Может ли кто-то подать заявку за меня?","Нет. Вы должны лично подать заявку через официальную платформу. Заявки, поданные через третьих лиц, не допускаются и могут привести к исключению из программы и возврату полученных выплат."],
+        ["Существует ли возрастное ограничение?","Верхнего предельного возраста нет. Все участники должны быть старше 18 лет. Слово «молодые» (young) в названии программы относится к новизне бизнеса, а не к вашему возрасту."],
+        ["Нужно ли мне уже иметь зарегистрированный бизнес?","Нет. Вы можете соответствовать критериям, если твердо планируете запуск на базе жизнеспособного бизнес-плана. В качестве альтернативы принимается опыт предпринимательской деятельности менее трех лет."],
+        ["Можно ли принять участие более одного раза?","Нет. Новые предприниматели могут участвовать в программе только один раз."],
+        ["Могу ли я поехать в страну, где я жил(а) или учился(ась)?","Прямого запрета на это нет. Однако программу нельзя использовать не по назначению — например, исключительно для возвращения на родину или в место, где вы недавно провели много времени. Каждое обращение рассматривается индивидуально."],
+        ["Может ли моим хостом стать друг, родственник или человек, с которым я уже работаю?","Нет. Семейные связи исключены, равно как и прошлые или планируемые деловые отношения, делающие обмен избыточным, а также хосты, которые являются или станут совладельцами/инвесторами, либо схемы, где вы планируете открыть филиал бизнеса принимающей стороны."],
+        ["Является ли это работой? Будут ли мне платить зарплату?","Нет. Это сотрудничество между двумя предпринимателями. Хосты не могут использовать вас как источник бесплатного труда или стажера, и зарплата не выплачивается. Вы получаете финансовую поддержку на проезд и проживание."],
+        ["Сколько времени занимает подбор пары (мэтчинг)?","Фиксированных сроков нет. Само по себе одобрение в программе не гарантирует нахождение партнера. Каталог и контактная точка — лишь инструменты; предложение собственного хоста часто работает быстрее."],
+        ["Кто выплачивает мне пособие?","Местная контактная точка, которую вы выбрали при подаче заявки. Вы подписываете с ними соглашение, определяющее финансирование и порядок выплат."],
+        ["Что делать, если обмен идет не так?","Поднимайте этот вопрос с контактной точкой как можно раньше, а не в самом конце. Уточняйте условия прерывания и досрочного расторжения до подписания финансового соглашения, чтобы знать свою позицию заранее."],
+        ["Что произойдет с моим пособием по безработице?","Только ваш орган занятости и ведомство по соцобеспечению могут ответить на этот вопрос. Проконсультируйтесь до фиксации дат и получите ответ в письменном виде."]
+      ]},
+      {link:{href:"FAQ", title:"Официальный раздел часто задаваемых вопросов", desc:"Значительно длиннее этого списка и является приоритетным источником в случае расхождений."}},
+      {link:{href:"HELP", title:"Служба поддержки программы", desc:"Для вопросов, на которые нет ответов в FAQ. Со службой поддержки (Support Office) также можно связаться по адресу support@erasmus-entrepreneurs.eu."}}
+    ]},
+
+    { id:"7.2", title:"Найдите свою местную контактную точку", type:"link", dur:"2 min", blocks:[
+      {p:"Ваша контактная точка оценивает заявку, помогает в подборе пары, подписывает финансовое соглашение и выплачивает пособие. Как правило, это торгово-промышленные палаты, стартап-центры или инкубаторы, обладающие опытом поддержки бизнеса. Выбор организации, охватывающей ваш регион и оперативно отвечающей на сообщения, гораздо важнее, чем кажется большинству соискателей."},
+      {link:{href:"LCP", title:"Поиск местных контактных точек", desc:"Поиск по странам. Свяжитесь с двумя или тремя организациями и посмотрите, кто ответит наиболее предметно, прежде чем фиксировать выбор в заявке."}},
+      {p:"Вопросы, которые стоит задать при первом контакте: сколько новых предпринимателей они разместили за прошлый год, как они предпочитают работать с хостом, которого вы нашли самостоятельно, и как быстро выплачивается пособие по прибытии."}
+    ]},
+
+    { id:"7.3", title:"Подача заявки на официальной платформе", type:"link", dur:"2 min", blocks:[
+      {p:"Когда ваш план написан, калькуляция затрат выполнена, вопросы с пособиями улажены и вы самостоятельно изучили критерии, переходите по этой ссылке. Подача заявки осуществляется вами лично здесь."},
+      {link:{href:"TOOL", title:"Официальная платформа подачи заявок", desc:"Управляется Европейской комиссией. Единственный легитимный путь входа."}},
+      {link:{href:"APPLY", title:"Руководство по подаче", desc:"Требования к содержанию заявки и стандарты ее оценки. Ознакомьтесь с этим до заполнения любых полей."}},
+      {warn:"AurinkoLab не участвует в вашей заявке и не имеет доступа к ее просмотру, пересылке, проверке или влиянию на нее. Любой, кто утверждает обратное относительно этой программы, либо заблуждается, либо пытается совершить мошенничество."}
+    ]},
+
+    { id:"7.4", title:"Терминология программы", type:"reading", dur:"4 min", blocks:[
+      {p:"Словарь программы строго регламентирован и встречается в официальных документах без дополнительных пояснений."},
+      {qa:[
+        ["Новый предприниматель (New Entrepreneur, NE)","Вы, если вы планируете запуск бизнеса по жизнеспособному плану или имеете менее трех лет предпринимательского опыта. Тот, кто отправляется в поездку."],
+        ["Принимающий предприниматель (Host Entrepreneur, HE)","Опытный владелец или руководитель малого/среднего предприятия за рубежом, который принимает вас."],
+        ["Местная контактная точка (Local Contact Point, LCP)","Организация поддержки бизнеса в вашей стране, которая оценивает вашу заявку, помогает с подбором пары и выплачивает пособие (торговые палаты, стартап-центры, инкубаторы)."],
+        ["Посредническая организация (Intermediary Organisation, IO)","Тот же тип организации, названный так в соответствии с формулировками в юридических документах программы. Вы встретите оба термина."],
+        ["Офис поддержки (Support Office)","Координирует работу контактных точек на европейском уровне от имени Европейской комиссии. Здесь же находится справочная служба (helpdesk)."],
+        ["Страна-участница (Participating country)","Страна, резиденты которой могут участвовать в программе. Список утверждается программой и не совпадает со списком стран ЕС. Проверяйте его, а не доверяйте предположениям."],
+        ["Соглашение о намерениях (The commitment)","Подписанный онлайн-документ, определяющий цели, план работы и обучения, задачи, обязанности и юридические аспекты. Также называется планом деятельности (activity plan)."],
+        ["Финансовое соглашение (Financial agreement)","Отдельный договор между вами и контактной точкой, определяющий объем финансирования и порядок выплат."],
+        ["Обмен (Exchange)","Само пребывание длительностью от одного до шести месяцев, осуществляемое одним или несколькими периодами."]
+      ]},
+      {note:"Два термина, которых вы не найдете в официальных документах: «оценка в баллах» (score) и «сертификат» (certificate). Программа не выдает ни того, ни другого, и наш курс тоже."}
+    ]}
+  ]}
+  ]
+};
+
+var OTHER_COURSES = [
+  { title:"Вызовы по созданию ценности", sub:"Предпринимательский трек, соотнесенный с EntreComp",
+    body:"Двадцать вызовов, каждый из которых создает ценность для кого-то за пределами группы; оценка выставляется на основе наблюдаемого поведения по шкале рубрикатора, а не по анкете. Карта компетенций сформирована; программа вызовов проводится сертифицированным инструктором.",
+    meta:"20 вызовов, 20 потоков компетенций, 8 уровней", state:"В разработке" },
+  { title:"Направление STEM и инженерии", sub:"Механика, электроника, код и управление, производство, зеленые технологии",
+    body:"Структура предварительных требований вместо простого набора тем, поскольку инженерные навыки логично выстраиваются в цепочки. 31 узел по пяти ветвям, каждая из которых ведет к профессиональному треку.",
+    meta:"31 узел, 5 ветвей", state:"Планируется" }
+];
+
+</script>
+<script>
+"use strict";
+
+var SITE = "https://espoo.aurinkolab.fi/";
+
+var LESSONS = [];
+COURSE.modules.forEach(function(m){
+  m.lessons.forEach(function(l){ l.mod = m; LESSONS.push(l); });
+});
+
+var TYPE = {
+  reading:   { ic:"\u25A4", label:"чтение" },
+  video:     { ic:"\u25B6", label:"видео" },
+  checklist: { ic:"\u2611", label:"чек-лист" },
+  template:  { ic:"\u270E", label:"шаблон" },
+  link:      { ic:"\u2197", label:"официальная ссылка" }
+};
+
+var KEY = "aurinkolab.eye.v1";
+var store = { done:{}, checks:{} };
+try{
+  var raw = localStorage.getItem(KEY);
+  if(raw){ var p = JSON.parse(raw); if(p && typeof p === "object"){ store.done = p.done || {}; store.checks = p.checks || {}; } }
+}catch(e){ /* хранилище заблокировано: прогресс не сохранится, все остальное работает */ }
+function save(){ try{ localStorage.setItem(KEY, JSON.stringify(store)); }catch(e){} }
+
+var playing = {};   /* ключи видео, на воспроизведение которых нажал пользователь, чтобы ререндер не останавливал их */
+var route = { view:"intro", lesson:null };
+var openMod = 1;
+var railOpen = (typeof window !== "undefined") && window.innerWidth > 980;
+
+function doneCount(){ return LESSONS.filter(function(l){ return store.done[l.id]; }).length; }
+function pct(){ return LESSONS.length ? Math.round(doneCount() / LESSONS.length * 100) : 0; }
+function nextUndone(){
+  for(var i = 0; i < LESSONS.length; i++){ if(!store.done[LESSONS[i].id]) return LESSONS[i]; }
+  return LESSONS[LESSONS.length - 1];
+}
+function url(k){
+  var map = {VIDEO:"video",CHAN:"chan",MONEY:"money",NEPROF:"neprof",ABOUT:"about",HOW:"how",LCP:"lcp",
+    FAQ:"faq",APPLY:"apply",TOOL:"tool",PRAC:"prac",CONTR:"contr",HELP:"help",WHO:"who",NEACT:"neact",
+    HEPROF:"heprof",STORIES:"stories",MATLS:"matls",HOME:"home"};
+  return OFFICIAL[map[k] || "home"];
+}
+function host(u){ try{ return u.replace(/^https?:\/\//,"").split("/")[0]; }catch(e){ return ""; } }
+
+/* ------------------------------------------------------------- blocks */
+
+function blockHtml(b){
+  if(b.h)  return "<h4>" + b.h + "</h4>";
+  if(b.p)  return "<p>" + b.p + "</p>";
+  if(b.ul) return "<ul>" + b.ul.map(function(i){ return "<li>" + i + "</li>"; }).join("") + "</ul>";
+  if(b.ol) return "<ol>" + b.ol.map(function(i){ return "<li>" + i + "</li>"; }).join("") + "</ol>";
+  if(b.note) return '<div class="notice">' + b.note + "</div>";
+  if(b.warn) return '<div class="notice warn">' + b.warn + "</div>";
+  if(b.sun)  return '<div class="notice sun">' + b.sun + "</div>";
+
+  if(b.link){
+    var u = url(b.link.href);
+    return '<a class="linkcard" href="' + u + '" target="_blank" rel="noopener noreferrer"><b>' +
+      b.link.title + "</b><span>" + b.link.desc + '</span><span class="host">' + host(u) + "</span></a>";
+  }
+  if(b.vid){
+    var v = url(b.vid.href);
+    var key = b.vid.yt || b.vid.file;
+    var top;
+    if(playing[key]){
+      /* файл на своем сервере или YouTube в режиме повышенной конфиденциальности, запущенный пользователем */
+      top = b.vid.file
+        ? '<div class="ratio"><video controls autoplay playsinline preload="metadata" src="' + b.vid.file + '"></video></div>'
+        : '<div class="ratio"><iframe src="https://www.youtube-nocookie.com/embed/' + b.vid.yt +
+          '?autoplay=1&amp;rel=0&amp;modestbranding=1" title="' + b.vid.title +
+          '" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" ' +
+          'referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>';
+    }else{
+      top = '<button class="fr" data-play="' + key + '" aria-label="Воспроизвести ' + b.vid.title + '">' +
+        '<span class="play">\u25B6</span><span class="lb">Смотреть здесь</span>' +
+        '<span class="hint">' + (b.vid.file ? "Размещено на этом сайте" : "YouTube загружается только при нажатии") +
+        "</span></button>";
+    }
+    return '<div class="vid">' + top + '<div class="bd"><b>' + b.vid.title + "</b><p>" + b.vid.desc + "</p>" +
+      '<a class="alt" href="' + v + '" target="_blank" rel="noopener noreferrer">Открыть на YouTube</a>' +
+      (b.vid.file ? "" : '<span class="fallback">Если плеер не отображается, ваша сеть или браузер блокируют ' +
+        "встроенный YouTube. Ссылка выше открывает то же видео.</span>") +
+      "</div></div>";
+  }
+  if(b.check){
+    var cid = b.check.id, st = store.checks[cid] || [];
+    var rows = b.check.items.map(function(it, i){
+      return '<li><label><input type="checkbox" data-check="' + cid + '" data-i="' + i + '"' +
+        (st[i] ? " checked" : "") + '><span class="tx">' + it.t +
+        (it.s ? '<span class="sub">' + it.s + "</span>" : "") + "</span></label></li>";
+    }).join("");
+    return '<ul class="check">' + rows + '</ul><p class="checksum" data-sum="' + cid + '">' +
+      st.filter(Boolean).length + " из " + b.check.items.length + " отмечено</p>";
+  }
+  if(b.tmpl){
+    return '<div class="tmpl"><div class="hd"><span>' + b.tmpl.title + '</span><button data-copy="1">Копировать</button></div><pre>' +
+      b.tmpl.text.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;") + "</pre></div>";
+  }
+  if(b.qa){
+    return b.qa.map(function(r){ return '<div class="qa"><b>' + r[0] + "</b><p>" + r[1] + "</p></div>"; }).join("");
+  }
+  if(b.ev){
+    var chips = b.ev.map(function(e){
+      return '<li class="a' + String(e[0]).charAt(0) + '">' + e[0] + " " + e[1] + "</li>";
+    }).join("");
+    return '<div class="ev"><p>Правильное выполнение этого задания формирует подтверждения по данным направлениям компетенций. ' +
+      "Направления под номером 4 являются расширением AurinkoLab и не входят в структуру EntreComp.</p><ul>" + chips + "</ul></div>";
+  }
+  return "";
+}
+
+/* --------------------------------------------------------------- chrome */
+
+function chrome(inner){
+  return '<div class="banner"><div class="in">' +
+      '<span class="pill">Кампус в Эспоо</span><span class="dot">\u2022</span>' +
+      "<span>Бесплатный онлайн-курс \u00b7 свой темп \u00b7 без регистрации</span>" +
+    "</div></div>" +
+
+    '<nav class="top"><div class="in">' +
+      '<a class="logo" href="' + SITE + '"><span class="sq">A</span>' +
+      '<span><span class="nm">Aurinko<span>Lab</span></span>' +
+      '<span class="sub">Эспоо \u2022 Курсы</span></span></a>' +
+      '<div class="links"><a href="' + SITE + '#courses">Все курсы</a>' +
+      '<a href="' + SITE + '#location">Контакты</a>' +
+      (route.view === "lesson" ? '<a href="#" data-go="intro">Главная курса</a>' : "") +
+      "</div>" +
+    "</div></nav>" +
+
+    inner +
+
+    '<footer class="site"><div class="cols">' +
+      '<div><div class="brandline"><span class="sq">A</span>' +
+      '<span class="hf" style="font-weight:700;font-size:20px;color:var(--ink)">AurinkoLab</span></div>' +
+      "<p style=\"margin:0;color:var(--soft)\">Создаем инноваторов завтрашнего дня уже сегодня.</p></div>" +
+      '<div><h4>Об этом курсе</h4><ul>' +
+        '<li><a href="#" data-go="intro">Главная курса</a></li>' +
+        '<li><a href="' + SITE + '#courses">Все курсы AurinkoLab</a></li>' +
+        '<li><a href="' + OFFICIAL.home + '" target="_blank" rel="noopener noreferrer">Официальный сайт программы</a></li>' +
+        '<li><a href="' + OFFICIAL.tool + '" target="_blank" rel="noopener noreferrer">Официальная платформа подачи заявок</a></li>' +
+      "</ul></div>" +
+      '<div><h4>Контакты</h4><ul>' +
+        '<li><a href="mailto:info@aurinkolab.fi">info@aurinkolab.fi</a></li>' +
+        "<li>Vanhan-Mankkaan kuja 2, Эспоо</li>" +
+      "</ul></div>" +
+    "</div>" +
+    '<div class="legal">' +
+      "<p>AurinkoLab ry не является местной контактной точкой программы «Erasmus для начинающих предпринимателей», не участвует в оценке, " +
+      "пересылке или подаче заявок, а также не связана партнерскими отношениями с Европейской комиссией и не поддерживается ею. Заявки на участие " +
+      "в программе должны подаваться заявителем лично через официальную платформу; подача заявок третьими лицами не допускается. Подача заявки " +
+      "и участие в программе бесплатны, ни одна организация не имеет права взимать плату за участие.</p>" +
+      "<p>Факты о программе на этой странице были сверены с erasmus-entrepreneurs.eu в сентябре 2026 года. В случае расхождений между этой страницей " +
+      "и официальными сайтами программы приоритет имеют официальные источники. Никакой материал на данной странице не является юридической, налоговой, " +
+      "иммиграционной консультацией или советом по пособиям. Данный курс предоставляется бесплатно и не подпадает под действие соглашения AurinkoLab " +
+      "об оказании платных услуг в сфере досуга.</p>" +
+      "<p>Направления компетенций, упоминаемые в курсе, соответствуют EntreComp — Европейской рамочной структуре предпринимательских компетенций " +
+      "(Bacigalupo, Kampylis, Punie and Van den Brande, JRC, 2016), которая является ориентиром, а не стандартом. Четвертая область является расширением " +
+      "AurinkoLab и не входит в состав EntreComp. Никакие измерения здесь не служат гарантией коммерческого успеха бизнеса.</p>" +
+      "<p>&copy; 2026 AurinkoLab Espoo.</p>" +
+    "</div></footer>";
+}
+
+/* ---------------------------------------------------------------- views */
+
+function introView(){
+  var started = doneCount() > 0;
+  var mods = COURSE.modules.map(function(m){
+    return '<button class="mrow" data-open="' + m.lessons[0].id + '">' +
+      '<span class="n">' + m.n + "</span><span><h3>" + m.title + "</h3><p>" + m.blurb + "</p>" +
+      '<ul class="ls">' + m.lessons.map(function(l){
+        return "<li>" + (store.done[l.id] ? "\u2713 " : "") + l.title + "</li>";
+      }).join("") + '</ul></span><span class="cnt">' + m.lessons.length + " уроков</span></button>";
+  }).join("");
+
+  return chrome('<div class="wrap"><div class="intro"><div class="grid2"><div>' +
+    '<span class="eyebrow">Онлайн \u00b7 бесплатно \u00b7 возраст 18+</span>' +
+    "<h1>" + COURSE.title + "</h1>" +
+    '<p class="lede">' + COURSE.lede + "</p>" +
+    '<div class="alert"><b>Прочитайте это в первую очередь.</b> AurinkoLab не является частью программы и не выполняет ' +
+      "функции местной контактной точки. Вы подаете заявку самостоятельно через официальную платформу. Заявки, поданные " +
+      "третьими лицами, не допускаются и могут привести к исключению из программы и требованию возврата полученных выплат. " +
+      "Участие в программе бесплатно, и ни одна организация не имеет права взимать с вас плату за это.</div>" +
+    '<h3 class="sect">Этот курс для вас, если</h3><ul>' +
+      COURSE.forWhom.map(function(i){ return "<li>" + i + "</li>"; }).join("") + "</ul>" +
+    '<h3 class="sect">Вам не стоит проходить этот курс, если</h3><ul>' +
+      COURSE.notFor.map(function(i){ return "<li>" + i + "</li>"; }).join("") + "</ul>" +
+    "</div>" +
+    '<aside class="box"><h3>Краткая справка</h3><dl>' +
+      COURSE.facts.map(function(f){ return "<dt>" + f[0] + "</dt><dd>" + f[1] + "</dd>"; }).join("") +
+      "<dt>Формат</dt><dd>Онлайн, в своем темпе</dd><dt>Язык</dt><dd>Английский</dd></dl>" +
+      (started ? '<div style="margin-top:20px"><div class="pbar"><i style="width:' + pct() + '%"></i></div>' +
+        '<p class="tiny" style="margin:0">' + pct() + "% пройдено, " + doneCount() + " из " + LESSONS.length + " уроков</p></div>" : "") +
+      '<button class="cta solid" data-open="' + (started ? nextUndone().id : LESSONS[0].id) + '">' +
+      (started ? "Продолжить с прерванного места" : "Начать модуль 1") + "</button>" +
+      '<p class="tiny">Без аккаунта и регистрации. Прогресс сохраняется только в этом браузере, никакие данные никуда не отправляются.</p>' +
+    "</aside></div></div>" +
+
+    '<section class="modules"><span class="eyebrow">Семь модулей</span>' +
+      "<h2 class=\"hf\">Чему посвящен курс</h2>" +
+      "<p>Каждый модуль завершается созданием практического результата: расчета с источниками, отправленного сообщения " +
+      "или честного чек-листа. Десять уроков также соотносят выполненную работу с потоками компетенций, благодаря чему ваши усилия " +
+      "трансформируются в вещественные доказательства, а не в простую отметку о посещении.</p>" + mods +
+    "</section></div>");
+}
+
+function lessonView(){
+  var l = LESSONS.filter(function(x){ return x.id === route.lesson; })[0] || LESSONS[0];
+  var idx = LESSONS.indexOf(l);
+  openMod = l.mod.n;
+
+  var rail = COURSE.modules.map(function(m){
+    var md = m.lessons.filter(function(x){ return store.done[x.id]; }).length;
+    var items = m.lessons.map(function(x){
+      return '<li><button data-open="' + x.id + '"' + (x.id === l.id ? ' aria-current="true"' : "") + '>' +
+        '<span class="ic">' + TYPE[x.type].ic + '</span><span>' + x.title +
+        '<span class="ty">' + TYPE[x.type].label + (x.dur ? " \u00b7 " + x.dur : "") + "</span></span>" +
+        '<span class="dn">' + (store.done[x.id] ? "\u2713" : "") + "</span></button></li>";
+    }).join("");
+    return '<div class="mod' + (m.n === openMod ? " open" : "") + '">' +
+      '<button data-mod="' + m.n + '"><span>' + m.n + ". " + m.title + '</span>' +
+      '<span class="cv">' + md + "/" + m.lessons.length + "</span></button>" +
+      (m.n === openMod ? "<ol>" + items + "</ol>" : "") + "</div>";
+  }).join("");
+
+  var prev = idx > 0 ? LESSONS[idx - 1] : null;
+  var next = idx < LESSONS.length - 1 ? LESSONS[idx + 1] : null;
+  var isDone = !!store.done[l.id];
+
+  return chrome('<div class="player"><aside class="rail">' +
+      '<button class="up" data-go="intro">Вернуться на главную курса</button>' +
+      "<h2>" + COURSE.title + "</h2>" +
+      '<div class="prog"><div class="pbar"><i style="width:' + pct() + '%"></i></div>' +
+        '<div class="lbl"><span>' + doneCount() + " из " + LESSONS.length + " пройдено</span><span>" + pct() + "%</span></div></div>" +
+      '<button class="toggle" data-rail="1">' + (railOpen ? "Скрыть содержание" : "Показать все 7 модулей") + "</button>" +
+      (railOpen ? "<div>" + rail + "</div>" : "") +
+    "</aside>" +
+    '<main class="stage">' +
+      '<p class="crumb">Модуль ' + l.mod.n + " \u00b7 " + l.mod.title + "</p>" +
+      "<h1>" + l.title + "</h1>" +
+      '<p class="ltype">' + TYPE[l.type].label + (l.dur ? " \u00b7 " + l.dur : "") +
+        " \u00b7 урок " + (idx + 1) + " из " + LESSONS.length + "</p>" +
+      l.blocks.map(function(b){ return blockHtml(b); }).join("") +
+      '<div class="navrow"><button class="mark" data-done="' + (isDone ? "1" : "0") + '" data-toggle="' + l.id + '">' +
+        (isDone ? "Пройдено \u2713" : "Отметить как пройденное") + '</button><span class="sp"></span>' +
+        '<button data-open="' + (prev ? prev.id : "") + '"' + (prev ? "" : " disabled") + ">Предыдущий</button>" +
+        '<button data-open="' + (next ? next.id : "") + '"' + (next ? "" : " disabled") + ">Следующий урок</button>" +
+      "</div></main></div>");
+}
+
+/* ---------------------------------------------------------------- wire */
+
+function render(){
+  document.getElementById("app").innerHTML = route.view === "intro" ? introView() : lessonView();
+  wire();
+}
+
+function wire(){
+  document.querySelectorAll("[data-go]").forEach(function(b){
+    b.addEventListener("click", function(ev){
+      ev.preventDefault();
+      route.view = b.dataset.go; route.lesson = null;
+      render(); window.scrollTo(0, 0);
+    });
+  });
+  document.querySelectorAll("[data-open]").forEach(function(b){
+    if(!b.dataset.open) return;
+    b.addEventListener("click", function(){
+      var fromIntro = route.view !== "lesson";
+      route.view = "lesson"; route.lesson = b.dataset.open;
+      render();
+      if(fromIntro) window.scrollTo(0, 0);
+      else { var s = document.querySelector(".stage"); if(s) s.scrollIntoView({ block:"start", behavior:"smooth" }); }
+    });
+  });
+  document.querySelectorAll("[data-mod]").forEach(function(b){
+    b.addEventListener("click", function(){
+      var m = COURSE.modules.filter(function(x){ return x.n === Number(b.dataset.mod); })[0];
+      if(m){ route.view = "lesson"; route.lesson = m.lessons[0].id; render(); }
+    });
+  });
+  document.querySelectorAll("[data-play]").forEach(function(b){
+    b.addEventListener("click", function(){ playing[b.dataset.play] = 1; render(); });
+  });
+  document.querySelectorAll("[data-rail]").forEach(function(b){
+    b.addEventListener("click", function(){ railOpen = !railOpen; render(); });
+  });
+  document.querySelectorAll("[data-toggle]").forEach(function(b){
+    b.addEventListener("click", function(){
+      var id = b.dataset.toggle;
+      if(store.done[id]) delete store.done[id]; else store.done[id] = 1;
+      save(); render();
+    });
+  });
+  document.querySelectorAll("[data-check]").forEach(function(cb){
+    cb.addEventListener("change", function(){
+      var cid = cb.dataset.check, arr = store.checks[cid] || [];
+      arr[Number(cb.dataset.i)] = cb.checked;
+      store.checks[cid] = arr; save();
+      var sum = document.querySelector('[data-sum="' + cid + '"]');
+      if(sum) sum.textContent = arr.filter(Boolean).length + " из " +
+        document.querySelectorAll('[data-check="' + cid + '"]').length + " отмечено";
+    });
+  });
+  document.querySelectorAll("[data-copy]").forEach(function(b){
+    b.addEventListener("click", function(){
+      var pre = b.closest(".tmpl").querySelector("pre");
+      var done = function(){ b.textContent = "Скопировано"; setTimeout(function(){ b.textContent = "Копировать"; }, 1600); };
+      if(navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(pre.textContent).then(done, function(){ b.textContent = "Выделите и скопируйте"; });
+      }else{
+        var r = document.createRange(); r.selectNodeContents(pre);
+        var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+        b.textContent = "Нажмите Ctrl+C";
+      }
+    });
+  });
+}
+
+render();
+
+</script>
+</body>
+</html>
